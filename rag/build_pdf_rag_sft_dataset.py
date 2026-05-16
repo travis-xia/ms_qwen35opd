@@ -12,12 +12,14 @@ assistant 目标为 <think> + <answer> + <evidence>。
   ANSWER_JSON          默认 rag/answer.json
   OUTPUT_TEST_DIR      MinerU 解析根目录，默认集群路径（见下）
   OUT_JSONL            默认 rag/pdf_rag_sft_train.jsonl
+  PAGE_CACHE_DIR       整页 PDF 渲染图持久化目录（默认 rag/pdf_rag_sft_page_cache）
 """
 
 from __future__ import annotations
 
 import json
 import os
+import shutil
 import sys
 from typing import Any, Dict, List, Tuple
 
@@ -44,6 +46,7 @@ RAG_TOP_PAGES_JSONL = os.environ.get("RAG_TOP_PAGES_JSONL", "rag_top_pages.jsonl
 ANSWER_JSON = os.environ.get("ANSWER_JSON", "answer.json")
 OUTPUT_TEST_DIR = os.environ.get("OUTPUT_TEST_DIR", _DEFAULT_OUTPUT_TEST)
 OUT_JSONL = os.environ.get("OUT_JSONL", "pdf_rag_sft_train.jsonl")
+PAGE_CACHE_DIR = os.environ.get("PAGE_CACHE_DIR", "pdf_rag_sft_page_cache")
 
 
 def _abspath_under_script(path: str, script_dir: str) -> str:
@@ -72,6 +75,41 @@ def interleaved_parts_to_user_content(
     return "".join(chunks), images
 
 
+def persist_fullpage_images(
+    interleaved_parts: List[Dict[str, Any]],
+    temp_pngs: List[str],
+    cache_dir: str,
+    sample_id: str,
+) -> None:
+    """
+    某页 block 过多时会整页渲染到 /tmp/origin_pdf_*.png（与 pdf_qwen_test 一致）。
+    训练集需持久化路径，不能写入后即删临时文件。
+    """
+    if not temp_pngs:
+        return
+    tmp_set = {os.path.abspath(p) for p in temp_pngs}
+    dest_dir = os.path.join(cache_dir, sample_id)
+    os.makedirs(dest_dir, exist_ok=True)
+    fullpage_idx = 0
+    for part in interleaved_parts:
+        if part.get("type") != "image":
+            continue
+        img_path = part.get("image", "")
+        if os.path.abspath(img_path) not in tmp_set:
+            continue
+        dest = os.path.join(dest_dir, f"fullpage_{fullpage_idx:03d}.png")
+        fullpage_idx += 1
+        if not os.path.isfile(dest):
+            shutil.copy2(img_path, dest)
+        part["image"] = dest
+
+    for p in temp_pngs:
+        try:
+            os.unlink(p)
+        except OSError:
+            pass
+
+
 def format_assistant_target(rec: Dict[str, Any]) -> str:
     """拼接训练目标：redacted_thinking(analysis) + answer + evidence。"""
     analysis = (rec.get("analysis") or "").strip()
@@ -98,6 +136,7 @@ def build_one_sample(
     rag_row: Dict[str, Any],
     answer_rec: Dict[str, Any],
     md_root: str,
+    page_cache_dir: str,
     cl_cache: Dict[str, List[Dict[str, Any]]],
     cl_dir_cache: Dict[str, str],
 ) -> Dict[str, Any]:
@@ -119,11 +158,12 @@ def build_one_sample(
         lang,
         origin_pdf=origin_pdf,
     )
-    for p in temp_pngs:
-        try:
-            os.unlink(p)
-        except OSError:
-            pass
+    persist_fullpage_images(
+        interleaved_parts,
+        temp_pngs,
+        page_cache_dir,
+        rag_row["id"],
+    )
 
     if lang == "vi":
         preamble = interleaved_preamble_vi(page_indices)
@@ -160,6 +200,8 @@ def main() -> None:
         else os.path.join(script_dir, OUTPUT_TEST_DIR)
     )
     out_path = _abspath_under_script(OUT_JSONL, script_dir)
+    page_cache_dir = _abspath_under_script(PAGE_CACHE_DIR, script_dir)
+    os.makedirs(page_cache_dir, exist_ok=True)
 
     if not os.path.isdir(md_root):
         print(f"[error] OUTPUT_TEST_DIR 不存在: {md_root}", file=sys.stderr)
@@ -200,7 +242,12 @@ def main() -> None:
                 continue
             try:
                 sample = build_one_sample(
-                    rag_row, answer_rec, md_root, cl_cache, cl_dir_cache
+                    rag_row,
+                    answer_rec,
+                    md_root,
+                    page_cache_dir,
+                    cl_cache,
+                    cl_dir_cache,
                 )
             except Exception as e:
                 errors.append(f"行 {line_no} id={qid}: {e}")
@@ -212,6 +259,7 @@ def main() -> None:
                 print(f"已写入 {n_ok} 条…")
 
     print(f"完成: 成功 {n_ok} 条, 跳过 {n_skip} 条 -> {out_path}")
+    print(f"整页渲染缓存目录: {page_cache_dir}")
     print(f"content_list 缓存文档数: {len(cl_cache)}")
     if errors:
         print(f"前 10 条错误:", file=sys.stderr)
