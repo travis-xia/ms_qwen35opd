@@ -754,6 +754,157 @@ def prepare_mm_data(messages: List[dict], image_paths: List[str]) -> Dict[str, A
     return mm_data
 
 
+def no_answer_text(language: str) -> str:
+    lang = (language or "").strip().lower()
+    if lang == "ja":
+        return "回答なし"
+    if lang == "vi":
+        return "Không có câu trả lời"
+    if lang.startswith("zh"):
+        return "没有答案"
+    if lang == "en":
+        return "No answer"
+    return "No answer"
+
+
+def is_none_placeholder(s: str) -> bool:
+    return (s or "").strip().lower() == "none"
+
+
+def try_parse_list(s: str) -> Optional[List[Any]]:
+    text = (s or "").strip()
+    if not text:
+        return None
+    try:
+        value = ast.literal_eval(text)
+    except (ValueError, SyntaxError):
+        return None
+    if isinstance(value, list):
+        return value
+    if isinstance(value, tuple):
+        return list(value)
+    return None
+
+
+def normalize_string_items(value: List[Any], language: str) -> List[str]:
+    out: List[str] = []
+    for item in value:
+        if item is None:
+            continue
+        text = str(item).strip()
+        if is_none_placeholder(text):
+            continue
+        if text:
+            out.append(text)
+    return out or [no_answer_text(language)]
+
+
+def dump_list(value: List[Any], language: str) -> str:
+    return json.dumps(normalize_string_items(value, language), ensure_ascii=False)
+
+
+def fallback_list(raw_answer: str, language: str) -> List[str]:
+    text = (raw_answer or "").strip()
+    if is_none_placeholder(text):
+        return [no_answer_text(language)]
+    return [text] if text else [no_answer_text(language)]
+
+
+def sanitize_scalar_answer(answer: str, answer_format: str, language: str) -> str:
+    """与 pdf_qwen_infer_from_rag / pdf_qwen_test 提交 CSV 的 string/number 规范化一致。"""
+    text = re.sub(r"</?answer>", "", answer or "", flags=re.I).strip()
+    text = " ".join(text.replace("\r\n", "\n").replace("\r", "\n").split())
+    fallback = no_answer_text(language)
+    if answer_format in ("unordered_list", "ordered_list"):
+        return text
+    s = text.strip()
+    if not s:
+        return fallback
+    if is_none_placeholder(s):
+        return fallback
+    if s == "[]":
+        return fallback
+    if s.startswith("[") and s.endswith("]"):
+        try:
+            value = ast.literal_eval(s)
+        except (ValueError, SyntaxError):
+            inner = s[1:-1].strip()
+            return inner or fallback
+        if isinstance(value, (list, tuple)):
+            items = normalize_string_items(list(value), language)
+            if len(items) == 1 and items[0] == fallback:
+                return fallback
+            return "、".join(items)
+    return str(s)
+
+
+def normalize_submission_answer(
+    raw: str,
+    answer_format: str,
+    language: str,
+) -> str:
+    """将 Gemini/模型 raw 答案规范为与 submission CSV 一致的 answer 字符串。"""
+    afmt = (answer_format or "string").strip()
+    lang = (language or "ja").strip()
+    raw_s = (raw or "").strip()
+    if afmt in ("unordered_list", "ordered_list"):
+        parsed = try_parse_list(raw_s)
+        if parsed is None:
+            try:
+                jv = json.loads(raw_s)
+                if isinstance(jv, list):
+                    parsed = jv
+            except json.JSONDecodeError:
+                parsed = None
+        if parsed is not None:
+            return dump_list(parsed, lang)
+        return dump_list(fallback_list(raw_s, lang), lang)
+    return sanitize_scalar_answer(raw_s, afmt, lang)
+
+
+def resolve_training_evidence_pages(
+    ref_pages: List[int],
+    ctx_page_nums: List[int],
+) -> Tuple[List[int], Dict[str, Any]]:
+    """
+    训练用证据页（固定题库记忆向）：
+      1) 非空则 ref∩ctx（保持 ref 顺序）；
+      2) 交集为空则用答案/Gemini 标签中的完整 ref 列表（保证与提交一致）；
+      3) ref 也为空时才用 RAG 上下文全部页；最后兜底 [1]。
+    """
+    ctx_sorted = sorted({int(p) for p in ctx_page_nums if int(p) > 0})
+    ref_clean: List[int] = []
+    seen: set[int] = set()
+    for p in ref_pages:
+        n = int(p)
+        if n > 0 and n not in seen:
+            seen.add(n)
+            ref_clean.append(n)
+    ctx_set = set(ctx_sorted)
+    intersection = [p for p in ref_clean if p in ctx_set]
+    missing = [p for p in ref_clean if p not in ctx_set]
+    used_ref_label_fallback = False
+    used_ctx_fallback = False
+    if intersection:
+        train = intersection
+    elif ref_clean:
+        train = list(ref_clean)
+        used_ref_label_fallback = True
+    elif ctx_sorted:
+        train = list(ctx_sorted)
+        used_ctx_fallback = True
+    else:
+        train = [1]
+        used_ctx_fallback = True
+    return train, {
+        "ref_evidence_full": ref_clean,
+        "ctx_page_nums": ctx_sorted,
+        "missing_from_ctx": missing,
+        "used_ref_label_fallback": used_ref_label_fallback,
+        "used_ctx_fallback": used_ctx_fallback,
+    }
+
+
 def parse_answer_tag(text: str) -> str:
     """只解析 <answer>；无标签时去掉证据标签，避免污染原答案评测。"""
     ans_match = re.search(r"<answer>\s*(.*?)\s*</answer>", text, flags=re.S | re.I)
