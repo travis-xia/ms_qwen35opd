@@ -105,9 +105,18 @@ def iter_test_rows(pcba_root: str) -> Iterable[Tuple[Dict[str, Any], Dict[str, A
         yield row, build_sample(row, image_root, with_answer=False)
 
 
+def _strip_thinking(text: str) -> str:
+    text = (text or '').strip()
+    if '</think>' in text:
+        text = text.split('</think>', 1)[-1]
+    elif text.startswith('<think>'):
+        return ''
+    return text.strip()
+
+
 def normalize_answer(raw: str, row: Dict[str, Any]) -> str:
     """Post-process model output into a submission-friendly answer."""
-    text = (raw or '').strip()
+    text = _strip_thinking(raw)
     if not text:
         return text
     if is_quantitative(row):
@@ -115,9 +124,16 @@ def normalize_answer(raw: str, row: Dict[str, Any]) -> str:
         return match.group(0) if match else text
     options = row.get('options') or {}
     valid = {str(k).upper() for k in options}
-    upper = text.upper()
+    upper = text.strip().upper()
     if upper in valid:
         return upper
+    for line in reversed(text.splitlines()):
+        candidate = line.strip().upper()
+        if candidate in valid:
+            return candidate
+    match = re.match(r'^([A-Za-z])\b', text.strip())
+    if match and match.group(1).upper() in valid:
+        return match.group(1).upper()
     for ch in upper:
         if ch in valid:
             return ch

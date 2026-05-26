@@ -58,6 +58,18 @@ def _shard_items(items: List[Any], rank: int, world_size: int) -> List[Any]:
     return items[start:end]
 
 
+def _merge_gathered_predictions(gathered: List[Any]) -> List[Tuple[Any, str, str]]:
+    """兼容 accelerate 新旧版本：新版已 flatten，旧版返回各 rank 的 list。"""
+    if not gathered:
+        return []
+    if isinstance(gathered[0], tuple):
+        return list(gathered)
+    merged: List[Tuple[Any, str, str]] = []
+    for shard in gathered:
+        merged.extend(shard)
+    return merged
+
+
 def main() -> None:
     from swift.arguments import InferArguments
     from swift.infer_engine import InferRequest, RequestConfig, TransformersEngine
@@ -87,6 +99,10 @@ def main() -> None:
         load_args=True,
         torch_dtype=TORCH_DTYPE,
         attn_impl=ATTN_IMPL,
+        stream=False,
+        val_dataset=[pcba_root],
+        enable_thinking=False,
+        add_non_thinking_prefix=True,
     )
     loaded_model, template = prepare_model_template(args)
     engine = TransformersEngine(loaded_model, template=template, max_batch_size=BATCH_SIZE)
@@ -114,7 +130,7 @@ def main() -> None:
             predictions.append((row['qid'], answer, raw))
 
     if is_dist() and dist.is_initialized():
-        predictions = [p for shard in gather_object(predictions) for p in shard]
+        predictions = _merge_gathered_predictions(gather_object(predictions))
 
     if not is_master():
         return
