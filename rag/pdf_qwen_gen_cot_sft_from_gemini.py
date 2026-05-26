@@ -7,6 +7,7 @@
   - assistant：<think> 由模型生成；<answer>/<evidence> 来自 Gemini CSV。
   - answer 经 normalize_submission_answer 与推理提交格式对齐。
   - evidence：ref∩RAG 可见页；交集为空则用 Gemini 标签中的完整证据页（与答案一并记忆）。
+  - OUT_RAW_JSON：含 question、gemini_answer（CSV 原文）、gemini_answer_norm、gemini_evidence_pages 等。
 
 依赖：transformers、torch、vllm；在 rag 目录下执行。
 
@@ -14,6 +15,15 @@
   cd rag
   MODEL_PATH=... OUTPUT_TEST_DIR=... GEMINI_CSV=gemini1.csv \\
   python3 pdf_qwen_gen_cot_sft_from_gemini.py
+
+  # 四卡张量并行（未设置时默认使用全部可见 GPU）
+  TENSOR_PARALLEL_SIZE=4 python3 pdf_qwen_gen_cot_sft_from_gemini.py
+
+  # 关闭超长处理（重试 + 提炼）
+  COT_REFINE_ENABLED=0 python3 pdf_qwen_gen_cot_sft_from_gemini.py
+
+  # 过短/过长：各重生成 3 次（过短取最长且保留，过长取最短合格稿），仍超长再提炼
+  COT_RETRY_SAMPLES=3 COT_REFINE_TOKEN_THRESHOLD=2048 python3 pdf_qwen_gen_cot_sft_from_gemini.py
 """
 
 from __future__ import annotations
@@ -26,6 +36,7 @@ import re
 import time
 from typing import Any, Dict, List, Tuple
 
+import torch
 from transformers import AutoProcessor
 from vllm import LLM, SamplingParams
 
@@ -60,7 +71,7 @@ _DEFAULT_OUTPUT_TEST = (
 )
 _DEFAULT_MODEL = (
     "/inspire/qb-ilm/project/traffic-congestion-management/"
-    "xiacheng-240108120111/hf_download/Qwen3.5-4B"
+    "xiacheng-240108120111/hf_download/Qwen3.5-27B"
 )
 _DEFAULT_QUESTIONS_CSV = (
     "/inspire/qb-ilm/project/traffic-congestion-management/"
@@ -81,19 +92,30 @@ OUT_SKIPPED_JSONL = os.environ.get("OUT_SKIPPED_JSONL", "pdf_rag_gemini_cot_skip
 OUT_MISMATCH_REPORT = os.environ.get(
     "OUT_MISMATCH_REPORT", "evidence_mismatch_report.json"
 )
+OUT_LENGTH_STATS = os.environ.get(
+    "OUT_LENGTH_STATS", "pdf_rag_gemini_cot_length_stats.json"
+)
 PAGE_CACHE_DIR = os.environ.get("PAGE_CACHE_DIR", "pdf_rag_gemini_cot_page_cache")
 SEED = int(os.environ.get("SEED", "42"))
 MAX_SAMPLES = int(os.environ.get("MAX_SAMPLES", "0"))
 MIN_ANALYSIS_CHARS = int(os.environ.get("MIN_ANALYSIS_CHARS", "80"))
+COT_REFINE_TOKEN_THRESHOLD = int(os.environ.get("COT_REFINE_TOKEN_THRESHOLD", "2048"))
+COT_REFINE_ENABLED = os.environ.get("COT_REFINE_ENABLED", "1").strip().lower() not in (
+    "0",
+    "false",
+    "no",
+)
+COT_RETRY_SAMPLES = max(1, int(os.environ.get("COT_RETRY_SAMPLES", "3")))
 
 MAX_MODEL_LEN = int(os.environ.get("MAX_MODEL_LEN", "32000"))
 MAX_NUM_SEQS = int(os.environ.get("MAX_NUM_SEQS", "128"))
 GPU_MEMORY_UTILIZATION = float(os.environ.get("GPU_MEMORY_UTILIZATION", "0.90"))
+_TENSOR_PARALLEL_SIZE = int(os.environ.get("TENSOR_PARALLEL_SIZE", "0"))
 LIMIT_MM_IMAGES_PER_PROMPT = int(os.environ.get("LIMIT_MM_IMAGES_PER_PROMPT", "36"))
 LIMIT_MM_PER_PROMPT = {"image": LIMIT_MM_IMAGES_PER_PROMPT, "video": 0}
 
 SAMPLING_COT = SamplingParams(
-    temperature=float(os.environ.get("COT_TEMPERATURE", "0.2")),
+    temperature=float(os.environ.get("COT_TEMPERATURE", "0.15")),
     top_p=float(os.environ.get("COT_TOP_P", "0.9")),
     top_k=int(os.environ.get("COT_TOP_K", "10")),
     repetition_penalty=float(os.environ.get("COT_REPETITION_PENALTY", "1.1")),
@@ -102,10 +124,40 @@ SAMPLING_COT = SamplingParams(
     stop_token_ids=[],
     seed=SEED,
 )
+SAMPLING_RETRY = SamplingParams(
+    temperature=float(os.environ.get("COT_TEMPERATURE", "0.15")),
+    top_p=float(os.environ.get("COT_TOP_P", "0.9")),
+    top_k=int(os.environ.get("COT_TOP_K", "10")),
+    repetition_penalty=float(os.environ.get("COT_REPETITION_PENALTY", "1.1")),
+    presence_penalty=0.0,
+    max_tokens=int(os.environ.get("COT_MAX_TOKENS", "8192")),
+    stop_token_ids=[],
+    seed=SEED,
+    n=COT_RETRY_SAMPLES,
+)
+SAMPLING_REFINE = SamplingParams(
+    temperature=float(os.environ.get("COT_REFINE_TEMPERATURE", "0.1")),
+    top_p=float(os.environ.get("COT_REFINE_TOP_P", "0.85")),
+    top_k=int(os.environ.get("COT_REFINE_TOP_K", "10")),
+    repetition_penalty=float(os.environ.get("COT_REFINE_REPETITION_PENALTY", "1.15")),
+    presence_penalty=0.0,
+    max_tokens=int(os.environ.get("COT_REFINE_MAX_TOKENS", "4096")),
+    stop_token_ids=[],
+    seed=SEED,
+)
 
 
 def _resolve(path: str, script_dir: str) -> str:
     return path if os.path.isabs(path) else os.path.join(script_dir, path)
+
+
+def resolve_tensor_parallel_size() -> int:
+    """0 表示自动使用全部可见 GPU；否则使用指定张量并行度。"""
+    if _TENSOR_PARALLEL_SIZE > 0:
+        return _TENSOR_PARALLEL_SIZE
+    if torch.cuda.is_available():
+        return max(1, torch.cuda.device_count())
+    return 1
 
 
 def load_rag_by_id(rag_path: str) -> Dict[str, Dict[str, Any]]:
@@ -242,65 +294,94 @@ def truncate_interleaved_images(
     return parts, image_paths[:limit]
 
 
-def _answer_format_thinking_hint(answer_format: str, lang: str) -> str:
+def _cot_efficiency_rules(lang: str) -> str:
+    """高效思维：按题定信息需求，定位页与数值，计算比较，收束结论。"""
+    if (lang or "").strip().lower() == "vi":
+        return (
+            "【Suy nghĩ hiệu quả】\n"
+            "- Trước khi đọc: xác định thông tin cần để trả lời (số, thứ tự, cụm từ, so sánh…).\n"
+            "- Chỉ mở/đọc trang có khả năng chứa thông tin đó; mỗi trang: trang N → thấy gì → "
+            "số liệu/câu trích → so sánh/tính một dòng nếu cần.\n"
+            "- Không lặp cùng một trang; không giải thích chung chung; không thêm bước thừa.\n"
+            "- Kết bằng nhận định ngắn (không nhắc lại đáp án đúng).\n"
+        )
+    return (
+        "【効率的な思考】\n"
+        "- 読む前に：この設問に必要な情報だけを頭で決める（数値・順序・文言・比較など）。\n"
+        "- 該当しそうなページだけ追い、各ページは「ページ N → 見た内容 → 読んだ数値/文言 → "
+        "必要なら一行で比較・計算」に留める。\n"
+        "- 同じページの往復説明・一般論・手順宣言・メタ解説は書かない。\n"
+        "- 最後は短い所感で終える（正解の再掲はしない）。\n"
+    )
+
+
+def _cot_style_rules(lang: str) -> str:
+    """文体约束：像读资料时的内心独白，不要解题教程/讲义。"""
+    efficiency = _cot_efficiency_rules(lang)
+    if (lang or "").strip().lower() == "vi":
+        return (
+            f"{efficiency}"
+            "【Cách viết】\n"
+            "- Viết như độc thoại nội bộ khi đang đọc tài liệu (tôi/thấy/có vẻ), không viết bài hướng dẫn.\n"
+            "- Cấm: nhắc lại đề word-by-word; «bước 1/2/3»; tiêu đề Markdown; «đáp án tham chiếu»; "
+            "«cần ghi nhớ»; «theo yêu cầu đề bài»; kết luận một dòng trùng đáp án cuối.\n"
+            "- Được: nhận xét ngắn khi lật trang; trích số liệu/câu; phép tính gọn; "
+            "chỉ rõ «trang N» (đếm từ 1).\n"
+        )
+    return (
+        f"{efficiency}"
+        "【文体】\n"
+        "- 読みながらの内心独白（見る／気づく／比べる）。解説記事・解法テンプレ・講義調は禁止。\n"
+        "- 禁止：設問の言い換え長文；「まず〜を確認します」型の手順宣言；"
+        "「1. 2. 3.」番号付き解説；**見出し**や箇条書き教程；"
+        "「参考解答」「訓練用」「手順」「チュートリアル」等のメタ語；"
+        "最後に答えだけ一行で繰り返す。\n"
+        "- 可：ページを開いたときの短い所感；表・図から読んだ数値；"
+        "必要なら一行計算；必ず「ページ N」（PDF 1 始まり）。\n"
+    )
+
+
+def _cot_format_nudge(answer_format: str, lang: str) -> str:
+    """仅一句格式提醒，不给出流水线步骤。"""
     afmt = (answer_format or "string").strip()
-    if lang == "vi":
-        hints = {
-            "number": (
-                "Định dạng number: nêu vị trí bảng/đồ thị → đơn vị → các bước tính → "
-                "kết quả khớp đáp án tham chiếu."
-            ),
-            "ordered_list": (
-                "Định dạng ordered_list: giải thích thứ tự (thời gian/thứ tự đề bài) "
-                "rồi liệt kê từng mục tương ứng tài liệu."
-            ),
-            "unordered_list": (
-                "Định dạng unordered_list: với mỗi mục, chỉ rõ trang và đoạn/bảng; "
-                "không cần thứ tự."
-            ),
-            "string": (
-                "Định dạng string: trích dẫn ngắn nguồn (trang + nội dung) rồi "
-                "suy ra câu trả lời một dòng."
-            ),
+    if (lang or "").strip().lower() == "vi":
+        nudges = {
+            "number": "Kết quả cuối là một số/đơn vị (không giải thích dài ở cuối).",
+            "ordered_list": "Cuối cùng cần thứ tự các mục — suy luận nên lộ trình thời gian/thứ tự khi đọc.",
+            "unordered_list": "Cuối cùng là tập mục — gắn từng mục với trang khi gặp trong tài liệu.",
+            "string": "Kết quả cuối là một cụm ngắn — trích ý từ đoạn cụ thể trên trang.",
         }
     else:
-        hints = {
-            "number": (
-                "answer_format=number：表・図の位置→単位→計算過程→参考解答と一致する数値。"
-            ),
-            "ordered_list": (
-                "answer_format=ordered_list：順序の根拠（日付・設問順）を述べ、"
-                "各要素を資料のどのページ・表に対応づける。"
-            ),
-            "unordered_list": (
-                "answer_format=unordered_list：各要素ごとにページと根拠箇所を示す（順不同）。"
-            ),
-            "string": (
-                "answer_format=string：根拠文（ページ番号付き）→一行の結論、の順で簡潔に。"
-            ),
+        nudges = {
+            "number": "最終的に数値・単位が一つになる問題（結論の一行提示は不要）。",
+            "ordered_list": "最終的に順序付きリストになるので、読み進めながら順序の根拠に触れる。",
+            "unordered_list": "最終的に複数項目になるので、見つけた項目をページと結びつける。",
+            "string": "最終的に短い文字列になるので、該当フレーズがどのページかを辿る。",
         }
-    return hints.get(afmt, hints["string"])
+    return nudges.get(afmt, nudges["string"])
 
 
 def cot_supervisor_system_ja() -> str:
     return (
-        "あなたは固定設問向けの教師用ラベラーです。"
-        "提示ページの内容を手がかりに、参考解答・訓練用根拠ページへ至る"
-        "再現可能な中間思考を日本語で書きます（同じ設問に毎回同じ結論へ辿れる手順）。"
-        "外部知識は禁止。思考では必ず「ページ N の〜」（PDF 1 始まり）を明示してください。"
-        "訓練用根拠ページの集合は最終的な <evidence> と一致させる意識で書いてください。"
-        "最終出力は <think>...</think> の1ブロックのみ。"
-        "<answer> や <evidence> は出力しないでください。"
+        "あなたは、提出前に資料だけを読んで考えを整理するアシスタントです。"
+        "今は回答タグを出さず、読んだ直後の思考だけを書きます。"
+        "設問に必要な情報だけを取り、該当ページと数値を特定し、比較・計算して結論に至る。"
+        "冗長な前置き・同じ内容の繰り返し・他人への講義は書かない。"
+        "他人への説明や解法講座ではなく、自分用のメモのような独白にしてください。"
+        "外部知識は使わず、提示されたページの内容だけに基づいてください。"
+        "出力は <think>...</think> の1ブロックのみ。"
+        "<answer> や <evidence> は書かないでください。"
     )
 
 
 def cot_supervisor_system_vi() -> str:
     return (
-        "Bạn gán nhãn suy luận (chế độ giáo viên). Chỉ dùng các trang được cung cấp; "
-        "viết suy luận trung gian (tiếng Việt) thống nhất với đáp án và trang minh chứng tham chiếu. "
-        "Luôn ghi rõ «trang N» (đếm từ 1). "
-        "Chỉ xuất một khối <think>...</think>, "
-        "không xuất <answer> hay <evidence>."
+        "Bạn là trợ lý đang đọc tài liệu trước khi nộp bài; chỉ viết suy nghĩ nội bộ, "
+        "không viết bài hướng dẫn cho người khác. "
+        "Xác định thông tin cần cho câu hỏi, tìm đúng trang và số liệu, so sánh/tính rồi kết luận; "
+        "không thêm bước hay lặp lại thừa. "
+        "Chỉ dựa trên các trang được cung cấp. "
+        "Chỉ xuất <think>...</think>, không xuất <answer> hay <evidence>."
     )
 
 
@@ -310,86 +391,339 @@ def cot_supervisor_user_block(
     answer_format: str,
     ref_answer: str,
     train_evidence: List[int],
-    ref_evidence_full: List[int],
     missing_from_ctx: List[int],
-    used_ref_label_fallback: bool,
-    used_ctx_fallback: bool,
     ctx_page_nums: List[int],
     language: str,
 ) -> str:
     pages_ctx = ", ".join(str(p) for p in ctx_page_nums)
     train_ev_str = json.dumps(train_evidence, ensure_ascii=False)
-    full_ev_str = json.dumps(ref_evidence_full, ensure_ascii=False)
     missing_str = json.dumps(missing_from_ctx, ensure_ascii=False)
     lang = (language or "ja").strip().lower()
-    fmt_hint = _answer_format_thinking_hint(answer_format, lang)
+    style = _cot_style_rules(lang)
+    nudge = _cot_format_nudge(answer_format, lang)
 
     if lang == "vi":
-        ref_fb_note = (
-            "Lưu ý: giao tham chiếu–ngữ cảnh rỗng; trang minh chứng huấn luyện = "
-            f"nhãn đáp án đầy đủ (cần ghi nhớ cho câu cố định): {train_ev_str}.\n"
-            if used_ref_label_fallback
-            else ""
-        )
-        ctx_fb_note = (
-            "Lưu ý: không có nhãn trang; dùng toàn bộ trang RAG: "
-            f"{train_ev_str}.\n"
-            if used_ctx_fallback and not used_ref_label_fallback
-            else ""
-        )
-        fallback_note = ref_fb_note + ctx_fb_note
         missing_note = (
-            f"Các trang trong nhãn gốc nhưng không có trong ngữ cảnh: {missing_str}. "
-            "Không bịa nội dung các trang đó; có thể nêu là ngoài phạm vi RAG.\n"
+            f"Một số trang trong nhãn gốc không có trong ngữ cảnh ({missing_str}); "
+            "nếu nhắc tới thì chỉ nói là không thấy trong các trang đã gửi, không bịa.\n"
             if missing_from_ctx
             else ""
         )
+        ev_note = (
+            f"Sau khi đọc, trọng tâm minh chứng sẽ là các trang {train_ev_str} "
+            "(hãy để lộ khi bạn «phát hiện» trên các trang đó).\n"
+        )
+        internal = (
+            "【Chỉ để đối chiếu nội bộ — KHÔNG nhắc trong độc thoại, KHÔNG chép nguyên câu trả lời】\n"
+            f"Đáp án đúng: {ref_answer}\n"
+        )
         return (
-            f"Câu hỏi:\n{question}\n\n"
-            f"answer_format: {answer_format}\n"
-            f"{fmt_hint}\n\n"
-            f"Đáp án tham chiếu (chuỗi nộp CSV sau chuẩn hóa):\n{ref_answer}\n\n"
-            f"Trang minh chứng huấn luyện (giao với ngữ cảnh, không rỗng): {train_ev_str}\n"
-            f"Nhãn gốc đầy đủ: {full_ev_str}\n"
-            f"Chỉ các trang PDF sau có trong ngữ cảnh: {pages_ctx}.\n"
-            f"{missing_note}{fallback_note}"
-            "Viết suy luận trung gian: đọc bảng/hình → lập luận → khớp đáp án; "
-            "không lặp lại đáp án một dòng mà không giải thích nguồn."
+            f"{style}\n"
+            f"Câu hỏi (chỉ để biết cần tìm gì, không viết lại dài):\n{question}\n\n"
+            f"Định dạng nộp: {answer_format} — {nudge}\n"
+            f"Các trang PDF bạn đang đọc: {pages_ctx}.\n"
+            f"{ev_note}{missing_note}"
+            f"{internal}\n"
+            "Viết <think> ngắn gọn: đọc các trang trên theo nhu cầu của câu hỏi; "
+            "mỗi trang chỉ ghi phát hiện và số liệu liên quan; so sánh/tính một dòng nếu cần; "
+            "kết bằng nhận định ngắn, không lặp đáp án đúng."
         )
 
-    ref_fb_note = (
-        "注意: 参考根拠とコンテキストの交差が空のため、"
-        f"訓練用根拠ページは答案ラベル（Gemini）の一覧そのままです: {train_ev_str}。"
-        "固定設問の提出形式を記憶するため、思考でもこのページ集合に整合させてください。\n"
-        if used_ref_label_fallback
-        else ""
-    )
-    ctx_fb_note = (
-        "注意: 答案に根拠ページラベルが無いため、"
-        f"訓練用根拠は RAG 提示ページ全体です: {train_ev_str}。\n"
-        if used_ctx_fallback and not used_ref_label_fallback
-        else ""
-    )
-    fallback_note = ref_fb_note + ctx_fb_note
     missing_note = (
-        f"ラベル上の根拠のうち本コンテキストに無いページ: {missing_str}。"
-        "これらのページの内容は推測で書かず、「RAG に含まれない」とだけ触れてよい。\n"
+        f"ラベル上は根拠に含まれるが今回の提示に無いページ: {missing_str}。"
+        "触れる場合は「この抜粋には無い」とだけ書き、内容は推測しない。\n"
         if missing_from_ctx
         else ""
     )
-    return (
-        f"設問:\n{question}\n\n"
-        f"answer_format: {answer_format}\n"
-        f"{fmt_hint}\n\n"
-        f"参考解答（提出 CSV と同形式に正規化済み）:\n{ref_answer}\n\n"
-        f"訓練用根拠ページ（SFT の <evidence> にそのまま入る・非空）: {train_ev_str}\n"
-        f"Gemini 元ラベル（全ページ）: {full_ev_str}\n"
-        f"本プロンプトに含まれる PDF ページのみ: {pages_ctx}。\n"
-        f"{missing_note}{fallback_note}"
-        "表・図・本文をページ番号付きで参照し、必要なら計算過程を示したうえで、"
-        "参考解答と訓練用根拠ページに至る中間思考を書いてください。"
-        "根拠の当たり付け→読取→結論の順を守り、答えの一行転記だけは避けてください。"
+    ev_note = (
+        f"読み終えたとき、根拠として強いのはページ {train_ev_str} 付近だと自然に辿れるように書く。\n"
     )
+    internal = (
+        "【内部照合用・思考本文に書かない・正解文をそのまま繰り返さない】\n"
+        f"正解の答え: {ref_answer}\n"
+    )
+    return (
+        f"{style}\n"
+        f"設問（何を探すかのメモ程度。設問文の言い換え長文は不要）:\n{question}\n\n"
+        f"提出形式: {answer_format} — {nudge}\n"
+        f"今回読める PDF ページ: {pages_ctx}。\n"
+        f"{ev_note}{missing_note}"
+        f"{internal}\n"
+        "上の資料を読み、<think> は必要な情報だけを簡潔に書く。"
+        "設問に要る情報を先に決め、該当ページで見つけた数値・文言をページ番号付きで記し、"
+        "比較・計算は一行まで。同じ説明の繰り返し・手順宣言・正解の再掲はしない。"
+    )
+
+
+def count_text_tokens(tokenizer: Any, text: str) -> int:
+    return len(tokenizer.encode(text or "", add_special_tokens=False))
+
+
+def compute_length_stats(values: List[int]) -> Dict[str, Any]:
+    """对一组长度值返回 count/min/max/mean/median。"""
+    if not values:
+        return {"count": 0}
+    sorted_v = sorted(values)
+    n = len(sorted_v)
+    if n % 2:
+        median = float(sorted_v[n // 2])
+    else:
+        median = (sorted_v[n // 2 - 1] + sorted_v[n // 2]) / 2.0
+    return {
+        "count": n,
+        "min": sorted_v[0],
+        "max": sorted_v[-1],
+        "mean": round(sum(sorted_v) / n, 1),
+        "median": median,
+    }
+
+
+def _format_stats_line(label: str, stats: Dict[str, Any], unit: str) -> str:
+    if not stats.get("count"):
+        return f"  {label}: (无数据)"
+    return (
+        f"  {label}: n={stats['count']} "
+        f"min={stats['min']} max={stats['max']} "
+        f"mean={stats['mean']} median={stats['median']} {unit}"
+    )
+
+
+def build_length_summary(
+    gen_results: List[Dict[str, Any]],
+    *,
+    sft_ids: set[str],
+    refine_threshold: int,
+) -> Dict[str, Any]:
+    all_tokens = [int(it["token_count"]) for it in gen_results]
+    initial_tokens = [
+        int(it.get("initial_token_count", it["token_count"])) for it in gen_results
+    ]
+    sft_tokens = [
+        int(it["token_count"]) for it in gen_results if it["row"]["id"] in sft_ids
+    ]
+    over_threshold = sum(1 for t in initial_tokens if t > refine_threshold)
+    n_retried = sum(1 for it in gen_results if it.get("retried"))
+    n_retry_short = sum(1 for it in gen_results if it.get("retry_mode") == "short")
+    n_retry_long = sum(1 for it in gen_results if it.get("retry_mode") == "long")
+    n_refined = sum(1 for it in gen_results if it.get("refined"))
+    return {
+        "refine_threshold_tokens": refine_threshold,
+        "min_analysis_chars": MIN_ANALYSIS_CHARS,
+        "over_refine_threshold_initial": over_threshold,
+        "retry_resolved_count": n_retried,
+        "retry_short_count": n_retry_short,
+        "retry_long_count": n_retry_long,
+        "refined_count": n_refined,
+        "all_generated": {
+            "tokens_initial": compute_length_stats(initial_tokens),
+            "tokens_final": compute_length_stats(all_tokens),
+        },
+        "sft_written": {
+            "tokens": compute_length_stats(sft_tokens),
+        },
+    }
+
+
+def print_and_save_length_summary(
+    summary: Dict[str, Any],
+    stats_path: str,
+) -> None:
+    ag = summary["all_generated"]
+    sw = summary["sft_written"]
+    print("\n========== CoT token 统计 ==========")
+    print(
+        f"  初稿超过提炼阈值({summary['refine_threshold_tokens']} tokens): "
+        f"{summary['over_refine_threshold_initial']} 条"
+    )
+    print(
+        f"  重生成: 过短={summary['retry_short_count']} | "
+        f"过长={summary['retry_long_count']} | "
+        f"提炼={summary['refined_count']}"
+    )
+    print("【全部生成（含跳过）】")
+    print(_format_stats_line("初稿", ag["tokens_initial"], "tokens"))
+    print(_format_stats_line("终稿", ag["tokens_final"], "tokens"))
+    print("【写入 SFT 的有效样本】")
+    print(_format_stats_line("终稿", sw["tokens"], "tokens"))
+    print("====================================\n")
+    with open(stats_path, "w", encoding="utf-8") as sf:
+        json.dump(summary, sf, ensure_ascii=False, indent=2)
+    print(f"token 统计已写入: {stats_path}")
+
+
+def cot_refine_system_ja() -> str:
+    return (
+        "あなたは長すぎる読書メモを圧縮するアシスタントです。"
+        "事実・ページ番号・数値・比較・計算・発見の順序は残し、"
+        "重複・設問の言い換え・手順宣言・メタ解説・正解の再掲は削除します。"
+        "文体は内心独白のまま。出力は <think>...</think> のみ。"
+        "<answer> や <evidence> は書かないでください。"
+    )
+
+
+def cot_refine_system_vi() -> str:
+    return (
+        "Bạn rút gọn bản nháp suy nghĩ quá dài. Giữ trang, số liệu, so sánh/tính và thứ tự phát hiện; "
+        "bỏ lặp, diễn giải đề, bước thừa, meta và nhắc lại đáp án. "
+        "Chỉ xuất <think>...</think>."
+    )
+
+
+def cot_refine_user_block(
+    *,
+    question: str,
+    answer_format: str,
+    ref_answer: str,
+    train_evidence: List[int],
+    ctx_page_nums: List[int],
+    language: str,
+    long_thinking: str,
+    token_count: int,
+) -> str:
+    pages_ctx = ", ".join(str(p) for p in ctx_page_nums)
+    train_ev_str = json.dumps(train_evidence, ensure_ascii=False)
+    lang = (language or "ja").strip().lower()
+    style = _cot_style_rules(lang)
+    nudge = _cot_format_nudge(answer_format, lang)
+    if lang == "vi":
+        return (
+            f"{style}\n"
+            f"Câu hỏi (chỉ để đối chiếu, không viết lại trong độc thoại):\n{question}\n\n"
+            f"Định dạng: {answer_format} — {nudge}\n"
+            f"Trang PDF: {pages_ctx}. Trọng tâm minh chứng: {train_ev_str}.\n"
+            f"Bản nháp hiện ~{token_count} token (quá dài). Rút gọn còn khoảng một nửa hoặc ít hơn, "
+            "nhưng vẫn giữ mọi trang/số liệu quan trọng.\n"
+            "【Bản nháp cần rút gọn】\n"
+            f"{long_thinking}\n\n"
+            "Xuất <think> đã rút gọn; không lặp đáp án đúng ở cuối."
+        )
+    return (
+        f"{style}\n"
+        f"設問（照合用・本文に書かない）:\n{question}\n\n"
+        f"提出形式: {answer_format} — {nudge}\n"
+        f"PDF ページ: {pages_ctx}。根拠の中心: {train_ev_str}。\n"
+        f"下の草稿は約 {token_count} トークンで長すぎます。半分以下を目安に圧縮し、"
+        "重要なページ番号・数値・比較は残してください。\n"
+        "【圧縮対象の草稿】\n"
+        f"{long_thinking}\n\n"
+        "圧縮後の <think> のみ出力。正解の再掲はしない。"
+    )
+
+
+def build_cot_gen_input(processor: Any, meta: Dict[str, Any]) -> Dict[str, Any]:
+    llm_in: Dict[str, Any] = {
+        "prompt": apply_generation_prompt_without_thinking(processor, meta["sup_msgs"])
+    }
+    mm = prepare_mm_data(meta["sup_msgs"], meta["image_paths"])
+    if mm:
+        llm_in["multi_modal_data"] = mm
+    return llm_in
+
+
+def parse_cot_output(
+    raw_text: str,
+    ref_answer: str,
+    tokenizer: Any,
+) -> Tuple[str, int]:
+    analysis = strip_echo_answer_from_thinking(
+        extract_redacted_thinking(raw_text),
+        ref_answer,
+    )
+    return analysis, count_text_tokens(tokenizer, analysis)
+
+
+def select_shortest_valid_cot(
+    candidates: List[Dict[str, Any]],
+    *,
+    token_threshold: int,
+    min_chars: int,
+) -> Dict[str, Any] | None:
+    """在 token<=阈值 且字数达标的候选中，取 token 最短的一条。"""
+    valid = [
+        c
+        for c in candidates
+        if c["token_count"] <= token_threshold
+        and len((c.get("analysis") or "").strip()) >= min_chars
+    ]
+    if not valid:
+        return None
+    return min(valid, key=lambda c: c["token_count"])
+
+
+def select_longest_cot(candidates: List[Dict[str, Any]]) -> Dict[str, Any] | None:
+    """取 token 最长的一条；若无非空正文则仍在全部候选中取最长。"""
+    if not candidates:
+        return None
+    non_empty = [c for c in candidates if (c.get("analysis") or "").strip()]
+    pool = non_empty or candidates
+    return max(pool, key=lambda c: c["token_count"])
+
+
+def collect_retry_candidates(
+    retry_out: Any,
+    row: Dict[str, Any],
+    tokenizer: Any,
+) -> Tuple[List[Dict[str, Any]], List[int]]:
+    attempt_tokens: List[int] = []
+    retry_candidates: List[Dict[str, Any]] = []
+    for attempt_idx, output in enumerate(retry_out.outputs):
+        analysis, tc = parse_cot_output(output.text, row["ref_answer"], tokenizer)
+        attempt_tokens.append(tc)
+        retry_candidates.append(
+            {
+                "analysis": analysis,
+                "raw_text": output.text,
+                "token_count": tc,
+                "attempt_idx": attempt_idx,
+            }
+        )
+    return retry_candidates, attempt_tokens
+
+
+def needs_short_cot_retry(item: Dict[str, Any]) -> bool:
+    return len((item.get("analysis") or "").strip()) < MIN_ANALYSIS_CHARS
+
+
+def needs_long_cot_retry(item: Dict[str, Any]) -> bool:
+    return bool(
+        COT_REFINE_ENABLED
+        and (item.get("analysis") or "").strip()
+        and int(item["token_count"]) > COT_REFINE_TOKEN_THRESHOLD
+    )
+
+
+def build_cot_refine_inputs(
+    processor: Any,
+    pending: List[Dict[str, Any]],
+) -> List[Dict[str, Any]]:
+    """纯文本二次生成，无需多模态输入。"""
+    refine_inputs: List[Dict[str, Any]] = []
+    for item in pending:
+        row = item["row"]
+        lang = (row.get("language") or "ja").strip().lower()
+        sys_msg = cot_refine_system_vi() if lang == "vi" else cot_refine_system_ja()
+        user_block = cot_refine_user_block(
+            question=row["question"],
+            answer_format=row.get("answer_format", "string"),
+            ref_answer=row["ref_answer"],
+            train_evidence=row["train_evidence_pages"],
+            ctx_page_nums=row["ctx_page_nums"],
+            language=lang,
+            long_thinking=item["analysis"],
+            token_count=item["token_count"],
+        )
+        messages = [
+            {"role": "system", "content": sys_msg},
+            {"role": "user", "content": user_block},
+        ]
+        refine_inputs.append(
+            {
+                "prompt": apply_generation_prompt_without_thinking(
+                    processor, messages
+                )
+            }
+        )
+    return refine_inputs
 
 
 def extract_redacted_thinking(raw: str) -> str:
@@ -411,6 +745,34 @@ def extract_redacted_thinking(raw: str) -> str:
         return m.group(1).strip()
     text = re.split(r"<\s*answer\s*>", text, maxsplit=1, flags=re.I)[0].strip()
     return text
+
+
+def strip_echo_answer_from_thinking(thinking: str, ref_answer: str) -> str:
+    """去掉独白末尾对正解的一行复述（正解在 <answer> 里单独训练）。"""
+    t = (thinking or "").strip()
+    ref = (ref_answer or "").strip()
+    if not t or not ref:
+        return t
+    lines = t.splitlines()
+    drop_suffixes = (
+        ref,
+        f"結論：{ref}",
+        f"結論:{ref}",
+        f"したがって、{ref}",
+        f"よって、{ref}",
+    )
+    changed = True
+    while changed and lines:
+        changed = False
+        last = lines[-1].strip()
+        if last in drop_suffixes or last == ref:
+            lines.pop()
+            changed = True
+    out = "\n".join(lines).strip()
+    if out.endswith(ref) and len(out) > len(ref):
+        out = out[: -len(ref)].rstrip()
+        out = re.sub(r"(結論[：:]?\s*)$", "", out).rstrip()
+    return out or t
 
 
 def build_interleaved_for_row(
@@ -490,10 +852,26 @@ def main() -> None:
 
     print(f"[开始] {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}")
     set_random_seed(SEED)
+    tp_size = resolve_tensor_parallel_size()
+    visible_gpus = torch.cuda.device_count() if torch.cuda.is_available() else 0
+    if tp_size > 1 and visible_gpus < tp_size:
+        raise ValueError(
+            f"TENSOR_PARALLEL_SIZE={tp_size} 超过可见 GPU 数 {visible_gpus}"
+        )
+
     print(f"SEED={SEED} MODEL_PATH={MODEL_PATH}")
+    print(
+        f"TENSOR_PARALLEL_SIZE={tp_size} "
+        f"(env={_TENSOR_PARALLEL_SIZE or 'auto'}, visible_gpus={visible_gpus})"
+    )
     print(f"OUTPUT_TEST_DIR={md_root}")
     print(f"GEMINI_CSV={_resolve(GEMINI_CSV, script_dir)}")
     print(f"MIN_ANALYSIS_CHARS={MIN_ANALYSIS_CHARS}")
+    print(
+        f"COT_REFINE_ENABLED={COT_REFINE_ENABLED} "
+        f"COT_REFINE_TOKEN_THRESHOLD={COT_REFINE_TOKEN_THRESHOLD} "
+        f"COT_RETRY_SAMPLES={COT_RETRY_SAMPLES}"
+    )
 
     if not os.path.isdir(md_root):
         raise FileNotFoundError(f"OUTPUT_TEST_DIR 不存在: {md_root}")
@@ -544,10 +922,7 @@ def main() -> None:
             answer_format=row.get("answer_format", "string"),
             ref_answer=row["ref_answer"],
             train_evidence=row["train_evidence_pages"],
-            ref_evidence_full=row["ref_evidence_full"],
             missing_from_ctx=em.get("missing_from_ctx") or [],
-            used_ref_label_fallback=bool(em.get("used_ref_label_fallback")),
-            used_ctx_fallback=bool(em.get("used_ctx_fallback")),
             ctx_page_nums=row["ctx_page_nums"],
             language=lang,
         )
@@ -567,19 +942,12 @@ def main() -> None:
 
     processor = AutoProcessor.from_pretrained(MODEL_PATH, trust_remote_code=True)
     for m in meta:
-        llm_in: Dict[str, Any] = {
-            "prompt": apply_generation_prompt_without_thinking(
-                processor, m["sup_msgs"]
-            )
-        }
-        mm = prepare_mm_data(m["sup_msgs"], m["image_paths"])
-        if mm:
-            llm_in["multi_modal_data"] = mm
-        gen_inputs.append(llm_in)
+        gen_inputs.append(build_cot_gen_input(processor, m))
 
     print(
         f"加载 VLM: {MODEL_PATH} "
-        f"(LIMIT_MM_IMAGES_PER_PROMPT={LIMIT_MM_IMAGES_PER_PROMPT})"
+        f"(tensor_parallel_size={tp_size}, "
+        f"LIMIT_MM_IMAGES_PER_PROMPT={LIMIT_MM_IMAGES_PER_PROMPT})"
     )
     t_llm = time.perf_counter()
     llm = LLM(
@@ -588,6 +956,7 @@ def main() -> None:
         dtype="bfloat16",
         max_model_len=MAX_MODEL_LEN,
         max_num_seqs=MAX_NUM_SEQS,
+        tensor_parallel_size=tp_size,
         gpu_memory_utilization=GPU_MEMORY_UTILIZATION,
         limit_mm_per_prompt=LIMIT_MM_PER_PROMPT,
         seed=SEED,
@@ -598,6 +967,153 @@ def main() -> None:
     t_gen = time.perf_counter()
     outs = llm.generate(gen_inputs, sampling_params=SAMPLING_COT)
     print(f"[timing] llm.generate: {time.perf_counter() - t_gen:.3f}s")
+
+    tokenizer = processor.tokenizer
+    gen_results: List[Dict[str, Any]] = []
+    long_retry_pending: List[Dict[str, Any]] = []
+    short_retry_pending: List[Dict[str, Any]] = []
+    for m, out in zip(meta, outs):
+        row = m["row"]
+        raw_text = out.outputs[0].text
+        analysis, token_count = parse_cot_output(
+            raw_text, row["ref_answer"], tokenizer
+        )
+        item = {
+            "meta": m,
+            "row": row,
+            "raw_text": raw_text,
+            "analysis": analysis,
+            "token_count": token_count,
+            "initial_token_count": token_count,
+            "initial_analysis_chars": len(analysis.strip()),
+            "retried": False,
+            "retry_mode": None,
+            "retry_attempt_tokens": [],
+            "refined": False,
+            "refine_raw_text": "",
+        }
+        gen_results.append(item)
+        if needs_long_cot_retry(item):
+            long_retry_pending.append(item)
+        elif needs_short_cot_retry(item):
+            short_retry_pending.append(item)
+
+    if short_retry_pending:
+        print(
+            f"过短重试 {len(short_retry_pending)} 条：每条再生成 {COT_RETRY_SAMPLES} 次，"
+            f"取最长稿（仍不足 {MIN_ANALYSIS_CHARS} 字也保留）…"
+        )
+        retry_inputs = [
+            build_cot_gen_input(processor, item["meta"]) for item in short_retry_pending
+        ]
+        t_retry = time.perf_counter()
+        retry_outs = llm.generate(retry_inputs, sampling_params=SAMPLING_RETRY)
+        print(f"[timing] llm.generate(retry-short): {time.perf_counter() - t_retry:.3f}s")
+        for item, retry_out in zip(short_retry_pending, retry_outs):
+            row = item["row"]
+            prev_chars = len((item.get("analysis") or "").strip())
+            retry_candidates, attempt_tokens = collect_retry_candidates(
+                retry_out, row, tokenizer
+            )
+            item["retry_attempt_tokens"] = attempt_tokens
+            picked = select_longest_cot(retry_candidates)
+            if picked is None:
+                print(f"[warn] id={row['id']} 过短重试无输出，保留初稿")
+                continue
+            item["analysis"] = picked["analysis"]
+            item["raw_text"] = picked["raw_text"]
+            item["token_count"] = picked["token_count"]
+            item["retried"] = True
+            item["retry_mode"] = "short"
+            new_chars = len(picked["analysis"].strip())
+            meets_min = new_chars >= MIN_ANALYSIS_CHARS
+            print(
+                f"[retry-short] id={row['id']} chars {prev_chars} -> {new_chars} "
+                f"({picked['token_count']} tokens, attempt "
+                f"{picked['attempt_idx'] + 1}/{COT_RETRY_SAMPLES}, "
+                f"attempts={attempt_tokens}"
+                f"{', 仍偏短但保留' if not meets_min else ''})"
+            )
+            if needs_long_cot_retry(item):
+                long_retry_pending.append(item)
+                print(
+                    f"[retry-short] id={row['id']} 重试后仍超长 "
+                    f"({picked['token_count']} tokens)，加入过长重试"
+                )
+
+    still_refine_pending: List[Dict[str, Any]] = []
+    if long_retry_pending:
+        print(
+            f"超长重试 {len(long_retry_pending)} 条：每条再生成 {COT_RETRY_SAMPLES} 次，"
+            f"取 token<={COT_REFINE_TOKEN_THRESHOLD} 的最短合格稿…"
+        )
+        retry_inputs = [
+            build_cot_gen_input(processor, item["meta"]) for item in long_retry_pending
+        ]
+        t_retry = time.perf_counter()
+        retry_outs = llm.generate(retry_inputs, sampling_params=SAMPLING_RETRY)
+        print(f"[timing] llm.generate(retry-long): {time.perf_counter() - t_retry:.3f}s")
+        for item, retry_out in zip(long_retry_pending, retry_outs):
+            row = item["row"]
+            prev_tokens = item["token_count"]
+            retry_candidates, attempt_tokens = collect_retry_candidates(
+                retry_out, row, tokenizer
+            )
+            item["retry_attempt_tokens"] = attempt_tokens
+            picked = select_shortest_valid_cot(
+                retry_candidates,
+                token_threshold=COT_REFINE_TOKEN_THRESHOLD,
+                min_chars=MIN_ANALYSIS_CHARS,
+            )
+            if picked is not None:
+                item["analysis"] = picked["analysis"]
+                item["raw_text"] = picked["raw_text"]
+                item["token_count"] = picked["token_count"]
+                item["retried"] = True
+                item["retry_mode"] = "long"
+                print(
+                    f"[retry-long] id={row['id']} {prev_tokens} -> {picked['token_count']} "
+                    f"tokens (attempt {picked['attempt_idx'] + 1}/{COT_RETRY_SAMPLES}, "
+                    f"attempts={attempt_tokens})"
+                )
+            else:
+                still_refine_pending.append(item)
+                print(
+                    f"[retry-long] id={row['id']} {COT_RETRY_SAMPLES} 次均未达标 "
+                    f"(attempts={attempt_tokens})，进入提炼"
+                )
+
+    if still_refine_pending:
+        print(
+            f"二次提炼 {len(still_refine_pending)} 条（>{COT_REFINE_TOKEN_THRESHOLD} tokens）…"
+        )
+        refine_inputs = build_cot_refine_inputs(processor, still_refine_pending)
+        t_refine = time.perf_counter()
+        refine_outs = llm.generate(refine_inputs, sampling_params=SAMPLING_REFINE)
+        print(f"[timing] llm.generate(refine): {time.perf_counter() - t_refine:.3f}s")
+        for item, ref_out in zip(still_refine_pending, refine_outs):
+            row = item["row"]
+            refine_raw = ref_out.outputs[0].text
+            refined, new_tokens = parse_cot_output(
+                refine_raw, row["ref_answer"], tokenizer
+            )
+            if not refined.strip():
+                print(f"[warn] id={row['id']} 提炼为空，保留当前稿")
+                continue
+            prev_tokens = item["token_count"]
+            if new_tokens >= prev_tokens:
+                print(
+                    f"[warn] id={row['id']} 提炼后仍 {new_tokens} tokens "
+                    f"(>= {prev_tokens})，保留当前稿"
+                )
+                continue
+            item["analysis"] = refined
+            item["token_count"] = new_tokens
+            item["refined"] = True
+            item["refine_raw_text"] = refine_raw
+            print(f"[refine] id={row['id']} {prev_tokens} -> {new_tokens} tokens")
+    elif COT_REFINE_ENABLED and not long_retry_pending and not short_retry_pending:
+        print(f"无需重试/提炼（阈值 {COT_REFINE_TOKEN_THRESHOLD} tokens）")
 
     del llm
     del processor
@@ -610,21 +1126,26 @@ def main() -> None:
 
     raw_records: List[Dict[str, Any]] = []
     skipped_records: List[Dict[str, Any]] = []
+    sft_ids: set[str] = set()
     n_ok = 0
     n_skip = 0
 
     with open(out_jsonl, "w", encoding="utf-8") as fout, open(
         skipped_path, "w", encoding="utf-8"
     ) as fskip:
-        for m, out in zip(meta, outs):
-            row = m["row"]
-            raw_text = out.outputs[0].text
-            analysis = extract_redacted_thinking(raw_text)
+        for item in gen_results:
+            m = item["meta"]
+            row = item["row"]
+            analysis = item["analysis"]
             em = row.get("evidence_meta") or {}
 
             raw_rec = {
                 "id": row["id"],
                 "file_id": row["file_id"],
+                "question": row.get("question"),
+                "gemini_answer": row.get("ref_answer_raw"),
+                "gemini_answer_norm": row["ref_answer"],
+                "gemini_evidence_pages": row["ref_evidence_full"],
                 "ref_answer_raw": row.get("ref_answer_raw"),
                 "ref_answer_norm": row["ref_answer"],
                 "ref_evidence_full": row["ref_evidence_full"],
@@ -633,15 +1154,25 @@ def main() -> None:
                 "missing_from_ctx": em.get("missing_from_ctx"),
                 "used_ref_label_fallback": em.get("used_ref_label_fallback"),
                 "used_ctx_fallback": em.get("used_ctx_fallback"),
-                "raw_model_output": raw_text,
-                "extracted_analysis_len": len(analysis),
+                "raw_model_output": item["raw_text"],
+                "retried": item.get("retried", False),
+                "retry_mode": item.get("retry_mode"),
+                "retry_attempt_tokens": item.get("retry_attempt_tokens") or None,
+                "initial_analysis_chars": item.get("initial_analysis_chars"),
+                "refined": item["refined"],
+                "refine_raw_model_output": item.get("refine_raw_text") or None,
+                "extracted_analysis_tokens": item["token_count"],
+                "initial_analysis_tokens": item.get("initial_token_count"),
             }
             raw_records.append(raw_rec)
 
             skip_reason = ""
             if not (row.get("ref_answer") or "").strip():
                 skip_reason = "empty_ref_answer"
-            elif len(analysis.strip()) < MIN_ANALYSIS_CHARS:
+            elif (
+                len(analysis.strip()) < MIN_ANALYSIS_CHARS
+                and item.get("retry_mode") != "short"
+            ):
                 skip_reason = f"short_thinking(<{MIN_ANALYSIS_CHARS} chars)"
 
             if skip_reason:
@@ -687,12 +1218,21 @@ def main() -> None:
                 "images": images,
             }
             fout.write(json.dumps(sample, ensure_ascii=False) + "\n")
+            sft_ids.add(row["id"])
             n_ok += 1
             if n_ok % 50 == 0:
                 print(f"已写入 SFT {n_ok} 条…")
 
     with open(raw_path, "w", encoding="utf-8") as rf:
         json.dump(raw_records, rf, ensure_ascii=False, indent=2)
+
+    length_summary = build_length_summary(
+        gen_results,
+        sft_ids=sft_ids,
+        refine_threshold=COT_REFINE_TOKEN_THRESHOLD,
+    )
+    stats_path = _resolve(OUT_LENGTH_STATS, script_dir)
+    print_and_save_length_summary(length_summary, stats_path)
 
     print(f"已写入 SFT: {out_jsonl}（{n_ok} 条）")
     print(f"已跳过: {skipped_path}（{n_skip} 条）")

@@ -275,13 +275,59 @@ def origin_pdf_path(root: str, file_id: str) -> Optional[str]:
     return None
 
 
+def _configure_mupdf_quiet() -> None:
+    """默认关闭 MuPDF stderr 噪声（结构树损坏等仍可正常渲染）。"""
+    if os.environ.get("MUPDF_DISPLAY_ERRORS", "0").strip().lower() in (
+        "1",
+        "true",
+        "yes",
+    ):
+        return
+    try:
+        fitz.TOOLS.mupdf_display_errors(False)
+        fitz.TOOLS.mupdf_display_warnings(False)
+    except Exception:
+        pass
+
+
+_configure_mupdf_quiet()
+
+
+def strip_broken_pdf_struct_tree(doc: fitz.Document) -> bool:
+    """
+    移除损坏的 PDF StructTreeRoot，避免 MuPDF 报:
+    format error: No common ancestor in structure tree
+    参考: https://github.com/pymupdf/PyMuPDF/issues/4867
+    """
+    try:
+        cat = doc.pdf_catalog()
+        _key, val = doc.xref_get_key(cat, "StructTreeRoot")
+        if val and val != "null":
+            doc.xref_set_key(cat, "StructTreeRoot", "null")
+            return True
+    except Exception:
+        pass
+    return False
+
+
+def open_pdf_for_render(pdf_path: str) -> fitz.Document:
+    """打开 PDF 并修补已知结构树问题，供页渲染使用。"""
+    doc = fitz.open(pdf_path)
+    strip_broken_pdf_struct_tree(doc)
+    return doc
+
+
+def pdf_page_count(pdf_path: str) -> int:
+    with open_pdf_for_render(pdf_path) as doc:
+        return int(doc.page_count)
+
+
 def pdf_origin_meta(root: str, file_id: str) -> Tuple[Optional[str], int]:
     """若存在 origin PDF 则返回 (绝对路径, 总页数)；否则 (None, 0)。"""
     p = origin_pdf_path(root, file_id)
     if not p:
         return None, 0
-    with fitz.open(p) as doc:
-        return p, int(doc.page_count)
+    return p, pdf_page_count(p)
 
 
 def render_pdf_pages_to_png_paths(
@@ -294,17 +340,23 @@ def render_pdf_pages_to_png_paths(
     out: List[str] = []
     scale = dpi / 72.0
     mat = fitz.Matrix(scale, scale)
-    with fitz.open(pdf_path) as doc:
+    doc = open_pdf_for_render(pdf_path)
+    try:
         n = int(doc.page_count)
         for page_idx in page_indices:
             if page_idx < 0 or page_idx >= n:
                 continue
             page = doc.load_page(page_idx)
-            pix = page.get_pixmap(matrix=mat, alpha=False)
+            try:
+                pix = page.get_pixmap(matrix=mat, alpha=False)
+            except RuntimeError:
+                pix = page.get_pixmap(matrix=mat, alpha=False, annots=False)
             fd, path = tempfile.mkstemp(suffix=".png", prefix="origin_pdf_")
             os.close(fd)
             pix.save(path)
             out.append(path)
+    finally:
+        doc.close()
     return out
 
 

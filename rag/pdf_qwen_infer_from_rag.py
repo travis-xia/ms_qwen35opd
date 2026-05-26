@@ -64,9 +64,12 @@ _DEFAULT_OUTPUT_TEST = (
     "/inspire/qb-ilm/project/traffic-congestion-management/"
     "xiacheng-240108120111/lava/output_test"
 )
+# _DEFAULT_MODEL = (
+#     "/inspire/qb-ilm/project/traffic-congestion-management/xiacheng-240108120111/hf_download/Qwen3.5-4B"
+# )
+
 _DEFAULT_MODEL = (
-    "/inspire/qb-ilm/project/traffic-congestion-management/"
-    "xiacheng-240108120111/hf_download/Qwen3.5-4B"
+    "/inspire/qb-ilm/project/traffic-congestion-management/xiacheng-240108120111/ms_qwen35opd/output/Qwen3.5-4B-pdf/v1-20260522-164859/checkpoint-200"
 )
 _DEFAULT_QUESTIONS_CSV = (
     "/inspire/qb-ilm/project/traffic-congestion-management/"
@@ -92,12 +95,12 @@ LIMIT_MM_IMAGES_PER_PROMPT = int(os.environ.get("LIMIT_MM_IMAGES_PER_PROMPT", "3
 LIMIT_MM_PER_PROMPT = {"image": LIMIT_MM_IMAGES_PER_PROMPT, "video": 0}
 
 SAMPLING_ANS = SamplingParams(
-    temperature=0.2,
+    temperature=0.,
     top_p=0.9,
-    top_k=20,
+    top_k=10,
     repetition_penalty=1.15,
     presence_penalty=0.0,
-    max_tokens=12000,
+    max_tokens=8192,
     stop_token_ids=[],
     seed=SEED,
 )
