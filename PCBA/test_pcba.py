@@ -1,14 +1,5 @@
 #!/usr/bin/env python3
-"""PCBA 测试集推理，生成 Codabench 提交文件 submission.csv。
-
-单卡:
-  python3 test_pcba.py
-
-多卡 (使用所有可见 GPU):
-  bash ../pcba_test.sh
-  # 或
-  NPROC_PER_NODE=8 python3 -m torch.distributed.run --nproc_per_node=8 test_pcba.py
-"""
+"""PCBA 测试集推理，生成 Codabench 提交文件 submission.csv。"""
 
 from __future__ import annotations
 
@@ -16,29 +7,29 @@ import csv
 import json
 import os
 import sys
-from typing import Any, Dict, List, Tuple
+from typing import Any, List, Tuple
 
 import torch.distributed as dist
 from accelerate.utils import gather_object
 from tqdm import tqdm
 
-from utils import DEFAULT_PCBA_ROOT, iter_test_rows, normalize_answer
-
-# ============ 按需修改（亦可通过环境变量覆盖）============
-PCBA_ROOT = os.environ.get('PCBA_ROOT', DEFAULT_PCBA_ROOT)
-MODEL = os.environ.get(
-    'MODEL',
-    '/inspire/qb-ilm/project/traffic-congestion-management/xiacheng-240108120111/'
-    'ms_qwen35opd/output/Qwen3.5-9B-pcba/v0-20260526-203149/checkpoint-384',
+# ============ 按需修改 ============
+PCBA_ROOT = (
+    '/inspire/qb-ilm/project/traffic-congestion-management/'
+    'xiacheng-240108120111/hf_download/PCBA_Standard-to-Real_Challenge'
 )
-OUTPUT = os.environ.get('OUTPUT', 'submission.csv')
-PREDICT_JSONL = os.environ.get('PREDICT_JSONL', 'output/pcba_test_predict.jsonl')
-MAX_NEW_TOKENS = int(os.environ.get('MAX_NEW_TOKENS', '16'))
-BATCH_SIZE = int(os.environ.get('BATCH_SIZE', '1'))
-ATTN_IMPL = os.environ.get('ATTN_IMPL', 'sdpa')
-TORCH_DTYPE = os.environ.get('TORCH_DTYPE', 'bfloat16')
-LIMIT = int(os.environ['LIMIT']) if os.environ.get('LIMIT') else None  # 调试时可设为 10
-# =======================================================
+MODEL = (
+    '/inspire/qb-ilm/project/traffic-congestion-management/xiacheng-240108120111/'
+    'ms_qwen35opd/output/Qwen3.5-9B-pcba/v0-20260526-203149/checkpoint-384'
+)
+OUTPUT = 'submission.csv'
+PREDICT_JSONL = 'output/pcba_test_predict.jsonl'
+MAX_NEW_TOKENS = 16
+BATCH_SIZE = 1
+ATTN_IMPL = 'sdpa'
+TORCH_DTYPE = 'bfloat16'
+LIMIT = None  # 调试时可设为 10
+# =================================
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.dirname(SCRIPT_DIR)
@@ -46,6 +37,8 @@ if SCRIPT_DIR not in sys.path:
     sys.path.insert(0, SCRIPT_DIR)
 if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
+
+from utils import iter_test_rows, normalize_answer
 
 
 def _resolve_path(path: str) -> str:
