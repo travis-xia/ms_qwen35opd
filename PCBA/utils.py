@@ -11,9 +11,14 @@ DEFAULT_PCBA_ROOT = (
     "xiacheng-240108120111/hf_download/PCBA_Standard-to-Real_Challenge"
 )
 
-SYSTEM_PROMPT = (
+SYSTEM_PROMPT_MCQ = (
     "You are an expert in PCBA visual inspection and manufacturing standards. "
     "Answer the multiple-choice question with the option letter only."
+)
+
+SYSTEM_PROMPT_QUANTITATIVE = (
+    "You are an expert in PCBA visual inspection and manufacturing standards. "
+    "Answer the quantitative question with a number only."
 )
 
 TRAIN_JSONS = (
@@ -22,6 +27,10 @@ TRAIN_JSONS = (
 )
 
 TEST_JSON = ("Test/vqa_test_public.json", "Test")
+
+
+def is_quantitative(row: Dict[str, Any]) -> bool:
+    return not (row.get("options") or {})
 
 
 def format_mcq_prompt(question: str, options: Dict[str, str]) -> str:
@@ -33,6 +42,10 @@ def format_mcq_prompt(question: str, options: Dict[str, str]) -> str:
     return "\n".join(lines)
 
 
+def format_quantitative_prompt(question: str) -> str:
+    return f"{question}\n\nAnswer with the number only."
+
+
 def build_sample(row: Dict[str, Any], image_root: str, *, with_answer: bool = True) -> Dict[str, Any]:
     image_paths = row.get("image_paths") or []
     images: List[str] = []
@@ -42,11 +55,16 @@ def build_sample(row: Dict[str, Any], image_root: str, *, with_answer: bool = Tr
             raise FileNotFoundError(f"图片不存在: {abs_path}")
         images.append(os.path.abspath(abs_path))
 
-    user_content = "".join(["<image>"] * len(images)) + format_mcq_prompt(
-        row["question"], row["options"]
-    )
+    if is_quantitative(row):
+        system_prompt = SYSTEM_PROMPT_QUANTITATIVE
+        prompt_text = format_quantitative_prompt(row["question"])
+    else:
+        system_prompt = SYSTEM_PROMPT_MCQ
+        prompt_text = format_mcq_prompt(row["question"], row["options"])
+
+    user_content = "".join(["<image>"] * len(images)) + prompt_text
     messages: List[Dict[str, str]] = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_content},
     ]
     if with_answer:

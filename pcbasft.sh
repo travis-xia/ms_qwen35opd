@@ -8,7 +8,7 @@ cd "$(dirname "$0")"
 PCBA_ROOT="/inspire/qb-ilm/project/traffic-congestion-management/xiacheng-240108120111/hf_download/PCBA_Standard-to-Real_Challenge"
 DATASET="PCBA/pcba_sft_train.jsonl"
 VAL_DATASET="PCBA/pcba_sft_val.jsonl"
-OUTPUT_DIR="output/Qwen3.5-4B-pcba"
+OUTPUT_DIR="output/Qwen3.5-9B-pcba"
 
 if [[ "${BUILD_DATASET:-1}" == "1" ]]; then
   (cd PCBA && PCBA_ROOT="${PCBA_ROOT}" \
