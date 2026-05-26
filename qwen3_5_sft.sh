@@ -12,7 +12,7 @@ OUTPUT_DIR="output/Qwen3.5-4B-pdf"
 #   (cd rag && OUTPUT_TEST_DIR=/inspire/qb-ilm/project/traffic-congestion-management/xiacheng-240108120111/lava/output_test \
 #     OUT_JSONL="../${DATASET}" python3 build_pdf_rag_sft_dataset.py)
 # fi
-[[ -f "${DATASET}" ]] || { echo "[error] 缺少 ${DATASET}"; exit 1; }
+# [[ -f "${DATASET}" ]] || { echo "[error] 缺少 ${DATASET}"; exit 1; }
 
 # 与 pdf_qwen_test: MAX_MODEL_LEN=32000, vLLM dtype=bfloat16, enable_thinking 作答
 # 与 utils: CROP_IMAGE_MAX/MIN_PIXELS=360000/3136, INTERLEAVED_PAGE_BLOCK_LIMIT=10

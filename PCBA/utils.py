@@ -1,0 +1,74 @@
+"""PCBA Standard-to-Real Challenge 数据集与 prompt 工具。"""
+
+from __future__ import annotations
+
+import json
+import os
+from typing import Any, Dict, Iterable, List
+
+DEFAULT_PCBA_ROOT = (
+    "/inspire/qb-ilm/project/traffic-congestion-management/"
+    "xiacheng-240108120111/hf_download/PCBA_Standard-to-Real_Challenge"
+)
+
+SYSTEM_PROMPT = (
+    "You are an expert in PCBA visual inspection and manufacturing standards. "
+    "Answer the multiple-choice question with the option letter only."
+)
+
+TRAIN_JSONS = (
+    ("Train/Standard/standard_mm_vqa_train_public.json", "Train/Standard"),
+    ("Train/RealWorld/realworld_mm_vqa_train_public.json", "Train/RealWorld"),
+)
+
+TEST_JSON = ("Test/vqa_test_public.json", "Test")
+
+
+def format_mcq_prompt(question: str, options: Dict[str, str]) -> str:
+    lines = [question, "", "Options:"]
+    for key in sorted(options):
+        lines.append(f"{key}. {options[key]}")
+    lines.append("")
+    lines.append("Answer with the option letter only.")
+    return "\n".join(lines)
+
+
+def build_sample(row: Dict[str, Any], image_root: str, *, with_answer: bool = True) -> Dict[str, Any]:
+    image_paths = row.get("image_paths") or []
+    images: List[str] = []
+    for rel in image_paths:
+        abs_path = os.path.join(image_root, rel)
+        if not os.path.isfile(abs_path):
+            raise FileNotFoundError(f"图片不存在: {abs_path}")
+        images.append(os.path.abspath(abs_path))
+
+    user_content = "".join(["<image>"] * len(images)) + format_mcq_prompt(
+        row["question"], row["options"]
+    )
+    messages: List[Dict[str, str]] = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": user_content},
+    ]
+    if with_answer:
+        messages.append({"role": "assistant", "content": row["answer"]})
+
+    sample: Dict[str, Any] = {
+        "id": f"{row.get('qid', 'unknown')}",
+        "messages": messages,
+    }
+    if images:
+        sample["images"] = images
+    return sample
+
+
+def load_json_rows(json_path: str) -> List[Dict[str, Any]]:
+    with open(json_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def iter_train_rows(pcba_root: str) -> Iterable[Dict[str, Any]]:
+    for rel_json, rel_image_root in TRAIN_JSONS:
+        json_path = os.path.join(pcba_root, rel_json)
+        image_root = os.path.join(pcba_root, rel_image_root)
+        for row in load_json_rows(json_path):
+            yield build_sample(row, image_root)
