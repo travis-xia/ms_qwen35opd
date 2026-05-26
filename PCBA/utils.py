@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import json
 import os
-from typing import Any, Dict, Iterable, List
+import re
+from typing import Any, Dict, Iterable, List, Tuple
 
 DEFAULT_PCBA_ROOT = (
     "/inspire/qb-ilm/project/traffic-congestion-management/"
@@ -90,3 +91,34 @@ def iter_train_rows(pcba_root: str) -> Iterable[Dict[str, Any]]:
         image_root = os.path.join(pcba_root, rel_image_root)
         for row in load_json_rows(json_path):
             yield build_sample(row, image_root)
+
+
+
+
+
+def iter_test_rows(pcba_root: str) -> Iterable[Tuple[Dict[str, Any], Dict[str, Any]]]:
+    """Yield (raw_test_row, infer_sample) pairs from the public test split."""
+    rel_json, rel_image_root = TEST_JSON
+    json_path = os.path.join(pcba_root, rel_json)
+    image_root = os.path.join(pcba_root, rel_image_root)
+    for row in load_json_rows(json_path):
+        yield row, build_sample(row, image_root, with_answer=False)
+
+
+def normalize_answer(raw: str, row: Dict[str, Any]) -> str:
+    """Post-process model output into a submission-friendly answer."""
+    text = (raw or '').strip()
+    if not text:
+        return text
+    if is_quantitative(row):
+        match = re.search(r'-?\d+(?:\.\d+)?', text.replace(',', ''))
+        return match.group(0) if match else text
+    options = row.get('options') or {}
+    valid = {str(k).upper() for k in options}
+    upper = text.upper()
+    if upper in valid:
+        return upper
+    for ch in upper:
+        if ch in valid:
+            return ch
+    return text.strip()

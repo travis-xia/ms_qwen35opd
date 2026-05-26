@@ -38,6 +38,8 @@ swift sft \
   --val_dataset "${VAL_DATASET}" \
   --split_dataset_ratio 0 \
   --load_from_cache_file true \
+  --add_non_thinking_prefix true \
+  --enable_thinking false \
   --torch_dtype bfloat16 \
   --num_train_epochs 5 \
   --per_device_train_batch_size 2 \
@@ -50,8 +52,8 @@ swift sft \
   --group_by_length true \
   --output_dir "${OUTPUT_DIR}" \
   --eval_strategy steps \
-  --eval_steps 128 \
-  --save_steps 128 \
+  --eval_steps 100 \
+  --save_steps 100 \
   --save_total_limit 3 \
   --predict_with_generate true \
   --max_new_tokens 16 \

@@ -1,0 +1,152 @@
+#!/usr/bin/env python3
+"""PCBA 测试集推理，生成 Codabench 提交文件 submission.csv。
+
+单卡:
+  python3 test_pcba.py
+
+多卡 (使用所有可见 GPU):
+  bash ../pcba_test.sh
+  # 或
+  NPROC_PER_NODE=8 python3 -m torch.distributed.run --nproc_per_node=8 test_pcba.py
+"""
+
+from __future__ import annotations
+
+import csv
+import json
+import os
+import sys
+from typing import Any, Dict, List, Tuple
+
+import torch.distributed as dist
+from accelerate.utils import gather_object
+from tqdm import tqdm
+
+from utils import DEFAULT_PCBA_ROOT, iter_test_rows, normalize_answer
+
+# ============ 按需修改（亦可通过环境变量覆盖）============
+PCBA_ROOT = os.environ.get('PCBA_ROOT', DEFAULT_PCBA_ROOT)
+MODEL = os.environ.get(
+    'MODEL',
+    '/inspire/qb-ilm/project/traffic-congestion-management/xiacheng-240108120111/'
+    'ms_qwen35opd/output/Qwen3.5-9B-pcba/v0-20260526-203149/checkpoint-384',
+)
+OUTPUT = os.environ.get('OUTPUT', 'submission.csv')
+PREDICT_JSONL = os.environ.get('PREDICT_JSONL', 'output/pcba_test_predict.jsonl')
+MAX_NEW_TOKENS = int(os.environ.get('MAX_NEW_TOKENS', '16'))
+BATCH_SIZE = int(os.environ.get('BATCH_SIZE', '1'))
+ATTN_IMPL = os.environ.get('ATTN_IMPL', 'sdpa')
+TORCH_DTYPE = os.environ.get('TORCH_DTYPE', 'bfloat16')
+LIMIT = int(os.environ['LIMIT']) if os.environ.get('LIMIT') else None  # 调试时可设为 10
+# =======================================================
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_ROOT = os.path.dirname(SCRIPT_DIR)
+if SCRIPT_DIR not in sys.path:
+    sys.path.insert(0, SCRIPT_DIR)
+if REPO_ROOT not in sys.path:
+    sys.path.insert(0, REPO_ROOT)
+
+
+def _resolve_path(path: str) -> str:
+    if os.path.isabs(path):
+        return path
+    return os.path.join(REPO_ROOT, path)
+
+
+def _shard_items(items: List[Any], rank: int, world_size: int) -> List[Any]:
+    if rank < 0 or world_size <= 1:
+        return items
+    if len(items) < world_size:
+        return items[rank:] if rank < len(items) else []
+    shard_size = (len(items) + world_size - 1) // world_size
+    start = rank * shard_size
+    end = min(start + shard_size, len(items))
+    return items[start:end]
+
+
+def main() -> None:
+    from swift.arguments import InferArguments
+    from swift.infer_engine import InferRequest, RequestConfig, TransformersEngine
+    from swift.pipelines.utils import prepare_model_template
+    from swift.utils import get_dist_setting, is_dist, is_master
+
+    rank, _, world_size, _ = get_dist_setting()
+
+    pcba_root = _resolve_path(PCBA_ROOT)
+    model = _resolve_path(MODEL)
+    output = _resolve_path(OUTPUT)
+    predict_jsonl = _resolve_path(PREDICT_JSONL) if PREDICT_JSONL else None
+
+    items = list(iter_test_rows(pcba_root))
+    if LIMIT is not None:
+        items = items[:LIMIT]
+    if not items:
+        raise RuntimeError(f'No test samples found under {pcba_root}')
+
+    total = len(items)
+    items = _shard_items(items, rank, world_size)
+    if is_master():
+        print(f'Loaded {total} test samples, world_size={world_size}, rank0 shard={len(items)}')
+
+    args = InferArguments(
+        model=model,
+        load_args=True,
+        torch_dtype=TORCH_DTYPE,
+        attn_impl=ATTN_IMPL,
+    )
+    loaded_model, template = prepare_model_template(args)
+    engine = TransformersEngine(loaded_model, template=template, max_batch_size=BATCH_SIZE)
+
+    infer_requests = []
+    for _, sample in items:
+        kwargs = {'messages': sample['messages']}
+        if sample.get('images'):
+            kwargs['images'] = sample['images']
+        infer_requests.append(InferRequest(**kwargs))
+
+    request_config = RequestConfig(max_tokens=MAX_NEW_TOKENS, temperature=0)
+    predictions: List[Tuple[Any, str, str]] = []
+    for start in tqdm(
+            range(0, len(infer_requests), BATCH_SIZE),
+            desc=f'infer[rank{max(rank, 0)}]',
+            disable=False,
+    ):
+        batch_requests = infer_requests[start:start + BATCH_SIZE]
+        batch_items = items[start:start + BATCH_SIZE]
+        resp_list = engine.infer(batch_requests, request_config, use_tqdm=False)
+        for (row, _), resp in zip(batch_items, resp_list):
+            raw = resp.choices[0].message.content
+            answer = normalize_answer(raw, row)
+            predictions.append((row['qid'], answer, raw))
+
+    if is_dist() and dist.is_initialized():
+        predictions = [p for shard in gather_object(predictions) for p in shard]
+
+    if not is_master():
+        return
+
+    predictions.sort(key=lambda x: x[0])
+
+    out_dir = os.path.dirname(output)
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
+    with open(output, 'w', encoding='utf-8', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['qid', 'answer'])
+        for qid, answer, _ in predictions:
+            writer.writerow([qid, answer])
+
+    if predict_jsonl:
+        pred_dir = os.path.dirname(predict_jsonl)
+        if pred_dir:
+            os.makedirs(pred_dir, exist_ok=True)
+        with open(predict_jsonl, 'w', encoding='utf-8') as f:
+            for qid, answer, raw in predictions:
+                f.write(json.dumps({'qid': qid, 'answer': answer, 'response': raw}, ensure_ascii=False) + '\n')
+
+    print(f'Wrote {len(predictions)} rows to {output}')
+
+
+if __name__ == '__main__':
+    main()
