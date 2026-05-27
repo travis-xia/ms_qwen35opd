@@ -18,12 +18,10 @@ PCBA_ROOT = (
     '/inspire/qb-ilm/project/traffic-congestion-management/'
     'xiacheng-240108120111/hf_download/PCBA_Standard-to-Real_Challenge'
 )
-MODEL = (
-    '/inspire/qb-ilm/project/traffic-congestion-management/xiacheng-240108120111/'
-    'ms_qwen35opd/output/Qwen3.5-9B-pcba/v0-20260526-203149/checkpoint-384'
-)
-OUTPUT = 'submission.csv'
-PREDICT_JSONL = 'output/pcba_test_predict.jsonl'
+MODEL = '/inspire/qb-ilm/project/traffic-congestion-management/xiacheng-240108120111/ms_qwen35opd/output/Qwen3.5-27B-pcba-lora/v0-20260527-165421/checkpoint-400-merged'
+RUN_SUFFIX = '27B0527-1654ckpt400'  # 每次新跑改这里，用于区分输出文件
+OUTPUT = f'submission_{RUN_SUFFIX}.csv'
+PREDICT_JSONL = f'output/pcba_test_predict_{RUN_SUFFIX}.jsonl'
 MAX_NEW_TOKENS = 16
 BATCH_SIZE = 1
 ATTN_IMPL = 'sdpa'
