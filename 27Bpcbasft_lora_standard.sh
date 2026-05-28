@@ -1,36 +1,29 @@
 #!/usr/bin/env bash
-# Qwen3.5-27B PCBA LoRA SFT — 仅 Standard 子集（从全量 jsonl 过滤，不改 Python）
+# Qwen3.5-27B PCBA LoRA SFT — 仅 Standard 子集
 # 用法: bash 27Bpcbasft_lora_standard.sh
-# 跳过全量数据构建（需已有 pcba_sft_train.jsonl）: BUILD_DATASET=0 bash 27Bpcbasft_lora_standard.sh
+# 跳过数据转换: BUILD_DATASET=0 bash 27Bpcbasft_lora_standard.sh
 # 不合并 LoRA: MERGE_LORA_AFTER=0 bash 27Bpcbasft_lora_standard.sh
 
 set -euo pipefail
 cd "$(dirname "$0")"
 
 PCBA_ROOT="/inspire/qb-ilm/project/traffic-congestion-management/xiacheng-240108120111/hf_download/PCBA_Standard-to-Real_Challenge"
-FULL_TRAIN="PCBA/pcba_sft_train.jsonl"
-FULL_VAL="PCBA/pcba_sft_val.jsonl"
 DATASET="PCBA/pcba_sft_train_standard.jsonl"
 VAL_DATASET="PCBA/pcba_sft_val_standard.jsonl"
 OUTPUT_DIR="output/Qwen3.5-27B-pcba-lora-standard"
 
 if [[ "${BUILD_DATASET:-1}" == "1" ]]; then
   (cd PCBA && PCBA_ROOT="${PCBA_ROOT}" \
-    OUT_JSONL="pcba_sft_train.jsonl" \
-    OUT_VAL_JSONL="pcba_sft_val.jsonl" \
-    VAL_RATIO="0.02" \
-    python3 build_pcba_sft_dataset.py)
+    TRAIN_SPLITS="standard" \
+    OUT_JSONL="pcba_sft_train_standard.jsonl" \
+    OUT_VAL_JSONL="pcba_sft_val_standard.jsonl" \
+    VAL_RATIO="${VAL_RATIO:-0.02}" \
+    VAL_SEED="${VAL_SEED:-42}" \
+    python3 build_pcba_task_sft_dataset.py)
 fi
 
-[[ -f "${FULL_TRAIN}" ]] || { echo "[error] 缺少 ${FULL_TRAIN}，请先构建全量数据集"; exit 1; }
-[[ -f "${FULL_VAL}" ]] || { echo "[error] 缺少 ${FULL_VAL}，请先构建全量数据集"; exit 1; }
-
-grep -F '"standard-' "${FULL_TRAIN}" > "${DATASET}"
-grep -F '"standard-' "${FULL_VAL}" > "${VAL_DATASET}"
-echo "[info] Standard 子集: $(wc -l < "${DATASET}") train + $(wc -l < "${VAL_DATASET}") val"
-
-[[ -s "${DATASET}" ]] || { echo "[error] ${DATASET} 为空，请检查全量数据是否含 standard 样本"; exit 1; }
-[[ -s "${VAL_DATASET}" ]] || { echo "[error] ${VAL_DATASET} 为空，请检查全量 val 是否含 standard 样本"; exit 1; }
+[[ -s "${DATASET}" ]] || { echo "[error] 缺少或为空: ${DATASET}"; exit 1; }
+[[ -s "${VAL_DATASET}" ]] || { echo "[error] 缺少或为空: ${VAL_DATASET}"; exit 1; }
 
 # Standard 最多 11 张图；单图像素与 PDF 任务保持一致
 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
