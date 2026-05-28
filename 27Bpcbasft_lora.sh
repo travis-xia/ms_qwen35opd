@@ -16,7 +16,7 @@ if [[ "${BUILD_DATASET:-1}" == "1" ]]; then
   (cd PCBA && PCBA_ROOT="${PCBA_ROOT}" \
     OUT_JSONL="pcba_sft_train.jsonl" \
     OUT_VAL_JSONL="pcba_sft_val.jsonl" \
-    VAL_RATIO="0.05" \
+    VAL_RATIO="0.02" \
     python3 build_pcba_sft_dataset.py)
 fi
 [[ -f "${DATASET}" ]] || { echo "[error] 缺少 ${DATASET}"; exit 1; }
@@ -26,7 +26,7 @@ fi
 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
 NPROC_PER_NODE=8 \
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
-MAX_PIXELS=600000 \
+MAX_PIXELS=640000 \
 MIN_PIXELS=3136 \
 VIDEO_MAX_TOKEN_NUM=128 \
 FPS_MAX_FRAMES=12 \
@@ -48,7 +48,9 @@ swift sft \
   --num_train_epochs 5 \
   --per_device_train_batch_size 1 \
   --per_device_eval_batch_size 1 \
-  --learning_rate 1e-5 \
+  --learning_rate 1e-4 \
+  --vit_lr 1e-5 \
+  --aligner_lr 1e-5 \
   --lr_scheduler_type cosine \
   --weight_decay 0.01 \
   --gradient_accumulation_steps 8 \
@@ -66,7 +68,7 @@ swift sft \
   --acc_strategy seq \
   --metric_for_best_model seq_acc \
   --logging_steps 5 \
-  --max_length 32000 \
+  --max_length 16384 \
   --warmup_ratio 0.03 \
   --dataset_num_proc 8 \
   --dataloader_num_workers 8 \
@@ -98,8 +100,8 @@ fi
 
 
 # 手动merge中间的ckpt:
-# CUDA_VISIBLE_DEVICES=0 swift export \
-#   --adapters output/Qwen3.5-27B-pcba-lora/v0-20260527-165421/checkpoint-400 \
+# swift export \
+#   --adapters output/Qwen3.5-27B-pcba-lora/v2-20260527-195553/checkpoint-400 \
 #   --merge_lora true \
-#   --output_dir output/Qwen3.5-27B-pcba-lora/v0-20260527-165421/checkpoint-400-merged \
+#   --output_dir output/Qwen3.5-27B-pcba-lora/v2-20260527-195553/checkpoint-400-merged \
 #   --exist_ok true
