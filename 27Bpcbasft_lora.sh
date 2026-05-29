@@ -17,6 +17,7 @@ if [[ "${BUILD_DATASET:-1}" == "1" ]]; then
     OUT_JSONL="pcba_sft_train.jsonl" \
     OUT_VAL_JSONL="pcba_sft_val.jsonl" \
     VAL_RATIO="0.02" \
+    EXTRA_SFT_JSONLS="../PCBA/ipc610g_standard_qa_mineru/ipc610g_standard_qa_sft.jsonl" \
     python3 build_pcba_sft_dataset.py)
 fi
 [[ -f "${DATASET}" ]] || { echo "[error] 缺少 ${DATASET}"; exit 1; }
