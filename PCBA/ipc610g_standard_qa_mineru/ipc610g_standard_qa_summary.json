@@ -1,0 +1,62 @@
+{
+  "source": "IPC-A-610G",
+  "generation_mode": "mineru_interleaved",
+  "pdf_path": "IPC-A-610G_en/IPC-A-610G_en_origin.pdf",
+  "mineru_dir": "IPC-A-610G_en",
+  "content_list_path": "IPC-A-610G_en/IPC-A-610G_en_content_list.json",
+  "pdf_pages": 440,
+  "target_pages": 440,
+  "pages_ok": 440,
+  "pages_with_items": 419,
+  "pages_without_items": 21,
+  "pages_with_visual_blocks": 375,
+  "pages_pending": 0,
+  "qa_total": 1580,
+  "by_qa_type": {
+    "image_qa": 760,
+    "text_qa": 820
+  },
+  "by_topic": {
+    "component_orientation": 144,
+    "general_pcba_standard": 422,
+    "insufficient_solder": 12,
+    "ipc_class": 433,
+    "missing_component": 2,
+    "polarity": 5,
+    "smt_acceptability": 210,
+    "solder_joint": 344,
+    "tombstoning": 6,
+    "wrong_polarity": 2
+  },
+  "by_image_type": {
+    "chart": 1,
+    "image": 720,
+    "table": 39
+  },
+  "drop_reasons": {
+    "duplicate_image_index": 5,
+    "image_uncertain_answer": 2,
+    "text_uncertain_answer": 7
+  },
+  "sft_validation": {},
+  "outputs": {
+    "checkpoint_jsonl": "ipc610g_standard_qa_mineru/ipc610g_mineru_page_checkpoint.jsonl",
+    "failure_jsonl": "ipc610g_standard_qa_mineru/ipc610g_standard_qa_failure.jsonl",
+    "raw_qa_jsonl": "ipc610g_standard_qa_mineru/ipc610g_standard_qa_raw.jsonl",
+    "sft_jsonl": "ipc610g_standard_qa_mineru/ipc610g_standard_qa_sft.jsonl",
+    "page_image_dir": "ipc610g_standard_qa_mineru/page_images"
+  },
+  "config": {
+    "model": "gpt-5.4",
+    "reasoning_effort": "medium",
+    "pdf_dpi": 180,
+    "start_page": 1,
+    "end_page": 0,
+    "limit_pages": 0,
+    "workers": 8,
+    "max_images_per_page": 5,
+    "max_text_chars_per_page": 6000,
+    "max_text_qa_per_page": 2,
+    "max_image_qa_per_page": 3
+  }
+}

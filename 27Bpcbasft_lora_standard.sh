@@ -61,8 +61,8 @@ swift sft \
   --group_by_length true \
   --output_dir "${OUTPUT_DIR}" \
   --eval_strategy steps \
-  --eval_steps 100 \
-  --save_steps 100 \
+  --eval_steps 30 \
+  --save_steps 30 \
   --save_total_limit 3 \
   --predict_with_generate true \
   --max_new_tokens 16 \
@@ -83,20 +83,19 @@ if [[ "${MERGE_LORA_AFTER:-1}" == "1" ]]; then
   RUN_DIR="$(find "${OUTPUT_DIR}" -maxdepth 1 -mindepth 1 -type d -name 'v*' 2>/dev/null | LC_ALL=C sort | tail -1)"
   LAST_CKPT=""
   if [[ -n "${RUN_DIR}" ]]; then
-    LAST_CKPT="$(find "${RUN_DIR}" -maxdepth 1 -mindepth 1 -type d -name 'checkpoint-*' 2>/dev/null | LC_ALL=C sort -V | tail -1)"
+    LAST_CKPT="$(find "${RUN_DIR}" -maxdepth 1 -mindepth 1 -type d -name 'checkpoint-*' ! -name 'checkpoint-*-merged' 2>/dev/null | LC_ALL=C sort -V | tail -1)"
   fi
   if [[ -z "${LAST_CKPT}" ]]; then
     echo "[warn] 未找到 checkpoint-*，跳过合并。" >&2
   else
-    OUT_FULL="${LAST_CKPT}.__hf__"
-    rm -rf "${OUT_FULL}"
+    OUT_MERGED="${LAST_CKPT}-merged"
+    rm -rf "${OUT_MERGED}"
     CUDA_VISIBLE_DEVICES=0 swift export \
       --adapters "${LAST_CKPT}" \
       --merge_lora true \
-      --output_dir "${OUT_FULL}" \
+      --output_dir "${OUT_MERGED}" \
       --exist_ok true
-    rm -rf "${LAST_CKPT}"
-    mv "${OUT_FULL}" "${LAST_CKPT}"
+    echo "[info] merged LoRA -> ${OUT_MERGED}"
   fi
 fi
 
