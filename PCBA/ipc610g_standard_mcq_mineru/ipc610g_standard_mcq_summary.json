@@ -1,0 +1,65 @@
+{
+  "source": "IPC-A-610G",
+  "generation_mode": "mineru_interleaved",
+  "pdf_path": "IPC-A-610G_en/IPC-A-610G_en_origin.pdf",
+  "mineru_dir": "IPC-A-610G_en",
+  "content_list_path": "IPC-A-610G_en/IPC-A-610G_en_content_list.json",
+  "pdf_pages": 440,
+  "target_pages": 440,
+  "pages_ok": 440,
+  "pages_with_items": 424,
+  "pages_without_items": 16,
+  "pages_with_visual_blocks": 375,
+  "pages_pending": 0,
+  "qa_total": 1633,
+  "by_qa_type": {
+    "image_mcq": 818,
+    "text_mcq": 815
+  },
+  "by_topic": {
+    "component_orientation": 146,
+    "flipped_component": 5,
+    "general_pcba_standard": 544,
+    "insufficient_solder": 14,
+    "ipc_class": 298,
+    "missing_component": 2,
+    "polarity": 5,
+    "smt_acceptability": 251,
+    "solder_joint": 362,
+    "tombstoning": 5,
+    "wrong_polarity": 1
+  },
+  "by_image_type": {
+    "chart": 1,
+    "image": 766,
+    "table": 51
+  },
+  "drop_reasons": {
+    "image_bad_option_text": 3,
+    "image_uncertain_answer": 2,
+    "text_bad_option_text": 3,
+    "text_blocked_text": 1,
+    "text_uncertain_answer": 6
+  },
+  "sft_validation": {},
+  "outputs": {
+    "checkpoint_jsonl": "ipc610g_standard_mcq_mineru/ipc610g_mineru_mcq_page_checkpoint.jsonl",
+    "failure_jsonl": "ipc610g_standard_mcq_mineru/ipc610g_standard_mcq_failure.jsonl",
+    "raw_mcq_jsonl": "ipc610g_standard_mcq_mineru/ipc610g_standard_mcq_raw.jsonl",
+    "sft_jsonl": "ipc610g_standard_mcq_mineru/ipc610g_standard_mcq_sft.jsonl",
+    "page_image_dir": "ipc610g_standard_mcq_mineru/page_images"
+  },
+  "config": {
+    "model": "gpt-5.5",
+    "reasoning_effort": "medium",
+    "pdf_dpi": 180,
+    "start_page": 1,
+    "end_page": 0,
+    "limit_pages": 0,
+    "workers": 16,
+    "max_images_per_page": 5,
+    "max_text_chars_per_page": 6000,
+    "max_text_mcq_per_page": 2,
+    "max_image_mcq_per_page": 3
+  }
+}

@@ -15,7 +15,8 @@ if [[ "${BUILD_DATASET:-1}" == "1" ]]; then
   (cd PCBA && PCBA_ROOT="${PCBA_ROOT}" \
     OUT_JSONL="pcba_sft_train.jsonl" \
     OUT_VAL_JSONL="pcba_sft_val.jsonl" \
-    VAL_RATIO="0.05" \
+    VAL_RATIO="0.02" \
+    EXTRA_SFT_JSONLS="../PCBA/ipc610g_standard_qa_mineru/ipc610g_standard_qa_sft.jsonl" \
     python3 build_pcba_sft_dataset.py)
 fi
 [[ -f "${DATASET}" ]] || { echo "[error] 缺少 ${DATASET}"; exit 1; }
@@ -52,11 +53,11 @@ swift sft \
   --group_by_length true \
   --output_dir "${OUTPUT_DIR}" \
   --eval_strategy steps \
-  --eval_steps 100 \
+  --eval_steps 50 \
   --save_steps 100 \
-  --save_total_limit 3 \
+  --save_total_limit 4 \
   --predict_with_generate true \
-  --max_new_tokens 16 \
+  --max_new_tokens 32 \
   --temperature 0 \
   --eval_metric acc \
   --acc_strategy seq \
@@ -68,4 +69,5 @@ swift sft \
   --dataloader_num_workers 8 \
   --model_author swift \
   --attn_impl sdpa \
+  --deepspeed zero2 \
   --model_name swift-robot
