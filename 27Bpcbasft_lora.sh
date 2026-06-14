@@ -97,11 +97,10 @@ if [[ "${MERGE_LORA_AFTER:-1}" == "1" ]]; then
   fi
 fi
 
-
-
+# ms_qwen35opd/output/Qwen3.5-27B-pcba-lora256/v0-20260530-105942/checkpoint-600
 # 手动merge中间的ckpt:
 # swift export \
-#   --adapters output/Qwen3.5-27B-pcba-lora_ex/v0-20260529-120230/checkpoint-700 \
+#   --adapters output/Qwen3.5-27B-pcba-lora256/v0-20260530-105942/checkpoint-600 \
 #   --merge_lora true \
-#   --output_dir output/Qwen3.5-27B-pcba-lora_ex/v0-20260529-120230/checkpoint-700-merged \
+#   --output_dir output/Qwen3.5-27B-pcba-lora256/v0-20260530-105942/checkpoint-600-merged \
 #   --exist_ok true

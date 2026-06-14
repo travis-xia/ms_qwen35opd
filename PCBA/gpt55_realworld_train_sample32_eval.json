@@ -1,0 +1,680 @@
+{
+  "dataset_path": "task_type/realworld_mm_vqa_train_public_with_task.json",
+  "image_root": "PCBA_Standard-to-Real_Challenge/Train/RealWorld",
+  "model": "gpt-5.5",
+  "reasoning_effort": "high",
+  "sample_size": 32,
+  "seed": 20260530,
+  "workers": 8,
+  "correct": 17,
+  "accuracy": 0.53125,
+  "by_task": {
+    "attribute_reasoning": {
+      "total": 6,
+      "correct": 2,
+      "accuracy_x10000": 3333
+    },
+    "defect_type": {
+      "total": 7,
+      "correct": 4,
+      "accuracy_x10000": 5714
+    },
+    "defect_existence": {
+      "total": 11,
+      "correct": 7,
+      "accuracy_x10000": 6364
+    },
+    "count_component": {
+      "total": 2,
+      "correct": 0,
+      "accuracy_x10000": 0
+    },
+    "count_pin_lead": {
+      "total": 1,
+      "correct": 0,
+      "accuracy_x10000": 0
+    },
+    "component_type": {
+      "total": 5,
+      "correct": 4,
+      "accuracy_x10000": 8000
+    }
+  },
+  "results": [
+    {
+      "qid": 1678,
+      "question": "What shape most closely resembles the primary component enclosed in the red box?",
+      "options": {
+        "A": "irregular enlongated rectangle with the pins or leads on two long edges",
+        "B": "Irregular Rectangle with the Unevenly Distributed On Two Long Edges",
+        "C": "rectangle with the pin or lead frame on two opposite short edges",
+        "D": "circle inside a irregular hexagon with the pins or leads on two opposite edges"
+      },
+      "answer": "B",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "task": "attribute_reasoning",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/1678.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 22.458
+    },
+    {
+      "qid": 4978,
+      "question": "What shape most closely resembles the primary component enclosed in the red box?",
+      "options": {
+        "A": "irregular polygon with the flat wire on two opposite short edges and pins or leads on one edge",
+        "B": "rectangle with the pin or lead frame on two opposite edges",
+        "C": "rounded rectangle with the pins or leads on two opposite edges",
+        "D": "Rectangle"
+      },
+      "answer": "D",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": true,
+      "task": "attribute_reasoning",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/4978.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 8.419
+    },
+    {
+      "qid": 5559,
+      "question": "What shape best approximates the geometric form of the primary component highlighted by the red box?",
+      "options": {
+        "A": "cylindrical component on a irregular hexagon platform with the pins or leads on two opposite edges",
+        "B": "elongated rectangle with the pins or leads on two opposite long edges",
+        "C": "Rectangle",
+        "D": "rounded, iregular rectangle with the pins or leads on two opposite edges"
+      },
+      "answer": "C",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": false,
+      "task": "attribute_reasoning",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/5559.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 10.962
+    },
+    {
+      "qid": 2125,
+      "question": "What is the outcome of the visual inspection for this PCBA region?",
+      "options": {
+        "A": "Missing part",
+        "B": "Overturned component",
+        "C": "Pass",
+        "D": "Wrong rotation"
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "task": "defect_type",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/2125.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 16.655
+    },
+    {
+      "qid": 2551,
+      "question": "You are provided with a normal image as a reference and a test image for evaluation. Compared to the Reference Normal Image, do you see any defects in the Test Image?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "task": "defect_existence",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/2551.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 15.921
+    },
+    {
+      "qid": 3201,
+      "question": "How many individual electronic components can be seen on the PCB?",
+      "options": {},
+      "answer": "2",
+      "prediction": "",
+      "raw_prediction": "B",
+      "correct": false,
+      "task": "count_component",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/3201.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 14.765
+    },
+    {
+      "qid": 3759,
+      "question": "Are there any discrepancies in the image?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "task": "defect_existence",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/3759.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 15.886
+    },
+    {
+      "qid": 4873,
+      "question": "Are there any anomalies present in the image?",
+      "options": {
+        "A": "No",
+        "B": "Yes"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "task": "defect_existence",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/4873.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 38.694
+    },
+    {
+      "qid": 2885,
+      "question": "How many pins are on the primary component framed by the red box?",
+      "options": {},
+      "answer": "0",
+      "prediction": "",
+      "raw_prediction": "A",
+      "correct": false,
+      "task": "count_pin_lead",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/2885.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 16.277
+    },
+    {
+      "qid": 3273,
+      "question": "Please use the reference normal image to evaluate the test image. Does the Test Image contain any defects compared to the Reference Normal Image?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "task": "defect_existence",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/3273.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 17.455
+    },
+    {
+      "qid": 5947,
+      "question": "Which option correctly describes the inspection result of the shown area?",
+      "options": {
+        "A": "Conductor Foreign Object",
+        "B": "Conductor Nick",
+        "C": "Hole Breakout",
+        "D": "Conductor Scratch"
+      },
+      "answer": "B",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "task": "defect_type",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/5947.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 13.697
+    },
+    {
+      "qid": 6177,
+      "question": "Which specific component is highlighted by the red box on this PCB?",
+      "options": {
+        "A": "R0201",
+        "B": "TO",
+        "C": "IC",
+        "D": "CAE"
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "task": "component_type",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/6177.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 7.594
+    },
+    {
+      "qid": 686,
+      "question": "Which specific component is highlighted by the red box on this PCB?",
+      "options": {
+        "A": "SOD",
+        "B": "OTHER",
+        "C": "IC",
+        "D": "BGA"
+      },
+      "answer": "C",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": false,
+      "task": "component_type",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/686.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 11.848
+    },
+    {
+      "qid": 960,
+      "question": "Is there any departure from expectations in the image?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "task": "defect_existence",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/960.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 39.746
+    },
+    {
+      "qid": 1077,
+      "question": "What does the image reveal about the components and pads in this area?",
+      "options": {
+        "A": "Backward component",
+        "B": "Lack of solder",
+        "C": "Flawless",
+        "D": "Overturned component"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "task": "defect_type",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/1077.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 16.544
+    },
+    {
+      "qid": 1181,
+      "question": "What is the component framed by the red box on this PCB called?",
+      "options": {
+        "A": "MLD",
+        "B": "QFN",
+        "C": "R-L",
+        "D": "SOT23"
+      },
+      "answer": "D",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": true,
+      "task": "component_type",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/1181.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 11.017
+    },
+    {
+      "qid": 668,
+      "question": "Identify the geometric shape that best approximates the main component located within the red box.",
+      "options": {
+        "A": "irregular enlongated rectangle with the pins or leads on two long edges",
+        "B": "rounded rectangle with the pins or leads on two short edges",
+        "C": "rounded enlongated rectangle with the pins or leads on two long edges",
+        "D": "Rectangle"
+      },
+      "answer": "D",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": false,
+      "task": "attribute_reasoning",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/668.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 15.631
+    },
+    {
+      "qid": 353,
+      "question": "A reference normal image and a test image are provided. Are there any discrepancies in the Test Image relative to the Reference Normal Image?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": "B",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "task": "defect_existence",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/353.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 16.37
+    },
+    {
+      "qid": 1907,
+      "question": "Please use the reference normal image to evaluate the test image. Can you identify any aberrations in the Test Image based on the reference?",
+      "options": {
+        "A": "No",
+        "B": "Yes"
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "task": "defect_existence",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/1907.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 32.3
+    },
+    {
+      "qid": 3340,
+      "question": "Which of the following best describes the visual state of this PCBA snippet?",
+      "options": {
+        "A": "Perfect",
+        "B": "Poor wetting",
+        "C": "Missing part",
+        "D": "Standing component"
+      },
+      "answer": "A",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": false,
+      "task": "defect_type",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/3340.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 26.366
+    },
+    {
+      "qid": 6572,
+      "question": "Select the option that best reflects the inspection result of the entire image.",
+      "options": {
+        "A": "OK",
+        "B": "Conductor Protrusion",
+        "C": "Hole Breakout",
+        "D": "Base Material Foreign Object"
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "task": "defect_type",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/6572.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 9.64
+    },
+    {
+      "qid": 306,
+      "question": "Is there any departure from the standard in the image?",
+      "options": {
+        "A": "No",
+        "B": "Yes"
+      },
+      "answer": "A",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": false,
+      "task": "defect_existence",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/306.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 15.159
+    },
+    {
+      "qid": 2272,
+      "question": "You are provided with a normal image as a reference and a test image for evaluation. Can you spot any atypical elements in the Test Image compared to the Reference Normal Image?",
+      "options": {
+        "A": "No",
+        "B": "Yes"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "task": "defect_existence",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/2272.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 11.899
+    },
+    {
+      "qid": 1847,
+      "question": "The input consists of a reference normal image and a test image. Can you identify any aberrations in the Test Image based on the reference?",
+      "options": {
+        "A": "No",
+        "B": "Yes"
+      },
+      "answer": "A",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": false,
+      "task": "defect_existence",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/1847.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 14.076
+    },
+    {
+      "qid": 2274,
+      "question": "Calculate the total number of electronic components visible on the circuit board.",
+      "options": {},
+      "answer": "10",
+      "prediction": "",
+      "raw_prediction": "B",
+      "correct": false,
+      "task": "count_component",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/2274.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 22.21
+    },
+    {
+      "qid": 880,
+      "question": "Please use the reference normal image to evaluate the test image. Is there any deviance in the Test Image as compared to the Reference Normal Image?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "answer": "B",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "task": "defect_existence",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/880.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 26.912
+    },
+    {
+      "qid": 2440,
+      "question": "Which shape does the primary component with the red box in the center most closely resemble?",
+      "options": {
+        "A": "circular shape with no extra pins or leads",
+        "B": "Irregular Rounded Rectangle with the Pins On One Long Edge",
+        "C": "rounded square with the pins or leads on all four edges",
+        "D": "long rectangle with the pins or leads on two opposite long edges"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "task": "attribute_reasoning",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/2440.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 9.013
+    },
+    {
+      "qid": 3231,
+      "question": "What kind of shape best approximates the central item framed by the red box?",
+      "options": {
+        "A": "Rectangle with the Leads On Four Vertices",
+        "B": "irregular enlongated rectangle with the pin or lead frames on two opposite short edges and pins or leads on two long edges",
+        "C": "irregular rounded rectangle with the pins or leads on two long edges",
+        "D": "irregular rectangle with the pin or lead frames on opposite edges and pins or leads on one long edge"
+      },
+      "answer": "A",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": false,
+      "task": "attribute_reasoning",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/3231.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 23.77
+    },
+    {
+      "qid": 5711,
+      "question": "What is the name of the main electronic component framed by the red box on the PCB?",
+      "options": {
+        "A": "IC",
+        "B": "C",
+        "C": "MLD",
+        "D": "R-L"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "task": "component_type",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/5711.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 20.178
+    },
+    {
+      "qid": 946,
+      "question": "Specify the name of the main electronic component enclosed in the red box on the board.",
+      "options": {
+        "A": "Resistor + Diode componen",
+        "B": "C",
+        "C": "CHOKE",
+        "D": "QFN"
+      },
+      "answer": "D",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": true,
+      "task": "component_type",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/946.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 12.97
+    },
+    {
+      "qid": 2296,
+      "question": "Choose the option that accurately identifies the condition of the PCBA in the image.",
+      "options": {
+        "A": "Placement void",
+        "B": "Billboarding",
+        "C": "Wrong direction",
+        "D": "Component rolled"
+      },
+      "answer": "B",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "task": "defect_type",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/2296.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 18.136
+    },
+    {
+      "qid": 6243,
+      "question": "How would you classify the overall condition of the displayed PCBA region?",
+      "options": {
+        "A": "Billboarding",
+        "B": "Missing component",
+        "C": "Thin joint",
+        "D": "Perfect"
+      },
+      "answer": "D",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": true,
+      "task": "defect_type",
+      "task_confidence": "high",
+      "image_paths": [
+        "images/6243.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 9.398
+    }
+  ]
+}

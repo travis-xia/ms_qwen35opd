@@ -1,0 +1,2429 @@
+{
+  "dataset_path": "task_type/standard_mm_vqa_train_public_with_task.json",
+  "image_root": "PCBA_Standard-to-Real_Challenge/Train/Standard",
+  "model": "gpt-5.4",
+  "reasoning_effort": "medium",
+  "sample_size": 128,
+  "seed": 20260530,
+  "workers": 32,
+  "correct": 90,
+  "accuracy": 0.703125,
+  "results": [
+    {
+      "qid": 420,
+      "question": "Based on [Figure 1], what specific condition of the flange and split distinguishes it as an acceptable connection?",
+      "options": {
+        "A": "The flange is uniformly split down to the board but not into the barrel.",
+        "B": "The flange is concentric to the hole.",
+        "C": "The segments are not excessively deformed.",
+        "D": "The flange is swaged sufficiently tight to prevent movement."
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [
+        "images/649.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 6.735
+    },
+    {
+      "qid": 1245,
+      "question": "Which statement accurately describes the requirement for the percentage of holes that can contain voids for a component to be rated as Acceptable − Class 2?",
+      "options": {
+        "A": "Not more than 5% of the holes have voids",
+        "B": "Not more than 10% of the holes have voids",
+        "C": "Not more than 15% of the holes have voids",
+        "D": "All holes must be void-free"
+      },
+      "answer": "A",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": false,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 23.511
+    },
+    {
+      "qid": 1390,
+      "question": "What specific condition must be met before ESDS items can be removed from their protective enclosures?",
+      "options": {
+        "A": "They must be placed in unprotected electronic assemblies like test fixtures",
+        "B": "They must be removed within Electrostatic Protected Areas (EPA) at EOS/ESD safe workstations",
+        "C": "They must undergo additional functional testing before being moved to the manufacturing area",
+        "D": "They must be moved directly to the customer without passing through a safe workstation"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 2.982
+    },
+    {
+      "qid": 532,
+      "question": "According to industrial knowledge and [Figure 1], why is the placement of resistors R3, R4, and R5 considered acceptable for Class 1, 2, or 3?",
+      "options": {
+        "A": "Because the markings on all resistors read in the same direction (left-to-right).",
+        "B": "Because the resistors are polarized and oriented correctly.",
+        "C": "Because the nonpolarized components are not oriented so that all markings read the same way.",
+        "D": "Because the component is centered between its lands."
+      },
+      "answer": "C",
+      "prediction": "",
+      "raw_prediction": "",
+      "correct": false,
+      "image_paths": [
+        "images/839.jpg"
+      ],
+      "error": "GPT 请求失败（重试 3 次）: HTTP Error 429: Too Many Requests",
+      "elapsed_sec": 101.202
+    },
+    {
+      "qid": 638,
+      "question": "According to industrial knowledge accompanying the figures, what specific condition would cause the solder joint in [Figure 1] to be considered a defect?",
+      "options": {
+        "A": "The solder does not touch the component body or end seal.",
+        "B": "The solder contacts the component body or end seal.",
+        "C": "The solder forms a sharp, 90-degree angle.",
+        "D": "The solder flow is minimal and does not create a fillet."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1000.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 8.141
+    },
+    {
+      "qid": 801,
+      "question": "Based on the visual evidence in [Figure 1] and the soldering requirements in the text, which of the following observations regarding the solder joints on the SO-16 package is correct?",
+      "options": {
+        "A": "There is visible side overhang on the leads.",
+        "B": "The solder does not touch the package body or end seal.",
+        "C": "The solder fillets are dry and not wetted.",
+        "D": "The leads have a toe-up configuration rather than toe-down."
+      },
+      "answer": "B",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "image_paths": [
+        "images/1241.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 27.293
+    },
+    {
+      "qid": 940,
+      "question": "Based on the visual evidence in [Figure 1] and the acceptance criteria for Class 1,2,3 components, what is the most likely cause of the visible defect on the component?",
+      "options": {
+        "A": "Mechanical stress fracture",
+        "B": "Thermal damage from reflow soldering",
+        "C": "Electrical overload causing melting",
+        "D": "Improper solder paste application"
+      },
+      "answer": "B",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "image_paths": [
+        "images/1476.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 77.535
+    },
+    {
+      "qid": 1219,
+      "question": "According to the Introduction, which of the following is classified as a subsurface imperfection?",
+      "options": {
+        "A": "Burrs",
+        "B": "Nicks",
+        "C": "Delamination",
+        "D": "Scratches"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 11.466
+    },
+    {
+      "qid": 722,
+      "question": "According to [Figure 1], what is the minimum required end overlap (J) relative to the component termination length (R) for an assembly to be acceptable under IPC Class 2 standards?",
+      "options": {
+        "A": "At least 25% of R",
+        "B": "At least 50% of R",
+        "C": "At least 75% of R",
+        "D": "At least 100% of R"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1118.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 13.451
+    },
+    {
+      "qid": 819,
+      "question": "Based on [Figure 1] and [Figure 2], what is the correct definition of an acceptable heel fillet for Class 1, 2, and 3 components?",
+      "options": {
+        "A": "The heel fillet must completely fill the upper lead bend to ensure maximum solder coverage.",
+        "B": "The heel fillet must extend above the lead thickness but must not fill the upper lead bend.",
+        "C": "The heel fillet must touch the component body to create a continuous solder path from the lead to the component.",
+        "D": "The heel fillet must be absent to prevent potential mechanical stress on the component leads."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1270.jpg",
+        "images/1271.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 17.037
+    },
+    {
+      "qid": 1487,
+      "question": "Which of the following statements correctly describes the progression from \"Acceptable\" to \"Defect\" based on the criteria provided in the text?",
+      "options": {
+        "A": "An acceptable connection allows for wire deformation up to 20% of the diameter.",
+        "B": "An acceptable connection allows for strand separation up to 1 strand diameter, while a defect is defined as separation exceeding 1 strand diameter.",
+        "C": "A defect is defined solely by the original lay of strands being disturbed during insulation removal.",
+        "D": "An acceptable connection for Class 3 allows for wire damage exceeding 10% of the wire diameter."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 4.609
+    },
+    {
+      "qid": 1545,
+      "question": "Which of the following are listed as items addressed in the section regarding jumper wires?",
+      "options": {
+        "A": "Wire selection, wire routing, adhesive staking, and solder termination",
+        "B": "Wire selection, component leads, terminal standoffs, and plated holes",
+        "C": "Haywire routing, soldering requirements, customer consent, and wire type",
+        "D": "Adhesive staking, solder termination, engineering instruction documents, and wire selection"
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 87.936
+    },
+    {
+      "qid": 172,
+      "question": "Based on [Figure 1], what is the quality classification of the plated-through hole shown?",
+      "options": {
+        "A": "Nonconforming - Class 1",
+        "B": "Nonconforming - Class 2",
+        "C": "Acceptable - Class 1, 2, 3",
+        "D": "Acceptable - Class 1 only"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/307.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 66.363
+    },
+    {
+      "qid": 240,
+      "question": "In [Figure 1], which area is explicitly excluded from evaluation for laminate anomalies or imperfections if the specimen has been exposed to thermal stress or rework simulation?",
+      "options": {
+        "A": "Zone A",
+        "B": "Zone B",
+        "C": "Zone C",
+        "D": "The Plating area"
+      },
+      "answer": "A",
+      "prediction": "",
+      "raw_prediction": "",
+      "correct": false,
+      "image_paths": [
+        "images/411.jpg"
+      ],
+      "error": "GPT 请求失败（重试 3 次）: HTTP Error 429: Too Many Requests",
+      "elapsed_sec": 41.749
+    },
+    {
+      "qid": 270,
+      "question": "According to industrial knowledge associated with [Figure 1], what happens when voids or resin recession cause the dielectric spacing to be less than acceptability requirements?",
+      "options": {
+        "A": "The condition is considered acceptable for Class 1, 2, and 3.",
+        "B": "The condition is considered nonconforming for Class 1, 2, and 3.",
+        "C": "The condition is acceptable only for Class 1.",
+        "D": "The condition is acceptable only for Class 3."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/450.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 74.751
+    },
+    {
+      "qid": 296,
+      "question": "What is the primary reason a component like the one in [Figure 1] is classified as a defect?",
+      "options": {
+        "A": "The component is not properly aligned on the PCB.",
+        "B": "The thermal compound precludes formation of required solder connection.",
+        "C": "The uniform border of insulating material is missing.",
+        "D": "The solder mask is not present around the edges."
+      },
+      "answer": "B",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": false,
+      "image_paths": [
+        "images/485.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 44.953
+    },
+    {
+      "qid": 167,
+      "question": "According to [Figure 1], what is the requirement for plated-through holes after thermal stress testing or rework simulation?",
+      "options": {
+        "A": "No lifting of lands is permitted under any circumstances",
+        "B": "Lifted lands are allowed",
+        "C": "Holes must be completely filled with plating material",
+        "D": "Only Class 3 components may show lifted lands"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/299.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 109.048
+    },
+    {
+      "qid": 89,
+      "question": "Based on [Figure 1], what is the classification status of the solder resist condition shown?",
+      "options": {
+        "A": "Nonconforming - Class 1, 2, 3",
+        "B": "Acceptable - Class 1, 2, 3",
+        "C": "Minor wrinkling - Class 1, 2, 3",
+        "D": "Waves or ripples reducing thickness - Class 1, 2, 3"
+      },
+      "answer": "B",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": false,
+      "image_paths": [
+        "images/161.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 86.176
+    },
+    {
+      "qid": 477,
+      "question": "In [Figure 1], which illustration depicts a condition labeled as \"Process Indicator – Class 2\" regarding the wire wrap angle?",
+      "options": {
+        "A": "Wires and leads wrapped a minimum of 180°",
+        "B": "Wire overlaps itself",
+        "C": "Wrap for round posts 90° to less than 180° of contact",
+        "D": "Wrap for round posts has less than 90° of contact"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/742.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 32.248
+    },
+    {
+      "qid": 835,
+      "question": "Referring to [Figure 1], which statement accurately describes the requirement for \"No side overhang\" in the context of Class 1, 2, and 3 assemblies?",
+      "options": {
+        "A": "It is the only acceptable condition for any class.",
+        "B": "It is an acceptable condition for Class 1, 2, and 3.",
+        "C": "It is a defect for Class 1, 2, and 3.",
+        "D": "It is a defect for Class 1 and 2, but acceptable for Class 3."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1305.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 81.956
+    },
+    {
+      "qid": 77,
+      "question": "Based on [Figure 1], what is the primary function of the solder resist encroachment on the land?",
+      "options": {
+        "A": "To increase the surface area for solder paste application.",
+        "B": "To define the pad geometry for the component ball.",
+        "C": "To act as a thermal insulator for the component.",
+        "D": "To provide mechanical strength to the PCB."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/144.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 68.208
+    },
+    {
+      "qid": 568,
+      "question": "Based on the provided figures, which configuration represents a defect in the Through-Hole Technology assembly process?",
+      "options": {
+        "A": "[Figure 1]",
+        "B": "A in [Figure 2]",
+        "C": "B in [Figure 3]",
+        "D": "C in [Figure 4]"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/894.jpg",
+        "images/895.jpg",
+        "images/896.jpg",
+        "images/897.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 56.005
+    },
+    {
+      "qid": 462,
+      "question": "Comparing [Figure 1] and [Figure 2], what is the key difference in the stress relief configurations shown?",
+      "options": {
+        "A": "[Figure 3] shows stress relief on both leads, while [Figure 4] shows stress relief on only one lead (unless constrained)",
+        "B": "[Figure 5] shows stress relief on only one lead, while [Figure 6] shows stress relief on both leads",
+        "C": "[Figure 7] shows no stress relief, while [Figure 8] shows stress relief on both leads",
+        "D": "[Figure 9] is for Class 1,2,3 acceptance, while [Figure 10] is for Class 1 defect"
+      },
+      "answer": "A",
+      "prediction": "",
+      "raw_prediction": "",
+      "correct": false,
+      "image_paths": [
+        "images/714.jpg",
+        "images/715.jpg",
+        "images/716.jpg",
+        "images/717.jpg",
+        "images/718.jpg",
+        "images/719.jpg",
+        "images/720.jpg",
+        "images/721.jpg",
+        "images/722.jpg",
+        "images/723.jpg"
+      ],
+      "error": "GPT 请求失败（重试 3 次）: HTTP Error 429: Too Many Requests",
+      "elapsed_sec": 26.699
+    },
+    {
+      "qid": 569,
+      "question": "Based on the provided figures and text, which figure represents an acceptable Class 1, 2, or 3 through-hole component mounting where the component body is in flat contact with the board’s surface?",
+      "options": {
+        "A": "[Figure 1]",
+        "B": "[Figure 2]",
+        "C": "[Figure 3]",
+        "D": "All figures are acceptable"
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [
+        "images/898.jpg",
+        "images/899.jpg",
+        "images/900.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 96.885
+    },
+    {
+      "qid": 220,
+      "question": "Based on the text and [Figure 1], which class of product is acceptable for the condition where no unwanted material is present on the land area?",
+      "options": {
+        "A": "Class 1 only",
+        "B": "Class 2 only",
+        "C": "Class 3 only",
+        "D": "Class 1 and Class 2 only"
+      },
+      "answer": "C",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": false,
+      "image_paths": [
+        "images/384.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 41.605
+    },
+    {
+      "qid": 610,
+      "question": "Refer to [Figure 1], the image shows a specific assembly issue on a PCB. What specific requirement mentioned in the text does this image illustrate as potentially problematic or exempt?",
+      "options": {
+        "A": "The lead protrusion exceeds the maximum length requirement.",
+        "B": "The lead protrusion violates minimum electrical spacing.",
+        "C": "The lead protrusion is not visible in the subsequent solder connection.",
+        "D": "The lead protrusion is less than the board thickness."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/956.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 82.099
+    },
+    {
+      "qid": 808,
+      "question": "Based on the visual evidence in [Figure 1] and the acceptance criteria in the passage, which class of assembly is shown as acceptable?",
+      "options": {
+        "A": "Class 1 only",
+        "B": "Class 2 only",
+        "C": "Class 1 and Class 2",
+        "D": "Class 3 only"
+      },
+      "answer": "C",
+      "prediction": "",
+      "raw_prediction": "",
+      "correct": false,
+      "image_paths": [
+        "images/1251.jpg"
+      ],
+      "error": "GPT 请求失败（重试 3 次）: HTTP Error 429: Too Many Requests",
+      "elapsed_sec": 101.075
+    },
+    {
+      "qid": 1428,
+      "question": "According to industrial knowledge and the figures, which method of handling electronic assemblies provides full EOS/ESD protection while avoiding contact with sensitive components?",
+      "options": {
+        "A": "Handling with clean hands by gripping the board edges",
+        "B": "Handling with clean gloves that are solvent resistant",
+        "C": "Handling with clean gloves and using full EOS/ESD protection",
+        "D": "Handling with bare hands to avoid contamination"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 3.541
+    },
+    {
+      "qid": 237,
+      "question": "Based on the criteria for \"Target Condition – Class 1, 2, 3\" as shown in the first figure, what is the specific physical limitation regarding solder wicking or plating migration that defines this condition?",
+      "options": {
+        "A": "Solder wicking or plating migration must not extend under the coverlayer more than 0.5 mm.",
+        "B": "Solder wicking or plating migration must not extend under the coverlayer more than 0.3 mm.",
+        "C": "Solder wicking or plating migration must not extend into the bend or flex transition area, regardless of coverlayer penetration depth.",
+        "D": "Solder wicking or plating migration must not extend under the coverlayer at all, and must stop at the coverlayer boundary."
+      },
+      "answer": "D",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": false,
+      "image_paths": [
+        "images/405.jpg",
+        "images/406.jpg",
+        "images/407.jpg",
+        "images/408.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 77.862
+    },
+    {
+      "qid": 574,
+      "question": "According to [Figure 1], which of the following statements is true regarding the assembly of connector modules?",
+      "options": {
+        "A": "Modules manufactured by different suppliers can be mixed if they are identical in design.",
+        "B": "Modules manufactured by different suppliers shall not be mixed if the assembly is composed of 2 or more identical connector modules.",
+        "C": "The figure shows that modules from different suppliers can be mixed if they are not identical in design.",
+        "D": "The figure indicates that the board lock must be fully inserted/snapped into the board for the assembly to be compliant."
+      },
+      "answer": "B",
+      "prediction": "",
+      "raw_prediction": "",
+      "correct": false,
+      "image_paths": [
+        "images/916.jpg"
+      ],
+      "error": "GPT 请求失败（重试 3 次）: HTTP Error 429: Too Many Requests",
+      "elapsed_sec": 100.274
+    },
+    {
+      "qid": 1561,
+      "question": "According to industrial knowledge, which component types are exempt from solder wetting requirements on their sides or ends?",
+      "options": {
+        "A": "Components with leads made of Alloy 42",
+        "B": "Components with surfaces or termination ends designed to be non-wettable",
+        "C": "Components with via in land",
+        "D": "Components with leads that have been intentionally flattened"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 7.598
+    },
+    {
+      "qid": 255,
+      "question": "Based on the text and the visual evidence in [Figure 1], which condition is depicted regarding the trimmed edge of the flexible printed wiring?",
+      "options": {
+        "A": "The edge is free of burrs, nicks, delamination, or tears in excess of that allowed.",
+        "B": "The edge has nicks and tears that exceed the limits agreed upon by the user and supplier.",
+        "C": "The edge has delamination that penetrates more than 50% of the distance to the nearest conductor.",
+        "D": "The edge has nicks and tears resulting from tie-in tabs to facilitate circuit removal, as agreed by the user."
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [
+        "images/426.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 67.398
+    },
+    {
+      "qid": 105,
+      "question": "Based on the text associated with [Figure 1], what is the general conclusion regarding the conformance of the conductor spacing shown?",
+      "options": {
+        "A": "The spacing meets dimensional requirements of the procurement documentation.",
+        "B": "The spacing is acceptable for Class 1, 2, and 3.",
+        "C": "The defects either do not meet or exceed the above criteria.",
+        "D": "The defects are limited to isolated areas where spacing is reduced by no more than 30%."
+      },
+      "answer": "C",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "image_paths": [
+        "images/188.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 19.285
+    },
+    {
+      "qid": 1062,
+      "question": "Based on [Figure 1], which condition of the solder mask is classified as \"Acceptable – Class 1,2,3\"?",
+      "options": {
+        "A": "Cracking of the solder mask without loss of adhesion",
+        "B": "Minor wrinkling located in an area that does not bridge between conductive patterns",
+        "C": "Wrinkling that bridges between conductive patterns causing short circuits",
+        "D": "Complete peeling off of the solder mask film from the copper traces"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1684.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 63.837
+    },
+    {
+      "qid": 666,
+      "question": "Referring to the visual evidence in [Figure 1] and the accompanying text, what is the most likely root cause for the observed solder joint defect?",
+      "options": {
+        "A": "Incorrect solder paste volume application.",
+        "B": "Daughter board angle stresses mounting through-hole tabs.",
+        "C": "Insufficient pre-heating during the reflow process.",
+        "D": "Improper cleaning of the PCB surface prior to assembly."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1033.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 6.892
+    },
+    {
+      "qid": 1230,
+      "question": "According to the IPC's First Blue Ribbon Committee, what was the conclusion regarding the effect of measles on the functional characteristics of finished products?",
+      "options": {
+        "A": "They cause significant failure in most cases.",
+        "B": "Their effect is at worst minimal and in most cases insignificant.",
+        "C": "They are the primary cause of cosmetic objection but no functional issues.",
+        "D": "They are considered acceptable only if the board is used for inner-layer details."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 23.065
+    },
+    {
+      "qid": 1373,
+      "question": "Under what specific condition is the referee magnification power intended to be used?",
+      "options": {
+        "A": "When the assembly has mixed land widths",
+        "B": "When the item is acceptable because a defect cannot be determined at the inspection power",
+        "C": "When a defect has been determined but is not completely identifiable at the inspection power",
+        "D": "When fine pitch or high density assemblies are present to check for contamination"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 52.914
+    },
+    {
+      "qid": 713,
+      "question": "Based on [Figure 1], which dimension represents the end overhang that is explicitly forbidden in the Y axis?",
+      "options": {
+        "A": "Dimension X",
+        "B": "Dimension Y",
+        "C": "Dimension S",
+        "D": "Dimension B"
+      },
+      "answer": "D",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": false,
+      "image_paths": [
+        "images/1109.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 6.97
+    },
+    {
+      "qid": 1375,
+      "question": "What is the minimum required illumination level at the surface of workstations for visual inspection?",
+      "options": {
+        "A": "Approximately 500 lm/m2",
+        "B": "Approximately 93 foot candles (1000 lm/m2)",
+        "C": "Approximately 1500 lm/m2",
+        "D": "Approximately 50 foot candles"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 14.958
+    },
+    {
+      "qid": 1133,
+      "question": "What is the primary function of the component shown in [Figure 1]?",
+      "options": {
+        "A": "To amplify weak signals",
+        "B": "To store energy in a magnetic field",
+        "C": "To filter out high-frequency noise",
+        "D": "To convert DC to AC power"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1768.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 15.659
+    },
+    {
+      "qid": 757,
+      "question": "Which of the following statements about the defect shown in [Figure 1] is correct?",
+      "options": {
+        "A": "It is classified as a Class 1 defect and always leads to immediate failure",
+        "B": "It may result in poor electrical connection or high resistance",
+        "C": "It is caused by excessive flux and must be cleaned before assembly",
+        "D": "It is acceptable in all IPC Class 1, 2, and 3 assemblies without concern"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1181.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 5.003
+    },
+    {
+      "qid": 723,
+      "question": "Referring to [Figure 1], if the end overlap (J) is less than 50% of the component termination length (R), which classification classes would consider this a defect?",
+      "options": {
+        "A": "Class 1 only",
+        "B": "Class 2 only",
+        "C": "Class 3 only",
+        "D": "Class 2 and Class 3"
+      },
+      "answer": "D",
+      "prediction": "",
+      "raw_prediction": "",
+      "correct": false,
+      "image_paths": [
+        "images/1119.jpg"
+      ],
+      "error": "GPT 请求失败（重试 3 次）: HTTP Error 429: Too Many Requests",
+      "elapsed_sec": 10.653
+    },
+    {
+      "qid": 515,
+      "question": "Which of the following statements is true regarding the application of Table 6-9 and the image in [Figure 1]?",
+      "options": {
+        "A": "Table 6-9 applies to all types of terminals regardless of type",
+        "B": "The table applies specifically to hook terminals and [Figure 2] shows a correct example of wiring to such a terminal",
+        "C": "[Figure 3] shows an incorrect installation because the wire overlaps another wire",
+        "D": "The 180° arc requirement does not apply to Class 1,2,3 circuits"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/791.jpg",
+        "images/792.jpg",
+        "images/793.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 54.097
+    },
+    {
+      "qid": 564,
+      "question": "Based on [Figure 1], which of the following best describes the proper assembly of a through-hole component with spacers?",
+      "options": {
+        "A": "The spacer is not in full contact with the component and board.",
+        "B": "The lead is improperly formed and bent at an angle.",
+        "C": "The spacer is in full contact with both the component and board surface.",
+        "D": "The component is not properly aligned with the board."
+      },
+      "answer": "C",
+      "prediction": "",
+      "raw_prediction": "",
+      "correct": false,
+      "image_paths": [
+        "images/885.jpg"
+      ],
+      "error": "GPT 请求失败（重试 3 次）: HTTP Error 429: Too Many Requests",
+      "elapsed_sec": 45.042
+    },
+    {
+      "qid": 399,
+      "question": "Based on the provided text and [Figure 1], what is the primary cause of the defect labeled as \"Hot Tear/Shrinkage Void\"?",
+      "options": {
+        "A": "Oxidation of the solder pad during assembly",
+        "B": "Solidification of the lead-free solder alloy during the assembly process",
+        "C": "Excessive heat application causing solder to boil",
+        "D": "Misalignment of the component leads"
+      },
+      "answer": "B",
+      "prediction": "",
+      "raw_prediction": "",
+      "correct": false,
+      "image_paths": [
+        "images/628.jpg"
+      ],
+      "error": "GPT 请求失败（重试 3 次）: HTTP Error 429: Too Many Requests",
+      "elapsed_sec": 100.88
+    },
+    {
+      "qid": 41,
+      "question": "Which figure(s) illustrate a condition that is classified as \"Nonconforming − Class 1, 2, 3\" based on the provided text?",
+      "options": {
+        "A": "[Figure 1]",
+        "B": "[Figure 2]",
+        "C": "[Figure 3]",
+        "D": "[Figure 4] and [Figure 5]"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/76.jpg",
+        "images/77.jpg",
+        "images/78.jpg",
+        "images/79.jpg",
+        "images/80.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 14.785
+    },
+    {
+      "qid": 1226,
+      "question": "Which defect is described as \"exposed/disrupted fibers\" in the text?",
+      "options": {
+        "A": "Measling",
+        "B": "Weave texture",
+        "C": "Exposed/disrupted fibers",
+        "D": "Foreign inclusions"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 45.536
+    },
+    {
+      "qid": 1209,
+      "question": "What is the primary purpose of the \"Target Condition\" as described in the text?",
+      "options": {
+        "A": "It represents the desired condition, though it may not be strictly necessary for reliability.",
+        "B": "It guarantees the reliability of the board in its service environment regardless of the actual state.",
+        "C": "It serves as the mandatory standard for all classes of product without exception.",
+        "D": "It indicates a condition that is insufficient to ensure reliability in any service environment."
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 44.958
+    },
+    {
+      "qid": 1071,
+      "question": "In [Figure 1], the solder mask surface appears smooth and uniform. According to industrial knowledge, why is this condition classified as \"Acceptable – Class 1, 2, 3\"?",
+      "options": {
+        "A": "Because there are no loose particles of solder mask material that could affect form, fit, or function.",
+        "B": "Because the solder mask has a homogeneous surface with no flaking or peeling.",
+        "C": "Because the circuit traces are wide enough to prevent bridging even if the mask fails.",
+        "D": "Because the component leads are fully encapsulated and protected from mechanical stress."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1694.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 93.477
+    },
+    {
+      "qid": 195,
+      "question": "According to the provided figures and text, which labeled component in [Figure 1] represents the \"Surface Pad\"?",
+      "options": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D"
+      },
+      "answer": "A",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": false,
+      "image_paths": [
+        "images/346.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 12.054
+    },
+    {
+      "qid": 1027,
+      "question": "Based on the provided figures and the defect criteria, which figure represents a non-conforming (defective) condition?",
+      "options": {
+        "A": "[Figure 1]",
+        "B": "[Figure 2]",
+        "C": "Both [Figure 3] and [Figure 4]",
+        "D": "Neither [Figure 5] nor [Figure 6]"
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [
+        "images/1602.jpg",
+        "images/1603.jpg",
+        "images/1604.jpg",
+        "images/1605.jpg",
+        "images/1606.jpg",
+        "images/1607.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 27.618
+    },
+    {
+      "qid": 901,
+      "question": "What is the primary defect shown in [Figure 1]?",
+      "options": {
+        "A": "Insufficient solder volume",
+        "B": "Misaligned component leads",
+        "C": "Bridging between adjacent pads",
+        "D": "Excessive solder paste application"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/1418.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 30.907
+    },
+    {
+      "qid": 402,
+      "question": "Based on the visual evidence in [Figure 1] and the definition provided in the text, how would you classify the defect shown?",
+      "options": {
+        "A": "Cold joint",
+        "B": "Bridge",
+        "C": "Hot tear/shrinkage void",
+        "D": "Tin whisker"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/631.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 26.402
+    },
+    {
+      "qid": 783,
+      "question": "According to industrial knowledge and [Figure 1], what condition classifies a surface mount assembly as an acceptable Class 1,2,3 solder joint?",
+      "options": {
+        "A": "A visible wetted fillet is evident.",
+        "B": "The solder joint is completely flat.",
+        "C": "There is no wetted fillet present.",
+        "D": "The gap (G) is greater than 0.25mm."
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [
+        "images/1222.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 62.867
+    },
+    {
+      "qid": 99,
+      "question": "Based on [Figure 1], which specific criterion regarding the solder resist and conductive patterns is met for this condition to be acceptable?",
+      "options": {
+        "A": "No evidence of soda strawing is present.",
+        "B": "Soda strawing is completely sealed from the external environment.",
+        "C": "The voids are filled with solder.",
+        "D": "The base material is exposed."
+      },
+      "answer": "B",
+      "prediction": "",
+      "raw_prediction": "",
+      "correct": false,
+      "image_paths": [
+        "images/176.jpg"
+      ],
+      "error": "GPT 请求失败（重试 3 次）: HTTP Error 429: Too Many Requests",
+      "elapsed_sec": 41.285
+    },
+    {
+      "qid": 1326,
+      "question": "How is an open circuit identified during a circuit continuity test?",
+      "options": {
+        "A": "By observing a current flow between two energized lands.",
+        "B": "By applying a high voltage source of 250 to 1000 volts.",
+        "C": "By observing the absence of current flow between two lands that should be interconnected.",
+        "D": "By using a Megohm meter to measure the resistance between unconnected lands and a ground plane."
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 63.681
+    },
+    {
+      "qid": 1344,
+      "question": "If a requirement cannot be defined by an acceptable, process indicator, or defect condition, which word is used to identify that requirement?",
+      "options": {
+        "A": "May",
+        "B": "Should",
+        "C": "Shall",
+        "D": "Could"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 45.579
+    },
+    {
+      "qid": 1502,
+      "question": "Based on the provided figures and text, which of the following conditions would result in a Class 2 defect regarding terminal insertion depth?",
+      "options": {
+        "A": "The wire group is inserted deeply enough to reach the back wall of the terminal cup.",
+        "B": "The individual conductors are twisted together before insertion.",
+        "C": "The solder cup has been altered to fit an oversized wire group.",
+        "D": "The wire is inserted only halfway into the cup, failing to reach the back wall."
+      },
+      "answer": "D",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 19.378
+    },
+    {
+      "qid": 892,
+      "question": "According to the notes associated with [Figure 1], what is the requirement regarding the solder contact with the component body?",
+      "options": {
+        "A": "Solder must fully cover the component body.",
+        "B": "Solder must contact the component body to ensure adhesion.",
+        "C": "Solder must not contact the component body.",
+        "D": "Solder contact with the component body is optional."
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/1398.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 33.0
+    },
+    {
+      "qid": 672,
+      "question": "Which of the following statements accurately describes the relationship between the components in [Figure 1] and [Figure 2] based on the provided text?",
+      "options": {
+        "A": "Both components are considered 'Target' configurations for mounting above the board surface in unsupported holes.",
+        "B": "The component in [Figure 3] is a 'Target' configuration, while the component in [Figure 4] would be a 'Defect' if mounted in an unsupported hole.",
+        "C": "The component in [Figure 5] is a 'Target' configuration, while the component in [Figure 6] would be a 'Defect' if mounted in an unsupported hole.",
+        "D": "Neither component configuration is acceptable for mounting above the board surface in unsupported holes."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1048.jpg",
+        "images/1049.jpg",
+        "images/1050.jpg",
+        "images/1051.jpg",
+        "images/1052.jpg",
+        "images/1053.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 86.767
+    },
+    {
+      "qid": 1386,
+      "question": "Which organization's website is listed as www.esda.org in the document?",
+      "options": {
+        "A": "IEC",
+        "B": "EIA",
+        "C": "ASTM",
+        "D": "ESDA"
+      },
+      "answer": "D",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 5.407
+    },
+    {
+      "qid": 717,
+      "question": "Based on [Figure 1], what defines an acceptable surface mount assembly for Class 1, 2, or 3 targets?",
+      "options": {
+        "A": "The side joint length (D) must equal the component termination length (R).",
+        "B": "The side joint length (D) must be half the component termination length (R).",
+        "C": "Any side joint length (D) is acceptable as long as all other solder requirements are met.",
+        "D": "The side joint length (D) must be greater than the component termination length (R)."
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/1113.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 7.546
+    },
+    {
+      "qid": 243,
+      "question": "In the context of the evaluation shown in [Figure 1], which of the following conditions would result in a \"Nonconforming\" rating for Class 1, 2, or 3?",
+      "options": {
+        "A": "The presence of any voids or cracks in Zone A.",
+        "B": "The absence of voids or cracks in the entire laminate.",
+        "C": "Voids or cracks in Zone B that exceed a length of 0.50 mm [0.020 in].",
+        "D": "Voids or cracks located strictly within the 0.08 mm [0.0031 in] extension beyond the land edge."
+      },
+      "answer": "C",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "image_paths": [
+        "images/414.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 103.602
+    },
+    {
+      "qid": 658,
+      "question": "Refer to [Figure 1]. Which solder joint characteristic shown in the image aligns with the \"Acceptable\" criteria listed in Table 7-5 for a Class 1 or Class 2 assembly?",
+      "options": {
+        "A": "The solder fillet is completely vertical and fills the space 100% of the way up the pin.",
+        "B": "The solder fillet shows a vertical fill of approximately 75% of the pin height.",
+        "C": "The solder joint is flush to the board surface with no visible fillet height.",
+        "D": "The solder joint is only present on the destination side of the board with no wetting on the source side."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1025.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 8.364
+    },
+    {
+      "qid": 377,
+      "question": "According to industrial knowledge, what is the specific reason why the condition shown in [Figure 1] is considered a nonwetting defect?",
+      "options": {
+        "A": "The solder is too shiny.",
+        "B": "The solder has not wetted to the land or termination where solder is required.",
+        "C": "The solder has too much coverage on the termination.",
+        "D": "The solder is made of a different material than specified."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/602.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 61.037
+    },
+    {
+      "qid": 300,
+      "question": "Which of the following statements correctly describes the difference between the acceptable installation in [Figure 1] and the defective installation in [Figure 2]?",
+      "options": {
+        "A": "In [Figure 3], the component is flush with the mounting surface, whereas in [Figure 4], it is not.",
+        "B": "In [Figure 5], there is minimum 75% contact with the mounting surface, while in [Figure 6], there is less than 75% contact.",
+        "C": "In [Figure 7], the hardware meets mounting torque requirements, whereas in [Figure 8], the hardware is loose.",
+        "D": "In [Figure 9], the component and heatsink are in full contact, while in [Figure 10], they are not."
+      },
+      "answer": "B",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": false,
+      "image_paths": [
+        "images/496.jpg",
+        "images/497.jpg",
+        "images/498.jpg",
+        "images/499.jpg",
+        "images/500.jpg",
+        "images/501.jpg",
+        "images/502.jpg",
+        "images/503.jpg",
+        "images/504.jpg",
+        "images/505.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 19.894
+    },
+    {
+      "qid": 363,
+      "question": "Which of the following statements correctly interprets the wetting angle criteria shown in [Figure 1] and [Figure 2]?",
+      "options": {
+        "A": "Only angles less than 90° are ever acceptable",
+        "B": "Angles equal to 90° are always unacceptable",
+        "C": "Angles greater than 90° are acceptable only under specific conditions involving solder contour extension",
+        "D": "All angles shown in both figures are equally acceptable regardless of context"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/574.jpg",
+        "images/575.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 137.066
+    },
+    {
+      "qid": 981,
+      "question": "Referring to [Figure 1], which specific scenario illustrates a potential failure mode related to the electrical clearance criteria mentioned in the trace?",
+      "options": {
+        "A": "Scenario 1, where the blister is located directly between two plated-through holes.",
+        "B": "Scenario 2, where the blister occurs at a corner of a conductor path.",
+        "C": "Scenario 3, where the blister causes the space between conductive patterns to be reduced below the minimum electrical clearance.",
+        "D": "Scenario 4, where the blister is located near a plated-through hole but does not affect the adjacent conductor."
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/1523.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 10.308
+    },
+    {
+      "qid": 1352,
+      "question": "What is the primary purpose of using process control methodologies in the context of soldered electrical and electronic assemblies?",
+      "options": {
+        "A": "To determine whether defects should be reworked or scrapped",
+        "B": "To visually inspect the form and fit of the product",
+        "C": "To relate process control and capability to end product requirements",
+        "D": "To eliminate all process indicators from the manufacturing line immediately"
+      },
+      "answer": "C",
+      "prediction": "",
+      "raw_prediction": "",
+      "correct": false,
+      "image_paths": [],
+      "error": "GPT 请求失败（重试 3 次）: HTTP Error 429: Too Many Requests",
+      "elapsed_sec": 98.93
+    },
+    {
+      "qid": 74,
+      "question": "Referencing [Figure 1] and the \"Nonconforming\" criteria, what is the primary defect illustrated by the relationship between the two land patterns shown?",
+      "options": {
+        "A": "Solder resist is missing from the lands entirely.",
+        "B": "Solder resist is present in a plated-through hole.",
+        "C": "Adjacent, electrically isolated lands are exposed.",
+        "D": "The solder resist is centered around the lands within nominal spacing."
+      },
+      "answer": "C",
+      "prediction": "",
+      "raw_prediction": "",
+      "correct": false,
+      "image_paths": [
+        "images/141.jpg"
+      ],
+      "error": "GPT 请求失败（重试 3 次）: HTTP Error 429: Too Many Requests",
+      "elapsed_sec": 100.306
+    },
+    {
+      "qid": 538,
+      "question": "Which defect shown in [Figure 1] is classified as affecting all three quality classes (Class 1, 2, and 3)?",
+      "options": {
+        "A": "Lead bend radius too large",
+        "B": "Lead kinked",
+        "C": "Lead not inserted",
+        "D": "Lead broken"
+      },
+      "answer": "B",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "image_paths": [
+        "images/853.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 39.648
+    },
+    {
+      "qid": 1267,
+      "question": "Based on the provided figures and text, which class of acceptability requires a 30% reduction tolerance for the conductor width if a 90° breakout occurs at the conductor to land junction area?",
+      "options": {
+        "A": "Class 1",
+        "B": "Class 2",
+        "C": "Class 3",
+        "D": "Class 4"
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 39.764
+    },
+    {
+      "qid": 1002,
+      "question": "In [Figure 1], which points are touching the base of the PCB, and what does the line labeled '3' indicate?",
+      "options": {
+        "A": "Points A and B are touching the base; line '3' indicates the total length of the board.",
+        "B": "Points A, B, and C are touching the base; line '3' indicates the height of the twist.",
+        "C": "Points B and C are touching the base; line '3' indicates the degree of bow.",
+        "D": "Points A and C are touching the base; line '3' indicates the degree of warping."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1561.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 38.985
+    },
+    {
+      "qid": 686,
+      "question": "Based on the text description and [Figure 1], which specific condition regarding the wire routing makes it \"Acceptable\" for Class 1, 2, and 3 processes?",
+      "options": {
+        "A": "The wire is routed completely under the component to avoid any contact.",
+        "B": "The wire has sufficient slack to allow relocation from unavoidable lands during component replacement.",
+        "C": "The wire is tight and rigid, preventing it from extending above the height of adjacent components.",
+        "D": "The wire crosses over a component footprint without any slack or adjustment capability."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1067.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 46.099
+    },
+    {
+      "qid": 1534,
+      "question": "What is the specific condition that defines a \"Defect – Class 1, 2, 3\" regarding solder connections?",
+      "options": {
+        "A": "The presence of an external fillet on both sides.",
+        "B": "Solder connections that comply with Table 7-4.",
+        "C": "Solder connections that are not in compliance with Table 7-4.",
+        "D": "Solder connections with exactly 25% unfilled height."
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 81.305
+    },
+    {
+      "qid": 1300,
+      "question": "Which IPC standard should be consulted for details on Folding Flexibility and Flexibility Endurance if they are not covered in this document?",
+      "options": {
+        "A": "IPC-6012",
+        "B": "IPC-6013",
+        "C": "IPC-6011",
+        "D": "IPC-6005"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 6.416
+    },
+    {
+      "qid": 350,
+      "question": "Which of the following statements accurately describes the acceptable condition for Class 1, 2, and 3 wires as illustrated in [Figure 1]?",
+      "options": {
+        "A": "The wires are parallel to the axis of the bundle with no crossover.",
+        "B": "The wires twist and crossover underneath the tie wraps.",
+        "C": "The bundle has excessive crossover.",
+        "D": "The wire insulation is damaged."
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [
+        "images/559.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 6.558
+    },
+    {
+      "qid": 1485,
+      "question": "According to the criteria for Class 1, 2, and 3 terminal connections, what is the minimum and maximum distance the insulation sleeving must be from the point where the connector terminal enters the connector insert?",
+      "options": {
+        "A": "Minimum of 2 wire diameters (D) and maximum of 2 wire diameters (D)",
+        "B": "More than 50% wire diameter and not more than 2 wire diameters (D)",
+        "C": "Exactly 1 wire diameter (D)",
+        "D": "Minimum of 3 wire/cable diameters or 13 mm [0.5 in], whichever is larger"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 29.18
+    },
+    {
+      "qid": 864,
+      "question": "According to the criteria listed in [Figure 1], why is the solder joint in the image classified as a defect?",
+      "options": {
+        "A": "The solder fillet does not touch the package body",
+        "B": "The solder fillet touches the package body",
+        "C": "The solder fillet is too large",
+        "D": "The solder fillet is too small"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1355.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 24.105
+    },
+    {
+      "qid": 116,
+      "question": "Regarding the thermal stress evaluation in [Figure 1], which of the following statements is true based on the provided notes?",
+      "options": {
+        "A": "Delamination/Blistering is evaluated only in Zone B",
+        "B": "Laminate anomalies are evaluated on specimens exposed to thermal stress",
+        "C": "The thermal zone extends beyond the end of the land into the laminate area",
+        "D": "Voids are not evaluated at all in the specified zones"
+      },
+      "answer": "C",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "image_paths": [
+        "images/213.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 21.361
+    },
+    {
+      "qid": 1432,
+      "question": "What specific condition must be verified during visual inspection to ensure the mounting surface is intact?",
+      "options": {
+        "A": "Correct orientation of parts",
+        "B": "No discernible damage",
+        "C": "Correct sequence of assembly",
+        "D": "Correct security and tightness of parts"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 52.764
+    },
+    {
+      "qid": 460,
+      "question": "According to the acceptance criteria shown in [Figure 1], what is the requirement for a component that is not clip or adhesive mounted?",
+      "options": {
+        "A": "Both leads must have stress relief bends",
+        "B": "Only one lead must have a stress relief bend",
+        "C": "No leads are required to have stress relief bends",
+        "D": "The component body must be mounted at a 90-degree angle"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/712.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 70.852
+    },
+    {
+      "qid": 199,
+      "question": "Based on [Figure 1], what is the correct classification status for the innerlayer separation shown?",
+      "options": {
+        "A": "Acceptable - Class 1",
+        "B": "Nonconforming - Class 1, 2, 3",
+        "C": "Acceptable - Class 2, 3",
+        "D": "Acceptable - Class 1, 2, 3"
+      },
+      "answer": "C",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": false,
+      "image_paths": [
+        "images/350.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 16.031
+    },
+    {
+      "qid": 972,
+      "question": "In [Figure 1], which specific area of the component-to-board connection is shown to be compromised by contamination?",
+      "options": {
+        "A": "The solder pad on the PCB",
+        "B": "The hole in the component",
+        "C": "The critical contact area where solder is deposited",
+        "D": "The surrounding solder mask"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/1510.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 5.852
+    },
+    {
+      "qid": 1402,
+      "question": "What is the maximum voltage typically generated by peeling adhesive tape from a roll, as stated in the passage?",
+      "options": {
+        "A": "3,500 volts",
+        "B": "10,000 volts",
+        "C": "20,000 volts",
+        "D": "50,000 volts"
+      },
+      "answer": "C",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": false,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 45.981
+    },
+    {
+      "qid": 352,
+      "question": "According to industrial knowledge and [Figure 1], why is this cable installation classified as a defect for Class 1, 2, and 3?",
+      "options": {
+        "A": "The yellow cable is not color-coded correctly.",
+        "B": "The inside bend radius of the cables does not meet the criteria of Table 4-1.",
+        "C": "The tie wraps are too loose and allow the cables to move excessively.",
+        "D": "The tie wraps are not secured to the cable jacket."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/561.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 6.281
+    },
+    {
+      "qid": 437,
+      "question": "Based on the diagram in [Figure 1], what is the primary characteristic that makes this terminal connection acceptable for Class 1, Class 2, and Class 3 applications?",
+      "options": {
+        "A": "The insulation is completely removed from the wire before the connection.",
+        "B": "The insulation clearance (C) is greater than 2 wire diameters including insulation or 1.5 mm [0.06 in], whichever is greater.",
+        "C": "The solder is applied directly over the insulation to ensure a strong bond.",
+        "D": "The terminal is bent at a 90-degree angle to save space."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/674.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 58.337
+    },
+    {
+      "qid": 186,
+      "question": "Which of the following statements accurately describes the plating condition shown in [Figure 1]?",
+      "options": {
+        "A": "The plating is smooth and uniform throughout the hole.",
+        "B": "The plating thickness meets requirements for Class 1, 2, and 3.",
+        "C": "The defects either do not meet or exceed the criteria for acceptance.",
+        "D": "Small localized areas with plating thickness less than minimum requirement are present but acceptable."
+      },
+      "answer": "C",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": false,
+      "image_paths": [
+        "images/335.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 51.061
+    },
+    {
+      "qid": 1354,
+      "question": "According to industrial knowledge, why does the specification not provide a full definition for all possible combinations of conditions?",
+      "options": {
+        "A": "Because combined conditions are always individually considered defective.",
+        "B": "Because the significant number of combinations that could occur makes full definition impractical.",
+        "C": "Because specialized designs do not require defined acceptance criteria.",
+        "D": "Because customer involvement is not required for defining combined conditions."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 4.935
+    },
+    {
+      "qid": 1287,
+      "question": "Which class of plated-through holes is considered acceptable for a foil crack (internal foil 'C' crack)?",
+      "options": {
+        "A": "Class 1",
+        "B": "Class 2",
+        "C": "Class 3",
+        "D": "Both Class 2 and Class 3"
+      },
+      "answer": "D",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 6.657
+    },
+    {
+      "qid": 1117,
+      "question": "Referencing [Figure 1], which of the following statements is true about the acceptable height requirements for a balled solder connection?",
+      "options": {
+        "A": "The solder ball must be taller than the surrounding insulation to ensure a good connection.",
+        "B": "The solder ball must be completely rounded and smooth, and its height must not exceed the specified limit shown in the diagram.",
+        "C": "The solder ball must be flat on top to prevent arcing.",
+        "D": "The solder ball's height is irrelevant as long as it covers the terminal edges."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1751.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 19.132
+    },
+    {
+      "qid": 109,
+      "question": "Refer to [Figure 1] (IPC-600g-2103d), which of the following conditions regarding breakout or trace reduction would be classified as Nonconforming for Class 1, 2, or 3?",
+      "options": {
+        "A": "A 90° breakout is allowed at the conductor to land junction.",
+        "B": "An 180° breakout is allowed at the conductor to land junction.",
+        "C": "A trace reduction of more than 20% is allowed.",
+        "D": "A trace reduction of more than 30% is allowed."
+      },
+      "answer": "D",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": false,
+      "image_paths": [
+        "images/195.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 141.931
+    },
+    {
+      "qid": 293,
+      "question": "In [Figure 1], which component labeled with a number is identified as having a sharp edge that is incorrectly positioned against the insulator?",
+      "options": {
+        "A": "Component ①",
+        "B": "Component ②",
+        "C": "Component ③",
+        "D": "Component ④"
+      },
+      "answer": "B",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "image_paths": [
+        "images/482.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 10.474
+    },
+    {
+      "qid": 1425,
+      "question": "According to industrial knowledge, what is the correct procedure if an electronic assembly does not have any ESDS markings?",
+      "options": {
+        "A": "It can be handled freely without special precautions.",
+        "B": "It should be discarded immediately as it is not sensitive.",
+        "C": "It must still be handled as if it were an ESDS assembly.",
+        "D": "It should only be handled at a static controlled workstation."
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 52.505
+    },
+    {
+      "qid": 83,
+      "question": "According to [Figure 1], which of the following conditions would make a solder resist defect unacceptable for Class 1?",
+      "options": {
+        "A": "Blisters do not bridge between conductors",
+        "B": "Reduction of electrical spacing does not exceed 25%",
+        "C": "Two per side not exceeding 0.25 mm in greatest dimension",
+        "D": "Blisters exceed 0.25 mm or bridge between conductors"
+      },
+      "answer": "D",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": true,
+      "image_paths": [
+        "images/150.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 40.737
+    },
+    {
+      "qid": 740,
+      "question": "Based on [Figure 1] and the provided acceptance criteria, which of the following statements accurately describes the quality of the solder joint shown?",
+      "options": {
+        "A": "This is an acceptable Class 1, 2, or 3 joint because the side joint length equals the length of the component termination.",
+        "B": "This is an acceptable Class 1, 2, or 3 joint because a wetted fillet is evident, even though the side joint length is not required.",
+        "C": "This is a defect because there is no wetted fillet visible on the solder joint.",
+        "D": "This is an acceptable Class 1, 2, or 3 joint because the solder coverage is greater than 80% of the pad area."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1153.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 6.449
+    },
+    {
+      "qid": 479,
+      "question": "According to the criteria provided for [Figure 1], what specific condition regarding the wire/lead and terminal interface would classify the connection as \"Acceptable – Class 1, 2\" rather than \"Acceptable – Class 1, 2, 3\"?",
+      "options": {
+        "A": "The solder is wetted to 100% of the contact area between the wire/lead and terminal interface for leads wrapped between 90° and 180°.",
+        "B": "The solder is wetted to 75% of the contact area between the wire/lead and terminal interface for leads wrapped 180° or more.",
+        "C": "The wire/lead is not discernible in the solder connection.",
+        "D": "The height of solder is greater than 75% of wire diameter in the wire to post contact area."
+      },
+      "answer": "A",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": false,
+      "image_paths": [
+        "images/744.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 79.648
+    },
+    {
+      "qid": 1150,
+      "question": "Observing the grid of images in [Figure 1], what is a common feature shared by the majority of the components displayed, which categorizes them as \"Large Multi-Pin Components\"?",
+      "options": {
+        "A": "They all have a green substrate with visible circuit traces.",
+        "B": "They all feature a significant number of visible external pins.",
+        "C": "They all contain a central metallic heat sink or frame.",
+        "D": "They all show clear signs of manufacturing defects."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1785.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 83.797
+    },
+    {
+      "qid": 719,
+      "question": "Based on the visual representation in [Figure 1], how are the dimensions labeled 'E' and 'F' defined relative to the component and the substrate?",
+      "options": {
+        "A": "E is the height of the solder fillet on the left and F is the height of the solder fillet on the right.",
+        "B": "E is the height of the component pad and F is the height of the substrate.",
+        "C": "E and F represent the width of the solder fillets.",
+        "D": "E represents the clearance gap between the component and the substrate."
+      },
+      "answer": "A",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": false,
+      "image_paths": [
+        "images/1115.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 58.208
+    },
+    {
+      "qid": 975,
+      "question": "Based on [Figure 1], what is the visual representation of \"Measling\" as indicated by label ①?",
+      "options": {
+        "A": "A solid green conductive path between two connectors.",
+        "B": "A small, isolated white void within the green substrate between two connectors.",
+        "C": "A large area of delamination spanning more than 50% of the space.",
+        "D": "A metallic screw head pressing into the substrate."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1515.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 25.83
+    },
+    {
+      "qid": 922,
+      "question": "** Referencing [Figure 1] and the text provided, if the component was re-soldered to meet Class 3 requirements, what condition regarding the side overhang must be met?",
+      "options": {
+        "A": "The side overhang must be equal to or less than 50% of the termination width.",
+        "B": "The side overhang must be non-existent.",
+        "C": "The side overhang must be equal to or less than 25% of the termination width.",
+        "D": "The side overhang is irrelevant for Class 3 inspection."
+      },
+      "answer": "B",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": false,
+      "image_paths": [
+        "images/1456.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 82.804
+    },
+    {
+      "qid": 684,
+      "question": "According to industrial knowledge and [Figure 1], what is a critical constraint regarding the routing of jumper wires on printed circuit boards?",
+      "options": {
+        "A": "Jumper wires must always be routed diagonally to save space",
+        "B": "Jumper wires may pass over solder lands if sufficient slack is provided",
+        "C": "Jumper wires must never pass over any component or land pattern",
+        "D": "Jumper wires must be longer than the distance between termination points"
+      },
+      "answer": "B",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": false,
+      "image_paths": [
+        "images/1065.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 17.456
+    },
+    {
+      "qid": 818,
+      "question": "Referencing [Figure 1] and the text describing \"Defect – Class 1\", how is the minimum side joint length (D) measured in relation to the lead width (W) and the fixed value of 0.5 mm?",
+      "options": {
+        "A": "It is the distance from the end of the soldered pad to the end of the component lead, measured parallel to the PCB surface.",
+        "B": "It is the vertical height of the solder joint from the PCB surface to the component lead.",
+        "C": "It is the distance from the start of the component lead to the end of the soldered pad, measured parallel to the PCB surface.",
+        "D": "It is the width of the component lead itself."
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [
+        "images/1269.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 59.696
+    },
+    {
+      "qid": 5,
+      "question": "The text associated with [Figure 1] describes the edge condition as \"smooth, no burrs.\" Which of the following descriptions best matches the text associated with [Figure 2]?",
+      "options": {
+        "A": "Smooth with no burrs",
+        "B": "Rough but not frayed and no loose burrs",
+        "C": "Defective due to fraying",
+        "D": "Defective due to loose burrs"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/9.jpg",
+        "images/10.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 7.497
+    },
+    {
+      "qid": 1178,
+      "question": "Referring to the image provided, which of the following statements accurately describes the state of the central component?",
+      "options": {
+        "A": "It is mounted correctly but not powered on.",
+        "B": "It is absent from the circuit board.",
+        "C": "It is installed upside down.",
+        "D": "It is missing a specific pin."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1813.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 6.486
+    },
+    {
+      "qid": 347,
+      "question": "Referencing the note in the passage and [Figure 1], what is the restriction regarding the material used for lacing in Class 3 applications?",
+      "options": {
+        "A": "Wax impregnated lacing tape is acceptable for Class 3.",
+        "B": "Beeswax is acceptable for Class 1 and Class 2, but not Class 3.",
+        "C": "Beeswax is unacceptable for Class 3.",
+        "D": "Beeswax is acceptable for all classes if the lacing is tight."
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/556.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 5.834
+    },
+    {
+      "qid": 1175,
+      "question": "Which of the following best describes the status of the central component in the array shown in [Figure 1]?",
+      "options": {
+        "A": "It is a standard resistor.",
+        "B": "It is a capacitor.",
+        "C": "It is a component that is absent or not mounted.",
+        "D": "It is an integrated circuit."
+      },
+      "answer": "C",
+      "prediction": "",
+      "raw_prediction": "",
+      "correct": false,
+      "image_paths": [
+        "images/1810.jpg"
+      ],
+      "error": "GPT 请求失败（重试 3 次）: The read operation timed out",
+      "elapsed_sec": 249.047
+    },
+    {
+      "qid": 446,
+      "question": "According to industrial knowledge and [Figure 1], which condition regarding the terminal connection is classified as \"Acceptable\" for all Class 1, 2, and 3 terminals?",
+      "options": {
+        "A": "The wire is damaged more than 10% of the wire diameter or thickness.",
+        "B": "The wire strands are disturbed during the insulation removal process.",
+        "C": "The wire strands have separation (birdcaging) but do not exceed 1 strand diameter.",
+        "D": "There are no nicks or deformation exceeding 10% of the diameter, width, or thickness of the conductor."
+      },
+      "answer": "D",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": true,
+      "image_paths": [
+        "images/693.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 11.15
+    },
+    {
+      "qid": 68,
+      "question": "Why is the marking in [Figure 1] considered \"Nonconforming\" for all classes (1, 2, and 3)?",
+      "options": {
+        "A": "The characters are legible but the legend is irregularly formed.",
+        "B": "The characters are not legible and the general intent of the legend cannot be determined.",
+        "C": "The lines forming the characters are wider than the minimum conductor spacing requirements.",
+        "D": "The marking has defects caused by overetching."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/133.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 62.481
+    },
+    {
+      "qid": 526,
+      "question": "According to Table 6-10 and [Figure 1], what is the minimum and maximum number of wraps required for an acceptable wire wrap on a Class 1, 2, or 3 terminal?",
+      "options": {
+        "A": "More than 1 wrap (360°) but less than 3 wraps (720°)",
+        "B": "Exactly 2 wraps (720°)",
+        "C": "At least 3 wraps (720°)",
+        "D": "Less than 1 wrap (360°)"
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [
+        "images/832.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 10.183
+    },
+    {
+      "qid": 1454,
+      "question": "Based on the passage, what is the reason a solder connection may exhibit a wetting angle exceeding 90° even though it is not normally acceptable?",
+      "options": {
+        "A": "The solder material is defective",
+        "B": "The solder contour extends over the edge of the solderable termination area or solder mask",
+        "C": "The PCB cooling rate was too slow",
+        "D": "The component termination is too small"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 28.771
+    },
+    {
+      "qid": 1469,
+      "question": "According to industrial knowledge, what condition must swaged hardware that overhangs the land satisfy to be considered acceptable?",
+      "options": {
+        "A": "It must have a specific plating specification consistent with IPC/EIA J-STD-001.",
+        "B": "It must not violate minimum electrical clearance.",
+        "C": "It must not be rotated by finger force after swaging.",
+        "D": "It must show mechanical distortion of the land."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 57.361
+    },
+    {
+      "qid": 1215,
+      "question": "At what magnification should a suspected defect be verified if its acceptable condition is not apparent during the initial visual examination?",
+      "options": {
+        "A": "Up to 40X",
+        "B": "3 diopters (approximately 1.75X)",
+        "C": "100X",
+        "D": "200X"
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 11.209
+    },
+    {
+      "qid": 379,
+      "question": "According to industrial knowledge and [Figure 1], what is the main concern regarding solder splashes or tinning on a metalized package body?",
+      "options": {
+        "A": "It improves the hermetic seal of the component.",
+        "B": "It enhances the radiation hardening performance of the component.",
+        "C": "It may compromise extended electrical performance or become dislodged as Foreign Object Debris (FOD) in the service environment.",
+        "D": "It is always acceptable and does not require evaluation by the manufacturer or user."
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/604.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 57.904
+    },
+    {
+      "qid": 823,
+      "question": "Refer to [Figure 1] and the description for \"Acceptable – Class 2\", how is the minimum heel fillet height (F) calculated when the lead thickness (T) is greater than 0.4 mm [0.015 in]?",
+      "options": {
+        "A": "F = G",
+        "B": "F = G + T",
+        "C": "F = G + 50% of T",
+        "D": "F = G + 100% of T"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/1275.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 44.769
+    },
+    {
+      "qid": 995,
+      "question": "What is the maximum allowable distance between a delamination or crazing defect at the edge of the printed board (as shown in [Figure 1]) and the nearest conductor before it is considered a Class 1, 2, or 3 defect?",
+      "options": {
+        "A": "The specified minimum distance.",
+        "B": "2.5 mm [0.1 in].",
+        "C": "The distance from the printed board edge to the nearest conductor.",
+        "D": "The lesser of the specified minimum distance or 2.5 mm [0.1 in]."
+      },
+      "answer": "D",
+      "prediction": "D",
+      "raw_prediction": "D",
+      "correct": true,
+      "image_paths": [
+        "images/1546.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 8.742
+    },
+    {
+      "qid": 1019,
+      "question": "According to industrial knowledge associated with [Figure 1] and [Figure 2], which of the following observations would classify a flexible circuit assembly as \"Defective\" for all classes?",
+      "options": {
+        "A": "A minor scratch on the surface of the insulation that does not expose the conductors.",
+        "B": "A tear in the insulation that exposes the conductors.",
+        "C": "Proper edge-to-conductor spacing within specified requirements.",
+        "D": "A small nick in the insulation that is within the limits specified in the procurement documentation."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1593.jpg",
+        "images/1594.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 26.514
+    },
+    {
+      "qid": 615,
+      "question": "According to [Figure 1] and the text, if a lead is clinched toward an electrically noncommon conductor, what is the result?",
+      "options": {
+        "A": "It creates a good solder joint.",
+        "B": "It violates minimum electrical clearance.",
+        "C": "It improves signal integrity.",
+        "D": "It reduces the cost of assembly."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/961.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 31.484
+    },
+    {
+      "qid": 156,
+      "question": "According to [Figure 1], what condition results in an acceptable conductor for Class 1, 2, or 3?",
+      "options": {
+        "A": "The conductor width is exactly equal to the minimum width.",
+        "B": "The conductor width is less than the minimum width.",
+        "C": "The conductor width exceeds the minimum width.",
+        "D": "The conductor width is greater than the minimum width but the edges are rounded."
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/282.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 28.225
+    },
+    {
+      "qid": 1082,
+      "question": "According to industrial knowledge and [Figure 1], what is the acceptable condition for coating thickness on a printed circuit assembly?",
+      "options": {
+        "A": "The coating is measured on a flat, unencumbered, cured surface and meets the thickness requirements of Table 10-1.",
+        "B": "The coating is measured on a wet film and correlates with dry film thickness without documentation.",
+        "C": "The coating does not meet the thickness requirements of Table 10-1.",
+        "D": "The coating thickness is measured on a porous material coupon."
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [
+        "images/1708.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 33.955
+    },
+    {
+      "qid": 1377,
+      "question": "According to the list, which document provides guidelines for the cleaning of Printed Boards and Assemblies?",
+      "options": {
+        "A": "IPC-HDBK-001",
+        "B": "IPC-T-50",
+        "C": "IPC-CH-65",
+        "D": "IPC-D-279"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 6.869
+    },
+    {
+      "qid": 1114,
+      "question": "Based on [Figure 1], which labeled area represents an acceptable defect for Class 1, 2, and 3 wiring According to industrial knowledge?",
+      "options": {
+        "A": "Area A",
+        "B": "Area B",
+        "C": "Area C",
+        "D": "Areas A and C"
+      },
+      "answer": "B",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "image_paths": [
+        "images/1748.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 16.332
+    },
+    {
+      "qid": 1154,
+      "question": "For what type of circuits is the QFN package in [Figure 1] particularly beneficial?",
+      "options": {
+        "A": "Low-frequency analog circuits with minimal heat generation",
+        "B": "High-frequency communication circuits and power supply circuits",
+        "C": "Discrete transistor applications requiring large leads",
+        "D": "Battery-operated devices with no thermal constraints"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1789.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 38.493
+    },
+    {
+      "qid": 962,
+      "question": "In [Figure 1], which scenario is considered Acceptable for Class 1?",
+      "options": {
+        "A": "Cracks in the mounted part extend no more than 50% of the distance between a mounting hole and a formed edge.",
+        "B": "Cracks in the mounted part extend more than 50% of the distance between a mounting hole and a formed edge.",
+        "C": "Cracks in mounted part.",
+        "D": "Crack connects a mounting hole to an edge."
+      },
+      "answer": "A",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": true,
+      "image_paths": [
+        "images/1500.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 20.42
+    },
+    {
+      "qid": 1353,
+      "question": "Under what circumstances can a condition that is not explicitly specified as defective or a process indicator be considered acceptable?",
+      "options": {
+        "A": "When the condition occurs in combination with other defects.",
+        "B": "Unless it can be established that the condition affects user-defined form, fit, or function.",
+        "C": "When the product belongs to Class 2 or Class 3 production classifications.",
+        "D": "If the manufacturer fails to identify the condition during the production process."
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [],
+      "error": null,
+      "elapsed_sec": 9.454
+    },
+    {
+      "qid": 788,
+      "question": "What is the minimum percentage of overlap required for a solder joint to be classified as Acceptable – Class 3 According to industrial knowledge associated with [Figure 1]?",
+      "options": {
+        "A": "25%",
+        "B": "50%",
+        "C": "75%",
+        "D": "100%"
+      },
+      "answer": "C",
+      "prediction": "C",
+      "raw_prediction": "C",
+      "correct": true,
+      "image_paths": [
+        "images/1227.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 34.084
+    },
+    {
+      "qid": 796,
+      "question": "In the context of [Figure 1], which of the following represents an acceptable condition for Class 1 and Class 2 assemblies?",
+      "options": {
+        "A": "End joint width (C) equals castellation width (W)",
+        "B": "End joint width (C) equals 50% of castellation width (W)",
+        "C": "End joint width (C) equals 75% of castellation width (W)",
+        "D": "End joint width (C) is less than 50% of castellation width (W)"
+      },
+      "answer": "B",
+      "prediction": "B",
+      "raw_prediction": "B",
+      "correct": true,
+      "image_paths": [
+        "images/1236.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 8.898
+    },
+    {
+      "qid": 299,
+      "question": "In the context of hardware installation for Class 1, 2, or 3 components, what specific condition is illustrated in [Figure 1] that causes it to be classified as a defect?",
+      "options": {
+        "A": "The component is not flush with the mounting surface.",
+        "B": "The hardware is loose and fails to meet torque requirements.",
+        "C": "The component has less than 75% contact with the mounting surface.",
+        "D": "The component is in full contact with the mounting surface."
+      },
+      "answer": "C",
+      "prediction": "A",
+      "raw_prediction": "A",
+      "correct": false,
+      "image_paths": [
+        "images/495.jpg"
+      ],
+      "error": null,
+      "elapsed_sec": 38.069
+    }
+  ]
+}
