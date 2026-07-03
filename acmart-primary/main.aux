@@ -1,0 +1,151 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{pcba_challenge_website,pcba_challenge_eval}
+\citation{pcba_challenge_dataset}
+\citation{pcba_challenge_eval}
+\citation{ma2026mopd}
+\citation{hu2021lora}
+\@writefile{toc}{\contentsline {section}{Abstract}{1}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\citation{bergmann2019mvtec,bergmann2022loco,zou2022visa,wang2024realiad,defard2021padim,roth2022patchcore,zavrtanik2021draem,li2021cutpaste,batzner2024efficientad}
+\citation{jeong2023winclip,gu2023anomalygpt,jiang2025mmad,fan2025manta,unipcb2026}
+\citation{radford2021clip,alayrac2022flamingo,li2023blip2,dai2023instructblip,liu2023llava,Liu24,openai2023gpt4,comanici2025gemini,bai2025qwen25vltechnicalreport,bai2025qwen3,chen2025expandingperformanceboundariesopensource,wang2025internvl35advancingopensourcemultimodal,xue2024xgen,liu2025nvila,jiang2026imagine}
+\citation{antol2015vqa,fu2023mme,liu2023mmbench,lu2024mathvista,yue2024mmmu,jiang2025vknowu}
+\citation{lewis2020rag,karpukhin2020dense,guu2020realm}
+\citation{hinton2015distilling,kim2016sequence,rusu2016policy}
+\citation{schulman2017ppo,rafailov2023direct}
+\citation{ma2026mopd}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{2}{Related Work}{section.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Industrial anomaly understanding.}{2}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{MLLMs and VQA evaluation.}{2}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Knowledge grounding and comparison.}{2}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Domain routing and on-policy distillation.}{2}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Method}{2}{section.3}\protected@file@percent }
+\newlabel{sec:method}{{3}{2}{Method}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Overview}{2}{subsection.3.1}\protected@file@percent }
+\newlabel{subsec:overview}{{3.1}{2}{Overview}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Canonical Prompt and Answer Space}{2}{subsection.3.2}\protected@file@percent }
+\newlabel{subsec:answer_space}{{3.2}{2}{Canonical Prompt and Answer Space}{subsection.3.2}{}}
+\citation{hu2021lora}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Overview of \textsc  {STEER}. Standards-derived and real-world PCBA samples are anchored by a shared PCBA base model and specialized into two frozen domain LoRA teachers. During training, the student generates an on-policy answer trajectory; a deterministic domain router selects the matching teacher adapter to prefill and score the same trajectory, providing token-level OPD supervision. Answer-level verifiers normalize task outputs and add metric-aligned auxiliary supervision for accuracy, F1, and normalized-MAE tasks. After distillation, only one deployable student is submitted.}}{3}{figure.caption.9}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:main}{{1}{3}{Overview of \method . Standards-derived and real-world PCBA samples are anchored by a shared PCBA base model and specialized into two frozen domain LoRA teachers. During training, the student generates an on-policy answer trajectory; a deterministic domain router selects the matching teacher adapter to prefill and score the same trajectory, providing token-level OPD supervision. Answer-level verifiers normalize task outputs and add metric-aligned auxiliary supervision for accuracy, F1, and normalized-MAE tasks. After distillation, only one deployable student is submitted}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {paragraph}{Task metadata.}{3}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Output normalization.}{3}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Multi-LoRA Domain Teachers}{3}{subsection.3.3}\protected@file@percent }
+\newlabel{subsec:teachers}{{3.3}{3}{Multi-LoRA Domain Teachers}{subsection.3.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Parameterization.}{3}{section*.12}\protected@file@percent }
+\newlabel{eq:lora}{{1}{3}{Parameterization}{equation.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Standard-domain teacher.}{3}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Real-world teacher.}{3}{section*.14}\protected@file@percent }
+\citation{ma2026mopd}
+\citation{ma2026mopd}
+\@writefile{toc}{\contentsline {paragraph}{Homologous initialization.}{4}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Domain Routing}{4}{subsection.3.4}\protected@file@percent }
+\newlabel{subsec:routing}{{3.4}{4}{Domain Routing}{subsection.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Domain-Routed On-Policy Distillation}{4}{subsection.3.5}\protected@file@percent }
+\newlabel{subsec:opd}{{3.5}{4}{Domain-Routed On-Policy Distillation}{subsection.3.5}{}}
+\newlabel{eq:opd}{{2}{4}{Domain-Routed On-Policy Distillation}{equation.2}{}}
+\newlabel{eq:advantage}{{3}{4}{Domain-Routed On-Policy Distillation}{equation.3}{}}
+\newlabel{eq:pg}{{4}{4}{Domain-Routed On-Policy Distillation}{equation.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{On-policy supervision under student prefixes.}{4}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Two-domain teacher specialization.}{4}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Answer-Level Verifiers}{4}{subsection.3.6}\protected@file@percent }
+\newlabel{subsec:verifiers}{{3.6}{4}{Answer-Level Verifiers}{subsection.3.6}{}}
+\newlabel{eq:count_reward}{{5}{4}{Answer-Level Verifiers}{equation.5}{}}
+\newlabel{eq:final_loss}{{6}{4}{Answer-Level Verifiers}{equation.6}{}}
+\citation{pcba_challenge_eval,pcba_challenge_dataset}
+\citation{pcba_challenge_eval}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Standards-to-Real Curriculum}{5}{subsection.3.7}\protected@file@percent }
+\newlabel{subsec:curriculum}{{3.7}{5}{Standards-to-Real Curriculum}{subsection.3.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Design Rationale}{5}{section.4}\protected@file@percent }
+\newlabel{sec:rationale}{{4}{5}{Design Rationale}{section.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Benchmark-driven decomposition.}{5}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Behavior-space distillation.}{5}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{LoRA-based teacher specialization.}{5}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Experiments}{5}{section.5}\protected@file@percent }
+\newlabel{sec:experiments}{{5}{5}{Experiments}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Dataset and Evaluation}{5}{subsection.5.1}\protected@file@percent }
+\newlabel{subsec:dataset}{{5.1}{5}{Dataset and Evaluation}{subsection.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Implementation Details}{5}{subsection.5.2}\protected@file@percent }
+\newlabel{subsec:impl}{{5.2}{5}{Implementation Details}{subsection.5.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Official public evaluation breakdown of our final Qwen3.5-27B submission. Overall score is the weighted sum of task-level normalized metrics using task proportions as weights: 90.920129.}}{6}{table.caption.21}\protected@file@percent }
+\newlabel{tab:main_results}{{1}{6}{Official public evaluation breakdown of our final Qwen3.5-27B submission. Overall score is the weighted sum of task-level normalized metrics using task proportions as weights: 90.920129}{table.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Dataset organization of the PCBA Standard-to-Real Grand Challenge. The benchmark combines standards-derived VQA for rule knowledge with real-world production-line VQA for visual inspection.}}{6}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:dataset}{{2}{6}{Dataset organization of the PCBA Standard-to-Real Grand Challenge. The benchmark combines standards-derived VQA for rule knowledge with real-world production-line VQA for visual inspection}{figure.caption.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Public leaderboard.}}{6}{table.caption.23}\protected@file@percent }
+\newlabel{tab:leaderboard}{{2}{6}{Public leaderboard}{table.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Baselines}{6}{subsection.5.3}\protected@file@percent }
+\newlabel{subsec:baselines}{{5.3}{6}{Baselines}{subsection.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Expected Analysis}{6}{subsection.5.4}\protected@file@percent }
+\newlabel{subsec:analysis}{{5.4}{6}{Expected Analysis}{subsection.5.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Expected Qwen3.5-9B ablation results. Values other than the full \textsc  {STEER}{} score are planning placeholders for the controlled ablation runs.}}{6}{table.caption.24}\protected@file@percent }
+\newlabel{tab:ablation}{{3}{6}{Expected Qwen3.5-9B ablation results. Values other than the full \method {} score are planning placeholders for the controlled ablation runs}{table.caption.24}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Expected per-domain diagnostics for Qwen3.5-9B \textsc  {STEER}{}. Values are placeholders until controlled subset scoring is finalized.}}{6}{table.caption.25}\protected@file@percent }
+\newlabel{tab:diagnostic}{{4}{6}{Expected per-domain diagnostics for Qwen3.5-9B \method {}. Values are placeholders until controlled subset scoring is finalized}{table.caption.25}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{6}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{6}{Conclusion}{section.6}{}}
+\bibstyle{ACM-Reference-Format}
+\bibdata{main}
+\bibcite{alayrac2022flamingo}{{1}{2022}{{Alayrac et~al\mbox  {.}}}{{}}}
+\bibcite{antol2015vqa}{{2}{2015}{{Antol et~al\mbox  {.}}}{{}}}
+\bibcite{bai2025qwen3}{{3}{2025a}{{Bai et~al\mbox  {.}}}{{}}}
+\bibcite{bai2025qwen25vltechnicalreport}{{4}{2025b}{{Bai et~al\mbox  {.}}}{{}}}
+\bibcite{batzner2024efficientad}{{5}{2024}{{Batzner et~al\mbox  {.}}}{{}}}
+\bibcite{bergmann2022loco}{{6}{2022}{{Bergmann et~al\mbox  {.}}}{{}}}
+\bibcite{bergmann2019mvtec}{{7}{2019}{{Bergmann et~al\mbox  {.}}}{{}}}
+\bibcite{chen2025expandingperformanceboundariesopensource}{{8}{2025}{{Chen et~al\mbox  {.}}}{{}}}
+\bibcite{comanici2025gemini}{{9}{2025}{{Comanici et~al\mbox  {.}}}{{}}}
+\bibcite{dai2023instructblip}{{10}{2023}{{Dai et~al\mbox  {.}}}{{}}}
+\bibcite{defard2021padim}{{11}{2021}{{Defard et~al\mbox  {.}}}{{}}}
+\bibcite{fan2025manta}{{12}{2025}{{Fan et~al\mbox  {.}}}{{}}}
+\bibcite{fu2023mme}{{13}{2023}{{Fu et~al\mbox  {.}}}{{}}}
+\bibcite{gu2023anomalygpt}{{14}{2023}{{Gu et~al\mbox  {.}}}{{}}}
+\bibcite{guu2020realm}{{15}{2020}{{Guu et~al\mbox  {.}}}{{}}}
+\bibcite{hinton2015distilling}{{16}{2015}{{Hinton et~al\mbox  {.}}}{{}}}
+\bibcite{hu2021lora}{{17}{2022}{{Hu et~al\mbox  {.}}}{{}}}
+\bibcite{jeong2023winclip}{{18}{2023}{{Jeong et~al\mbox  {.}}}{{}}}
+\bibcite{jiang2026imagine}{{19}{2026}{{Jiang et~al\mbox  {.}}}{{}}}
+\bibcite{jiang2025vknowu}{{20}{2025b}{{Jiang et~al\mbox  {.}}}{{}}}
+\bibcite{jiang2025mmad}{{21}{2025a}{{Jiang et~al\mbox  {.}}}{{}}}
+\bibcite{karpukhin2020dense}{{22}{2020}{{Karpukhin et~al\mbox  {.}}}{{}}}
+\bibcite{kim2016sequence}{{23}{2016}{{Kim and Rush}}{{}}}
+\bibcite{lewis2020rag}{{24}{2020}{{Lewis et~al\mbox  {.}}}{{}}}
+\bibcite{li2021cutpaste}{{25}{2021}{{Li et~al\mbox  {.}}}{{}}}
+\bibcite{li2023blip2}{{26}{2023}{{Li et~al\mbox  {.}}}{{}}}
+\bibcite{Liu24}{{27}{2024}{{Liu et~al\mbox  {.}}}{{}}}
+\bibcite{liu2023llava}{{28}{2023b}{{Liu et~al\mbox  {.}}}{{}}}
+\bibcite{liu2023mmbench}{{29}{2023a}{{Liu et~al\mbox  {.}}}{{}}}
+\bibcite{liu2025nvila}{{30}{2025}{{Liu et~al\mbox  {.}}}{{}}}
+\bibcite{lu2024mathvista}{{31}{2024}{{Lu et~al\mbox  {.}}}{{}}}
+\bibcite{ma2026mopd}{{32}{2026}{{Ma et~al\mbox  {.}}}{{}}}
+\bibcite{openai2023gpt4}{{33}{2023}{{OpenAI}}{{}}}
+\bibcite{pcba_challenge_eval}{{34}{2026a}{{PCBA Standard-to-Real Challenge Organizers}}{{}}}
+\bibcite{pcba_challenge_dataset}{{35}{2026b}{{PCBA Standard-to-Real Challenge Organizers}}{{}}}
+\bibcite{pcba_challenge_website}{{36}{2026c}{{PCBA Standard-to-Real Challenge Organizers}}{{}}}
+\bibcite{radford2021clip}{{37}{2021}{{Radford et~al\mbox  {.}}}{{}}}
+\bibcite{rafailov2023direct}{{38}{2023}{{Rafailov et~al\mbox  {.}}}{{}}}
+\bibcite{roth2022patchcore}{{39}{2022}{{Roth et~al\mbox  {.}}}{{}}}
+\bibcite{rusu2016policy}{{40}{2016}{{Rusu et~al\mbox  {.}}}{{}}}
+\bibcite{schulman2017ppo}{{41}{2017}{{Schulman et~al\mbox  {.}}}{{}}}
+\bibcite{unipcb2026}{{42}{2026}{{Sun et~al\mbox  {.}}}{{}}}
+\bibcite{wang2024realiad}{{43}{2024}{{Wang et~al\mbox  {.}}}{{}}}
+\bibcite{wang2025internvl35advancingopensourcemultimodal}{{44}{2025}{{Wang et~al\mbox  {.}}}{{}}}
+\@writefile{toc}{\contentsline {section}{References}{7}{section*.27}\protected@file@percent }
+\bibcite{xue2024xgen}{{45}{2024}{{Xue et~al\mbox  {.}}}{{}}}
+\bibcite{yue2024mmmu}{{46}{2024}{{Yue et~al\mbox  {.}}}{{}}}
+\bibcite{zavrtanik2021draem}{{47}{2021}{{Zavrtanik et~al\mbox  {.}}}{{}}}
+\bibcite{zou2022visa}{{48}{2022}{{Zou et~al\mbox  {.}}}{{}}}
+\newlabel{tocindent-1}{0pt}
+\newlabel{tocindent0}{0pt}
+\newlabel{tocindent1}{4.185pt}
+\newlabel{tocindent2}{10.34999pt}
+\newlabel{tocindent3}{0pt}
+\newlabel{tocindent4}{0pt}
+\newlabel{tocindent5}{0pt}
+\newlabel{TotPages}{{8}{8}{}{page.8}{}}
+\gdef \@abspage@last{8}

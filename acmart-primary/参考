@@ -1,0 +1,942 @@
+%%
+%% This is file `sample-sigconf-authordraft.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% samples.dtx  (with options: `all,proceedings,bibtex,authordraft')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from sample-sigconf-authordraft.tex.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file samples.dtx.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+%%
+%%
+%% Commands for TeXCount
+%TC:macro \cite [option:text,text]
+%TC:macro \citep [option:text,text]
+%TC:macro \citet [option:text,text]
+%TC:envir table 0 1
+%TC:envir table* 0 1
+%TC:envir tabular [ignore] word
+%TC:envir displaymath 0 word
+%TC:envir math 0 word
+%TC:envir comment 0 0
+%%
+%% The first command in your LaTeX source must be the \documentclass
+%% command.
+%%
+%% For submission and review of your manuscript please change the
+%% command to \documentclass[manuscript, screen, review]{acmart}.
+%%
+%% When submitting camera ready or to TAPS, please change the command
+%% to \documentclass[sigconf]{acmart} or whichever template is required
+%% for your publication.
+%%
+%%
+
+\documentclass[sigconf, screen, review, anonymous]{acmart}
+
+% \documentclass[sigconf,authordraft]{acmart}
+
+
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow} % provides \multirow used in tables
+\usepackage{bm} % bold math symbols, provides \bm
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+
+
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
+
+%% Rights management information.  This information is sent to you
+%% when you complete the rights form.  These commands have SAMPLE
+%% values in them; it is your responsibility as an author to replace
+%% the commands and values with those provided to you when you
+%% complete the rights form.
+% \setcopyright{acmlicensed}
+\copyrightyear{2026}
+\acmYear{2026}
+% \acmDOI{XXXXXXX.XXXXXXX}
+
+
+\setcopyright{none}
+\settopmatter{printacmref=false}
+\renewcommand\footnotetextcopyrightpermission[1]{} % Remove copyright notice
+
+% %% These commands are for a PROCEEDINGS abstract or paper.
+% \acmConference[Conference acronym 'XX]{Make sure to enter the correct
+%   conference title from your rights confirmation email}{June 03--05,
+%   2018}{Woodstock, NY}
+\acmConference[ACM MM '26]{the 34th ACM International Conference on Multimedia}{10–14 November 2026}{<Rio de Janeiro, Brazil>}
+
+% %%
+% %%  Uncomment \acmBooktitle if the title of the proceedings is different
+% %%  from ``Proceedings of ...''!
+% %%
+% %%\acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
+% %%  June 03--05, 2018, Woodstock, NY}
+% \acmISBN{978-1-4503-XXXX-X/2018/06}
+
+
+%%
+%% Submission ID.
+%% Use this when submitting an article to a sponsored event. You'll
+%% receive a unique submission ID from the organizers
+%% of the event, and this ID should be used as the parameter to this command.
+%%\acmSubmissionID{123-A56-BU3}
+
+%%
+%% For managing citations, it is recommended to use bibliography
+%% files in BibTeX format.
+%%
+%% You can then either use BibTeX with the ACM-Reference-Format style,
+%% or BibLaTeX with the acmnumeric or acmauthoryear sytles, that include
+%% support for advanced citation of software artefact from the
+%% biblatex-software package, also separately available on CTAN.
+%%
+%% Look at the sample-*-biblatex.tex files for templates showcasing
+%% the biblatex styles.
+%%
+
+%%
+%% The majority of ACM publications use numbered citations and
+%% references.  The command \citestyle{authoryear} switches to the
+%% "author year" style.
+%%
+%% If you are preparing content for an event
+%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
+%% citations and references.
+%% Uncommenting
+%% the next command will enable that style.
+%%\citestyle{acmauthoryear}
+
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+
+
+
+
+\def\method{M$^2$LA}
+
+
+
+
+
+
+
+
+
+%%
+%% The "title" command has an optional parameter,
+%% allowing the author to define a "short title" to be used in page headers.
+\title{Token Dimension Compression for Scalable Context in Multimodal Large Language Models}
+
+%%
+%% The "author" command and its associated commands are used to define
+%% the authors and their affiliations.
+%% Of note is the shared affiliation of the first two authors, and the
+%% "authornote" and "authornotemark" commands
+%% used to denote shared contribution to the research.
+\author{Ben Trovato}
+\authornote{Both authors contributed equally to this research.}
+\email{trovato@corporation.com}
+\orcid{1234-5678-9012}
+\author{G.K.M. Tobin}
+\authornotemark[1]
+\email{webmaster@marysville-ohio.com}
+\affiliation{%
+  \institution{Institute for Clarity in Documentation}
+  \city{Dublin}
+  \state{Ohio}
+  \country{USA}
+}
+
+\author{Lars Th{\o}rv{\"a}ld}
+\affiliation{%
+  \institution{The Th{\o}rv{\"a}ld Group}
+  \city{Hekla}
+  \country{Iceland}}
+\email{larst@affiliation.org}
+
+\author{Valerie B\'eranger}
+\affiliation{%
+  \institution{Inria Paris-Rocquencourt}
+  \city{Rocquencourt}
+  \country{France}
+}
+
+\author{Aparna Patel}
+\affiliation{%
+ \institution{Rajiv Gandhi University}
+ \city{Doimukh}
+ \state{Arunachal Pradesh}
+ \country{India}}
+
+\author{Huifen Chan}
+\affiliation{%
+  \institution{Tsinghua University}
+  \city{Haidian Qu}
+  \state{Beijing Shi}
+  \country{China}}
+
+\author{Charles Palmer}
+\affiliation{%
+  \institution{Palmer Research Laboratories}
+  \city{San Antonio}
+  \state{Texas}
+  \country{USA}}
+\email{cpalmer@prl.com}
+
+\author{John Smith}
+\affiliation{%
+  \institution{The Th{\o}rv{\"a}ld Group}
+  \city{Hekla}
+  \country{Iceland}}
+\email{jsmith@affiliation.org}
+
+\author{Julius P. Kumquat}
+\affiliation{%
+  \institution{The Kumquat Consortium}
+  \city{New York}
+  \country{USA}}
+\email{jpkumquat@consortium.net}
+
+%%
+%% By default, the full list of authors will be used in the page
+%% headers. Often, this list is too long, and will overlap
+%% other information printed in the page headers. This command allows
+%% the author to define a more concise list
+%% of authors' names for this purpose.
+\renewcommand{\shortauthors}{Trovato et al.}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+\begin{abstract}
+  Multimodal Large Language Models (MLLMs) face challenges in processing long multimedia contexts due to the quadratic cost of self-attention and the linear growth of the Key-Value (KV) cache. Existing solutions largely compress context by reducing token count; however, at higher compression ratios, such approaches are difficult to keep near-lossless, motivating a new compression paradigm.
+  We therefore introduce token dimension compression, an orthogonal paradigm that reduces the memory footprint of each token representation while preserving all input tokens and can be combined with token-number reduction.
+  We instantiate this with M$^2$LA, transforming attention blocks in pretrained LLMs into Multi-head Latent Attention (MLA) ones. MLA's low-rank latent space (storing keys and values) enables compact token representations dynamically. It is training-light, involving RoPE-aware positional aggregation and modality-aware adapters for diverse multimodal data.
+  M$^2$LA is a drop-in architectural change, maintaining near-lossless local context performance while achieving 2$\times$ KV-cache reductions and even slightly improving over the original model in various scenarios. This enables substantially longer multimodal contexts without sacrificing visual detail. 
+\end{abstract}
+
+%%
+%% The code below is generated by the tool at http://dl.acm.org/ccs.cfm.
+%% Please copy and paste the code instead of the example below.
+%%
+\begin{CCSXML}
+  <ccs2012>
+     <concept>
+         <concept_id>10010147.10010178.10010224.10010225.10010227</concept_id>
+         <concept_desc>Computing methodologies~Scene understanding</concept_desc>
+         <concept_significance>500</concept_significance>
+         </concept>
+     <concept>
+         <concept_id>10010147.10010178.10010224.10010225.10010230</concept_id>
+         <concept_desc>Computing methodologies~Video summarization</concept_desc>
+         <concept_significance>500</concept_significance>
+         </concept>
+   </ccs2012>
+\end{CCSXML}
+  
+\ccsdesc[500]{Computing methodologies~Scene understanding}
+\ccsdesc[500]{Computing methodologies~Video summarization}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+\keywords{Multimodal Large Language Models,video understanding}
+%% A "teaser" image appears between the author and affiliation
+%% information and the body of the document, and typically spans the
+%% page.
+% \begin{teaserfigure}
+%   \includegraphics[width=\textwidth]{sampleteaser}
+%   \caption{Seattle Mariners at Spring Training, 2010.}
+%   \Description{Enjoying the baseball game from the third-base
+%   seats. Ichiro Suzuki preparing to bat.}
+%   \label{fig:teaser}
+% \end{teaserfigure}
+
+% \received{20 February 2007}
+% \received[revised]{12 March 2009}
+% \received[accepted]{5 June 2009}
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{pic/dimension_and_pruning.png}
+  \caption{Best context compression can be achieved along two orthogonal axes: token pruning reduces the number of tokens, while token dimension compression reduces the representation size of each token. Their combination enables higher near-lossless compression ratios than either strategy alone.}
+  \Description{A schematic comparing two orthogonal context compression strategies. Token pruning removes redundant tokens to reduce token count, while token dimension compression shrinks the representation size of each token. A combined strategy applies both to achieve the highest near-lossless compression.}
+  \label{fig:dimension_and_pruning}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Introduction}
+\label{sec:intro}
+
+Multimodal large language models (MLLMs) are increasingly deployed as decision-making and tool-using agents in real-world multimedia applications, where success hinges on their ability to maintain, recall, and reason over long visual--textual histories \cite{comanici2025gemini,mu2023embodiedgpt,zhang2024chain}. From hour-scale surveillance queries and multi-page document understanding to long-horizon GUI control and video editing, applications demand models that can ingest dense streams of visual tokens without forgetting early evidence or breaking temporal dependencies. Yet, despite recent progress in long-context language modeling, extending multimodal context remains difficult: the cost of self-attention is quadratic in sequence length, and the key--value (KV) cache grows linearly with tokens, quickly exhausting memory during autoregressive inference.
+
+
+Most existing MLLMs address this by reducing visual token number before or during attention \cite{huang2025prunevid,bolya2023tome,zhang2025ivtp,chen2024image,li2024videochat}, alongside engineering solutions such as sequence parallelism and data packing \cite{chen2024longvila,chen2025scaling,liu2024world}. Such token reduction strategies include directly pooling or dropping tokens and indirectly cutting down input frames. While effective, they become increasingly difficult to keep near-lossless as higher compression ratios are required, often introducing non-negligible degradation by removing fine-grained spatiotemporal cues or disrupting temporal continuity. This suggests that context compression should be considered along two orthogonal axes: reducing token count and reducing the representation size of each token, as illustrated in Figure~\ref{fig:dimension_and_pruning}. Therefore, to further compress video redundancy and reach more aggressive compression ratios, a new paradigm that is orthogonal to and composable with token-number reduction is needed.
+
+This paper introduces and pursues a complementary and general paradigm: token dimension compression. Instead of reducing the count of tokens, this approach focuses on reducing the dimensionality of the representations that tokens occupy in the KV cache, thereby slimming their memory footprint. This paradigm compresses representations while preserving the full set of input tokens, offering a memory-efficient path to long multimodal context modeling without discarding potentially crucial information.
+
+Concretely, we instantiate this token dimension compression paradigm with M$^2$LA, a new method that reparameterizes the Grouped-Query Attention (GQA) \cite{Ainslie23} blocks of a pretrained MLLM (Qwen2.5-VL \cite{bai2025qwen25vltechnicalreport}) into Multi-head Latent Attention (MLA) \cite{DeepSeek24}. In M$^2$LA, keys and values are stored in a shared, low-rank latent space and reconstructed on the fly via learned up-projections, allowing us to process substantially more visual evidence under the same memory budget. While our instantiation focuses on converting GQA to MLA, its principles about token dimension compression—namely RoPE-aware aggregation, low-rank factorization, and modality-aware adapters—constitute a relatively general schema. They can be applied to other attentions, including MLA ones for further optimization, offering a broadly applicable means for memory efficiency.
+
+We instantiate these ideas in M$^2$LA, a training‑light procedure that converts a pretrained GQA block into its MLA form. The conversion proceeds via (i) RoPE‑aware aggregation of positional channels and (ii) low‑rank factorization of non‑positional channels, followed by lightweight, modality‑aware adapters that accommodate the distributional differences between text and vision. Crucially, this is a drop‑in architectural change: it preserves the model generation interface, requires only a small calibration pass or brief response‑style tuning, and yields near‑lossless behavior on short contexts while unlocking much longer multimodal contexts under the same memory budget.
+
+Note token dimension compression is orthogonal to token number reduction. In practice, MLA‑based KV compression can be layered on top of sampling or merging pipelines to compound savings: pruning reduces the number of tokens; our method reduces the per‑token cache cost. This separation of concerns clarifies the design space for long multimodal context: token budgets manage redundancy at the input flow, while latent rank manages memory at the representation.
+
+Empirically, we show that M$^2$LA enables 2–5× KV‑cache reductions over comparable GQA settings at matched quality on several video benchmarks, and it translates to tangible gains on long‑video understanding, multi‑page document QA, and long‑horizon tool use. Beyond raw capacity, the KV headroom can be reinvested to increase per‑head dimensionality, improving expressivity without exceeding the original memory envelope. Together, these results indicate that reparameterizing attention for KV‑cache efficiency is a simple, broadly applicable mechanism for scaling multimodal context—without sacrificing the visual details long‑range reasoning depends on.
+
+Generally, this paper contributes as follows:
+\begin{itemize}
+    \item We introduce token-dimension compression as a general paradigm for long-context MLLMs, distinguishing it from token-number reduction. We instantiate this paradigm by reparameterizing GQA into MLA in Qwen2.5-VL, decoupling KV-cache size from the number of visual tokens. We propose M$^2$LA, a training-light conversion with RoPE-aware positional aggregation and low-rank non-positional factorization, augmented by modality-aware adapters for text and vision.
+    \item We demonstrate that M$^2$LA achieves near-lossless short-context accuracy, robust long-context scaling, and improved memory–compute trade-offs on diverse video tasks. Specifically, M$^2$LA reduces KV-cache memory by about 50\% while slightly improving performance over the baseline, including on long-video benchmarks.
+\end{itemize}
+
+\section{Related Work}
+\label{sec:Related}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.9\linewidth]{pic/main.png}
+    \caption{The framework of our {\method}. It converts general attention blocks into multi-head latent attention by re-structuring its computation while mostly inheriting weights. It consists of three steps that (1) reparameterize the attention blocks into MLA via RoPE-aware aggregation and low-rank factorization, (2) adapt to multimodal inputs using modality-aware adapters and visual latent budgeting, and (3) perform recovery training.}
+    \label{fig:main}
+\end{figure*}
+
+\paragraph{Long Context Modeling in Multimodal Large Language Models.}
+Handling long context has become the one of central challenges in Multimodal Large Language (MLLMs) \cite{comanici2025gemini,team2024gemini,wang2025dymu,zhang2025ivtp,li2024videochat,huang2025prunevid,wang2025internvideo2,li2025videochat,yan2025task,yan2025videochat,wang2022internvideo}, as high-resolution images, long videos, and large rich documents lead to severe token inflation. This primarily leads to token reduction strategies \cite{xue2024xgen,liu24,tong2025flashsloth,huang2025pgp,li2025mminference}. Foundational efforts such as BLIP-3~\cite{xue2024xgen} and LLaVA-NeXT~\cite{liu24} introduce efficient visual token compression via perceiver resamplers and dynamic resolution, enabling scalable multimodal fusion in form. 
+FastV~\cite{chen2024image} exploits attention-based token pruning but is affected by task-agnostic biases (especially in spatial reasoning). IVTP~\cite{zhang2025ivtp} gives instruction-aware methods, leveraging pseudo-CLS tokens to align pruning with user queries. Concurrently, video-specific approaches like VideoChat-Flash \cite{li2024videochat} and PruneVid~\cite{huang2025prunevid} harness spatiotemporal redundancy via hierarchical merging. 
+
+Besides of token reduction, some studies explore developing context capacity from long corpus training, inference extrapolation, and short-form representation for long inputs.
+LongVA~\cite{Zhang24} demonstrates that long-context capacity from text-only pretraining can transfer to vision without video-specific training. Building on these, recent models co-design vision encoders, positional embeddings, and attention mechanisms for extreme-length inputs: Qwen2.5-VL~\cite{bai2025qwen25vltechnicalreport} and Qwen3-VL~\cite{yang2025qwen3technicalreport} support native 256K-token contexts and extend to 1M tokens via YaRN-based extrapolation and interleaved mRoPE, enabling precise spatiotemporal reasoning in hour-long videos. Similarly, InternVL3~\cite{zhu2025internvl3exploringadvancedtraining} and InternVL3.5~\cite{wang2025internvl35advancingopensourcemultimodal} integrate dynamic high-resolution visual encoding with long-context LLM backbones, scaling to 128K tokens for document- and video understanding. 
+
+
+
+
+\paragraph{Efficient Attention.}
+The evolution of attention mechanisms in LLMs has been driven by the need for greater token throughput and expanded context handling.
+Starting from standard multi-head attention (MHA) \cite{Vaswani17}, variants like Multi-query attention (MQA) \cite{Shazeer19} and Grouped-query attention (GQA) \cite{Ainslie23} emerge to reduce KV cache memory by sharing or grouping key-value heads, balancing efficiency with expressivity. Further advancements, such as Multi-Head Latent Attention (MLA) \cite{DeepSeek24} and Multi-Matrix Factorization Attention (MFA) \cite{Step325}, dramatically compress the KV state by projecting keys and values into low-rank latent spaces or using structured decompositions, significantly shrinking cache size with negligible performance loss. For long-context modeling, specialized approaches like DeepSeek's Native Sparse Attention (NSA) \cite{DeepSeekNSA25} and GLM-4.5's combination of GQA with partial rotary positional embedding \cite{GLM4525} enhance context fidelity without inflating cache. These efficient attention architectures are crucial for improving the context capacity of multimodal large language models (MLLMs). While recent works have explored integrating GQA with MLA in text models \cite{ji2025mha2mla, meng2025transmla}, this promising implementation has not yet been explored within the visual domain.
+
+
+\section{Method}
+\label{sec:method}
+
+We aim to enable long context visual-language modeling by reducing KV-cache memory while preserving the expressivity and positional fidelity of attention. We first revisit Group-Query Attention (GQA) and Multi-Head Latent Attention (MLA), isolating where memory is spent and how positional encoding interact with KV sharing. Regarding this, we introduce M$^2$LA, a multimodal multi-head latent attention that reparametrizes a GQA block into an MLA form. This is achieved via a lightweight calibration, followed by modality-specific adapters to handle the distinct statistical properties of text and visual tokens. An overview of our approach is illustrated in Figure~\ref{fig:main}. 
+
+
+
+
+% \subsection{Preliminaries: Attention Memory-Saving Strategies}
+\subsection{Preliminaries}
+\label{subsec:gqa-mla}
+
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.75\linewidth]{pic/attention_arc.png}
+  \caption{Attention architectures. }
+  \label{fig:attention_arc}
+\end{figure}
+
+We begin with revisiting two prominent efficient attention mechanisms, Grouped-Query Attention (GQA) and Multi-Head Latent Attention (MLA), to analyze their respective approaches in reducing KV cache bottleneck.
+\paragraph{Background and Notation.}
+As shown in Figure~\ref{fig:attention_arc}, standard Multi-Head Attention (MHA) computes queries ($\bm{Q}$), keys ($\bm{K}$), and values ($\bm{V}$) from an input sequence $\bm{X}\in\mathbb{R}^{T\times d}$. These are split into $H$ heads, and attention is computed for each head. During autoregressive inference, $\bm{K}$ and $\bm{V}$ tensors, known as the KV cache, are stored and grow linearly with the sequence length $T$. For long sequences with visual tokens, this cache becomes the primary memory bottleneck.
+
+
+\paragraph{GQA}
+GQA mitigates this issue by grouping query heads and having all heads within a group share a single key and value projection. If MHA has $H$ heads, GQA partitions them into $G$ groups (where $G < H$). For a head $h$ in group $g(h)$, the attention is:
+\begin{equation}
+  \mathrm{Attn}^{(h)}(X)=\mathrm{softmax}\!\left(\frac{Q^{(h)}{K^{(g(h))}}^\top}{\sqrt{d_h}}\right)V^{(g(h))},
+  \label{eq:gqa}
+\end{equation}
+where KV cache is reduced from $O(HTd_h)$ to $O(GTd_h)$, offering a trade-off between memory and performance. %GQA thus interpolates between the expressiveness of MHA (when $G=H$) and the memory efficiency of MQA (when $G=1$).
+
+
+
+\paragraph{MLA} MLA offers a different strategy by compressing the key and value tensors into a shared low-rank latent representation. Instead of reducing the number of KV heads, MLA jointly compresses $\bm{K}$ and $\bm{V}$ into a latent vector $\bm{z}_t \in \mathbb{R}^{d_{\text{latent}}}$. It decouples positional information from content by splitting each head's channels into a non-positional part (nope) and a Rotary Position Embedding part (rope).
+
+% Contrary to GQA, MLA keeps $H$ query heads but compress $K$ and $V$ into a shared low-rank latent $Z \in \mathbb{R}^{T \times C}$ with $C < 2 n_h d_h$, as in \cref{fig:attention_arc}. The latent carries non-positional content while a compact positional representation is shared (MQA-style) across heads.
+
+Specifically, for each token $\bm{x}_t$, MLA computes:
+\begin{align}
+    \bm{q}_t &= \bm{x}_t \bm{W}_q \in \mathbb{R}^{n_h (d_{\text{nope}} + d_{\text{rope}})}, \\
+    \bm{z}_t &= \bm{x}_t \bm{W}_{\text{kv}} \in \mathbb{R}^{d_{\text{rope}} + d_{\text{latent}}}, \\
+    \bm{k}_t^{\text{nope}} &= \bm{z}_t^{\text{latent}} \bm{U}_K \in \mathbb{R}^{n_g d_{\text{nope}}}, \\
+    \bm{v}_t &= \bm{z}_t^{\text{latent}} \bm{U}_V \in \mathbb{R}^{n_g d_v}
+\end{align}
+The RoPE component $\tilde{\bm{k}}_t^{\text{rope}}$ is derived from $\bm{z}_t^{\text{rope}}$ and shared across all heads (MQA-style), while the non-positional keys $\bm{k}_t^{\text{nope}}$ are generated from the latent space via an up-projection matrix $\bm{U}K$. The full keys are a concatenation of these components. The key insight is that MLA caches only the compact latent vector $\bm{z}_t$ and the shared RoPE component, leading to a KV cache size of $O(T(d_{\text{latent}} + d_{\text{rope}}))$. This is much smaller than GQA's $O(GTd_h)$, as MLA achieves better performance with a smaller memory footprint by preserving head diversity through up-projection. 
+
+
+
+\subsection{M$^2$LA: Reparameterizing Attention for Efficient Multimodal Context}
+\label{subsec:m2la}
+We propose a method to convert a pre-trained GQA block into an equivalent MLA block. This allows us to inherit the benefits of a pre-trained model while leveraging the superior memory efficiency of MLA. The process involves two main steps: compressing the positional channels and factorizing the non-positional channels. This idea is inspired by recent work in LLMs \cite{meng2025transmla}, which we adapt and extend for the unique challenges of multimodal video understanding.
+
+\subsubsection{Reparameterization}
+\paragraph{RoPE-Aware Aggregation via PCA}
+Rotary Position Embeddings (RoPE) apply position-dependent rotations to query and key vectors. A key property is that the inner product between queries and keys is preserved under any position-independent unitary transform. We leverage this to compress the RoPE components from $H$ heads into a single shared key.
+
+Specifically, considering the unitary transform $U$ needs to capture essentials of the given rope keys with a linear compression, a feasible solution is to exploit the eigenvectors of the cross-head covariance matrix to form the unitary basis, as follows:
+
+
+\begin{enumerate}
+    \item \textbf{Activation Collection and Complexification:} We first pass a small, representative calibration dataset through the model to collect the key activations \(\mathbf{k}^{(h)} \in \mathbb{R}^{d_h}\) for each head \(h=1, \dots, H\) at a specific layer. We then transform these real vectors into their complex counterparts \(\mathbf{z}^{(h)} \in \mathbb{C}^{d_c}\).
+    \item \textbf{Cross-Head Complex PCA:} For each complex dimension \(m = 1, \dots, d_c\), we construct a vector \(\mathbf{v}_m \in \mathbb{C}^H\) by stacking the \(m\)-th component from all heads, \(\mathbf{v}_m = [z^{(1)}_m, \dots, z^{(H)}_m]^T\). We then compute the cross-head covariance matrix \(\mathbf{C}_m = \mathbb{E}[\mathbf{v}_m \mathbf{v}_m^H]\) and find its principal eigenvector, \(\mathbf{u}_m \in \mathbb{C}^H\). This eigenvector \(\mathbf{u}_m\) represents the direction of maximum variance for the \(m\)-th complex feature across all heads.
+    \item \textbf{Shared Key Construction:} The set of principal eigenvectors \(\{\mathbf{u}_m\}_{m=1}^{d_c}\) defines our projection. To obtain the shared key, we project the multi-head vectors onto this principal basis:
+    \begin{equation}
+        s_m = \mathbf{u}_m^H \mathbf{v}_m, \quad \text{for } m = 1, \dots, d_c.
+    \end{equation}
+    This yields a shared complex vector \(\mathbf{s} = [s_1, \dots, s_{d_c}]^T \in \mathbb{C}^{d_c}\). Finally, we de-complexify \(\mathbf{s}\) back into a real-valued vector \(\mathbf{k}_{\text{shared}} \in \mathbb{R}^{d_h}\) by interleaving its real and imaginary parts. This vector serves as the key for the new MQA head.
+\end{enumerate}
+
+\paragraph{Low‑Rank Factorization for Non‑Positional Channels.}
+For the non-positional channels, which are already shared within GQA groups, we introduce a low-rank bottleneck. Let the concatenated group-wise non-positional keys be $K_\text{nope} \in \mathbb{R}^{T \times (Gd_\text{nope})}$. We aim to find a latent representation $Z = X W_{kv} \in \mathbb{R}^{T \times C}$ (with $C \ll Gd_\text{nope}$) and up-projection matrices $U_K, U_V$ such that:
+\begin{equation}
+K_\text{nope} \approx Z U_K, \quad V_\text{nope} \approx Z U_V
+\end{equation}
+The matrices $W_{kv}$, $U_K$, and $U_V$ are estimated via least squares on the cached activations from the calibration set. During inference, we only cache $Z$, reconstructing the full keys and values on the fly.
+
+
+\subsubsection{Adapting to Multimodal Inputs}
+The reparameterization gives an efficient attention. We now introduce M$^2$LA by adapting this block for MLLMs that process both text and a number of visual tokens.
+\paragraph{Modality-Aware Adapters.} While tokens from all modalities share a temporal sequence, their distributions differ. We use lightweight modality-specific linear adapters $A_\text{txt}$, $A_\text{vis}$ on top of $Z$, applied to the latent representation:
+\begin{equation}
+    K_\text{nope}^{\text{mod}} \approx (Z A_{\text{mod}}) U_K, V_\text{nope}^{\text{mod}} \approx (Z A_{\text{mod}}) U_V,
+\end{equation}
+where $\text{mod} \in \{ \text{txt}, \text{vis}\}$. These adapters are initialized as identity matrices and can be optionally fine-tuned to specialize the latent space for each modality without altering the shared projection heads.
+
+
+\paragraph{Visual Latent Budgeting.} 
+Leveraging modality-aware adapters enables us to allocate different latent dimensions across modalities according to their information content and task importance. Recent work \cite{lin2025boosting,li2024videochat} observes that, as representations propagate from lower to higher layers in causal LLMs, the unidirectional nature of self-attention induces information migration: information in earlier visual tokens gradually shifts into later text tokens, leading visual tokens to receive diminishing attention and to become less important at higher layers. This suggests that the memory devoted to visual tokens should shrink with depth, calling for a more dynamic mechanism. Migrating to an MLA architecture affords precisely this flexibility: rather than discarding tokens or forcibly merging them, we dynamically adjust the ranks used when compressing and storing keys and values in MLA—i.e., the latent dimension.
+
+
+
+To guide visual budgeting and evaluate the impact of visual compression, we use Multimodal Perplexity (MMPPL). Perplexity is a standard metric for evaluating a language model's confidence, where lower values indicate the model is less ``surprised" by the target, reflecting a better grasp of the underlying data distribution. We adapt this measurement in our work.
+
+Let a video $V = \{f_t\}_{t=1}^{T}$ be processed by a frozen vision-language model $M_\theta$ with a task prompt $c$. For a target text sequence $Y = (y_1,\dots,y_N)$, MMPPL is as:
+\begin{multline}
+\mathrm{MMPPL}(V, c, \mathbf{r}, \mathbf{M}; \theta) = \exp\!\big(\mathcal{L}_{\text{NLL}}(Y \mid V, c, \mathbf{r}, \mathbf{M}; \theta)\big). \\  \text{w.r.t} \quad
+\mathcal{L}_{\text{NLL}}(Y \mid V, c, \mathbf{r}, \mathbf{M}; \theta) = \\
+- \frac{1}{\sum_{t=1}^{N} r_t} \sum_{t=1}^{N} r_t \, \log p_\theta\!\left(y_t \,\middle|\, y_{<t},\, V \odot \mathbf{M},\, c\right)
+\end{multline}
+where $\mathbf{M}$ is a visual mask representing the transformation (e.g., frame sampling), and $\mathbf{r}$ is a language mask to score only relevant tokens (e.g., the answer in a Q\&A task). A lower MMPPL signifies that the transformed video $V$ retains more utility for the model to predict the target $Y$. 
+
+
+\subsubsection{Analysis}
+
+\paragraph{Why Share RoPE but Adapt Content?}
+Our design to share the RoPE across all modalities while using adapters for non-positional content is deliberate. RoPE encodes the absolute position of a token within the global sequence, sound for both text and images. This shared positional awareness is crucial for understanding temporal order. In contrast, the adapters operate on the content of the tokens, allowing the model to handle the notable distributional shift between the semantic spaces of language and vision without requiring separate attention blocks.
+
+\paragraph{Efficiency.}
+The reparameterized M$^2$LA block significantly reduces the KV cache. For a typical configuration ($H=32, G=4, d_k=128$), our method can yield a near 2x reduction in KV cache size over GQA and over 10x compared to MHA. This saving can be reinvested to increase performance, for instance, by using larger head dimensions ($d_h$) to enhance the model's expressive power without exceeding the memory budget of the original model. The only computational overhead during inference is a negligible low-rank up-projection per step.
+
+\paragraph{Adaptation to Other Attentions.} 
+Though we mainly use GQA in attention reparametrization for illustration and experimentation, the proposed {\method} is also applicable to other attention variants (e.g. MHA, MQA, etc) and even naive MLA itself \cite{DeepSeek24}. DeepSeek's MLA, as a general efficient attention mechanism, might process both text and visual tokens through the same latent space and up-projection matrices. While efficient, this shared processing might not optimally account for the distinct statistical properties and information distribution of different modalities. {\method}'s modality-aware adapters address this by allowing the shared latent space to be specialized for each modality after the initial compression. Moreover, {\method} proposes dynamically adjusting the latent dimension used for visual tokens based on depth or importance. An existing MLA could be modified to implement this by having layer-dependent latent dimensions for visual tokens. Regarding this, {\method} can lead to enhanced multimodal understanding with more aggressive compression even on original MLA.
+
+\subsection{Tuning MLLMs with {\method}}
+As emphasized, {\method} is pluigible to existing mainstream MLLMs and only need a swift tuning to recover its original capabilities. We detail its training data and recipe as follows. Before that, we also introduce a lite multimodal input decoration approach for improving its temporal sensitivity.
+
+
+\input{tab/main_results}
+
+\paragraph{Frame Landmarks.} \label{sec:framelandmark}
+To address the challenges of temporal grounding and long-range attention decay in multimodal contexts, we introduce \emph{frame landmarks}, serving as a salient human-interpretable summaries for clips. They are short textual anchors inserted \emph{at the end} of fixed-size frame groups. Specifically, given a video, its frames are encoded into a sequence of vision tokens, and these tokens are partitioned into groups of $n$ frames. Then we append a textual landmark $\ell_k$, explicitly encoding its covered frame range (e.g., \texttt{Frame0~n-1}). The complete multimodal input sequence is constructed by combining an optional textual prefix ($X_{\text{txt}}^{\text{pre}}$), followed by pairs of vision tokens ($V_{\mathcal{G}k}$) and their corresponding landmarks ($\ell_k$) for each group, and finally, an optional textual suffix ($X_{\text{txt}}^{\text{post}}$). This results in the input structure:
+\begin{equation}
+X=\big[X_{\text{txt}}^{\text{pre}};,\big(V_{\mathcal{G}1},,\ell_1\big),,\dots,,\big(V_{\mathcal{G}K},\ell_K\big);;X_{\text{txt}}^{\text{post}}\big].
+\end{equation}
+This placement of landmarks, combined with a causal attention mask, allows each landmark to aggregate its group's visual evidence before becoming available to subsequent text tokens. 
+Intuitively, textual queries can then retrieve visuals via a shorter, two-hop path (text $\!\to\!$ landmark $\!\to\!$ group) alongside the standard direct attention to all vision tokens. Rather than restricting access, landmarks emphasize attention toward temporally localized summaries. This organizes retrieval around $\mathcal{O}(T/n)$ anchors that complement full token-level attention with minimal overhead (only $K$ additional tokens), while preserving fine-grained details through each landmark's local aggregation. Empirically, we find that these landmarks improve long-context stability and frame-level localization without altering the underlying attention mechanism or training objective, as validated in Section \ref{sec:ab_fp}.
+
+\paragraph{Training Data.}
+
+To ensure a fair comparison, we follow VideoChat-Flash~\cite{li2024videochat} and employ \textbf{the same training corpus} of stage 3 for training. Specifically, our dataset comprises 3.5 million instruction tuning samples, including 1.1 million images, 1.7 million short videos (each under 60 seconds), 
+and 0.7 million long videos (ranging from 60 to 3600 seconds). By combining short and long video data, we aim to enhance the model’s capacity for long-form video comprehension while preserving its ability to capture fine-grained visual details.
+
+\paragraph{Learning.} 
+Our model is trained on the aforementioned dataset by freezing the visual encoder and tuning only the connector and LLM components. This approach enables us to achieve strong performance quickly and with minimal computational overhead. Unlike prior methods that often rely on comprehensive multi-stage training pipelines \cite{li2024videochat,shu2025video,liu2025video,qin2025video}, we employ a single training phase. We achieve this by effectively packing and training short and long videos together, demonstrating results comparable to multi-stage alternatives.
+
+
+
+\section{Experiments}
+\label{sec:experiments}
+
+
+
+\paragraph{Implementation Details.}
+
+Building upon QwenVL2.5, we replace its vision encoder with UMT-L \cite{li2023unmasked} (a ViT encoder specialized for spatiotemporal tasks) for aligning with VideoChat-Flash \cite{li2024videochat}. The LLM uses Qwen2.5-7B-1M for context length. When processing long videos, we divide them into clips, each having 4 frames. 
+
+To validate that our method is orthogonal to token reduction, we adopt VideoChat-Flash, a token-pruning MLLM, as the base model and denote the resulting system as VideoChat-Flash-{\method}. This setup allows token pruning and token-dimension compression to be stacked, achieving the best near-lossless compression ratio in our study. We fine-tune VideoChat-{\method} end-to-end for video instruction tuning on 16 NVIDIA A100 GPUs using DeepSpeed ZeRO-1. The language model and MLP adapters are jointly optimized for seamless multimodal integration.
+
+For key hyperparameters, the learning rate is set to $1 \times 10^{-5}$ with cosine decay and 0.05 warmup ratio. We use 16 gradient accumulation steps and per-device batch size is 1, with the maximum sequence length of 32,768 tokens. Mixed-precision training (bf16 with TF32) ensures computational efficiency and stability.
+Gradient checkpointing is enabled to handle long sequences with minimal VRAM usage. For images, we use anyres\_nopad tiling with pad-free spatial fusion to remove padding artifacts and support variable-resolution inputs.
+
+\paragraph{Benchmarks.}
+We evaluate our approach along with those popular MLLMs on multimodal video understanding benchmarks on a multiple-choice question-answering format, including short video benchmark like MVBench \cite{li2024mvbench} ,temporal grounding benchmark like Charades-STA\cite{gao2017tall}, and three relatively long video benchmarks like LongVideoBench \cite{wu2024longvideobench}, MLVU \cite{zhou2024mlvu}, LVBench \cite{wang2025lvbench}, and VideoMME \cite{fu2025video}, covering footage ranging from seconds-level to hour-level durations.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.75\linewidth]{pic/latent_rank_result.png}
+  \caption{The latent dimension study using MMPPL.}
+  \label{fig:best_latent}
+\end{figure}
+
+
+\begin{table*}[htbp]
+\caption{Performance comparisons from GQA to MLA using VideoChat-Flash \cite{li2024videochat}.} 
+\centering
+\addtolength\tabcolsep{-1pt}      
+\small                
+\renewcommand{\arraystretch}{0.9} 
+\begin{tabular}{l|c|c|c|c|c|c|c|c|c|c|c}
+\toprule
+\multicolumn{1}{c|}{\multirow{2}{*}{Model}} & 
+\multicolumn{1}{c|}{\multirow{2}{*}{KVcache/Toks}} &
+\multicolumn{4}{c|}{VideoMME} & 
+\multicolumn{1}{c|}{\multirow{2}{*}{MVBench}} & 
+\multicolumn{1}{c|}{\multirow{2}{*}{VideoMMMU}} & 
+\multicolumn{4}{c}{Charades-STA} \\
+
+\multicolumn{1}{c|}{} & 
+\multicolumn{1}{c|}{} & 
+short & mid & long & avg & 
+\multicolumn{1}{c|}{} & 
+\multicolumn{1}{c|}{} & 
+mIoU & R@0.3 & R@0.5 & R@0.7 \\
+\midrule
+orig & 1024 & 74.4 & 62.2&53.8 & 63.5 & 73.4&41.7 & 43.6 & 65.5 & 42.7 & 21.9 \\
+\midrule
+{\method} & \textbf{530} & 74.6 & 62.4 & 54.1 & \textbf{63.7}$\uparrow$ & \textbf{74.2}$\uparrow$ &\textbf{42.3}$\uparrow$& \textbf{47.1}$\uparrow$ & 70.8 & 49.9 & 25.6 \\
+\bottomrule
+\end{tabular}
+
+\vspace{-4mm}
+\label{tab:loss_from_gqa_to_mla} 
+\end{table*}
+
+
+% \begin{table*}[htbp]
+%   \caption{Performance comparisons from GQA to MLA using VideoChat-Flash \cite{li2024videochat}.} 
+%   \centering
+%   \small                
+%   \renewcommand{\arraystretch}{0.9} 
+%   \setlength{\tabcolsep}{2pt} % 稍微压缩列间距
+%   \begin{tabularx}{\textwidth}{l|c|X|X|X|X|c|c|X|X|X|X} % X代表自动分配宽度的列
+%   \toprule
+%   Model & KV/Tok$\downarrow$ & \multicolumn{4}{c|}{VideoMME} & MVB. & V-MU & \multicolumn{4}{c}{Charades-STA} \\
+%   & & s. & m. & l. & avg & & & mIoU & R3 & R5 & R7 \\ % 缩写表头
+%   \midrule
+%   VideoChat-Flash-orig & 1024 & 74.4 & 62.2 & 53.8 & 63.5 & 73.4 & 41.7 & 43.6 & 65.5 & 42.7 & 21.9 \\
+%   \midrule
+%   VideoChat-{\method} & \textbf{530} & 74.3 & 61.7 & 53.9 & 63.3 & \textbf{74.2} & \textbf{42.3} & \textbf{47.1} & 70.8 & 49.9 & 25.6 \\
+%   \bottomrule
+%   \end{tabularx}
+%   \label{tab:loss_from_gqa_to_mla} 
+%   \end{table*}
+
+
+
+
+
+\subsection{Multimodal Video Understanding}
+% \paragraph{Model Transfer Evaluation.}
+Reparameterizing GQA to MLA reduces the per-token KV-cache dimensionality from 1024 to 530 while slightly improving overall accuracy. In Table~\ref{tab:main_results}, we evaluate overall short- and long-video capabilities under matched token budgets and observe that the reduced cache cost does not hurt performance, and can even improve it.
+Further, we assess transfer on four representative tasks: short-video understanding and fine-grained perception(MVBench), multimodal knowledge and reasoning (VideoMMMU), temporal grounding (Charades-STA), and comprehensive long-video evaluation (VideoMME). As shown in Table~\ref{tab:loss_from_gqa_to_mla}, with nearly half the KV budget, VideoChat-Flash-{\method} can slightly \textbf{improve} the VideoMME average score and also achieves gains on the other three datasets. We attribute this improvement to reinvesting the saved KV budget into larger query/key head dimensions, increasing them from 128 to 256, which substantially enhances the expressive capacity of each head; this observation is also consistent with prior findings that larger head dimensions can improve \textbf{model expressivity}~\cite{Step325}. Together, these results indicate that the compressed KV representation not only preserves but can even strengthen spatiotemporal fidelity under fixed token budgets.
+
+
+
+
+
+
+
+
+
+\subsection{Efficiency.} 
+M$^2$LA significantly enhances the model's context capacity by reducing cache consumption. This optimization enables substantial scaling: during training, the model can process over 2,000 frames using 32 NVIDIA A100-80G GPUs with DeepSpeed ZeRO-3. For inference, a single NVIDIA A100-80G GPU is capable of handling more than 15,000 frames. We further quantify the per-frame KV-cache overhead with a simple metric below.
+
+\paragraph{End-to-end Throughput.}
+Beyond KV-cache footprint, we evaluate end-to-end inference efficiency. As shown in Figure~\ref{fig:throughput_comparison}, M$^2$LA consistently improves decoding throughput over the original model across a wide range of prefill lengths, from 8k to 128k tokens, yielding approximately $1.3\times$--$1.8\times$ speedups. This improvement becomes more pronounced in longer-context regimes, where KV-cache related memory I/O increasingly dominates runtime. By reducing the KV-cache by $\sim$2$\times$, M$^2$LA alleviates this bottleneck and translates memory savings into practical latency and throughput gains. Results are measured on a single NVIDIA H200 GPU with batch size 1, greedy decoding, bf16 precision, and FlashAttention enabled, with each point averaged over 10 runs after warm-up.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.9\linewidth]{pic/throughput_comparison.png}
+  \caption{End-to-end throughput comparison between the original model and M$^2$LA across different prefill sizes.}
+  \label{fig:throughput_comparison}
+\end{figure}
+
+\paragraph{Metric: Cache Per Frame (CPF)}
+To evaluate the memory efficiency of Video-LLMs during streaming, we propose a metric termed \textbf{Cache Per Frame (CPF)}. CPF quantifies the incremental memory footprint occupied by the Key-Value (KV) cache for each processed video frame per network layer. Formally, CPF is defined as:
+
+\begin{equation}
+    \text{CPF} = N_{\text{token}} \times D_{\text{kv}} \times S_{\text{prec}}
+\end{equation}
+
+\noindent where $N_{\text{token}}$ denotes the number of tokens used to represent a single video frame, $D_{\text{kv}}$ represents the dimensionality of the KV cache heads per layer, and $S_{\text{prec}}$ is the storage size (in bytes) determined by the model's precision (e.g., 2 bytes for BF16).
+
+\paragraph{Efficiency Analysis.}
+In our proposed architecture, the visual encoder and projector are optimized to compress each frame into merely $N_{\text{token}}=16$. Given the model configuration where the KV dimensionality $D_{\text{kv}}=530$ (resulting in $D_{\text{kv}} \times S_{\text{prec}} = 1,060$ bytes under BF16), we calculate the CPF as follows:
+
+\begin{equation}
+    \text{CPF}_{\text{Ours}} = 16 \times 1,060 \text{ bytes} \approx \mathbf{16.6 \text{ KB}}
+\end{equation}
+
+This metric highlights the extreme compactness of our method. In comparison, Qwen2.5-VL-7B exhibits a significantly higher memory cost with a CPF of approximately \textbf{3,848 KB}. Thus, our method reduces the per-frame cache overhead by a factor of \textbf{$\sim230\times$}, effectively eliminating the memory bottleneck for long-context video understanding. More results are shown in Table~\ref{tab:cpf_comparison}.
+\begin{table}[t]
+    \centering
+    \caption{Comparison of memory efficiency across different Video-LLMs. \textbf{CPF} (Cache Per Frame) denotes the incremental KV cache memory required per frame per layer. ``Size'' refers to the whole model parameter size.}
+    \label{tab:cpf_comparison}
+    \begin{tabular}{lcc} 
+        \toprule
+        \textbf{Model} & \textbf{Size} & \textbf{CPF (KB)} $\downarrow$ \\
+        \midrule
+        InternVL2.5 & 2B & 1024 \\
+        LongVILA & 7B & 392 \\
+        InternVL2.5 & 8B & 512 \\
+        LLaVA-Video & 8B & 1352 \\
+        Qwen2.5-VL & 8B & 3848 \\
+        \midrule
+        \textbf{Ours} & \textbf{8B} & \textbf{16.6} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+\begin{table}[h]
+  \caption{Scaling with the number of frames $F$ across benchmarks.}
+  \label{tab:scaling_context}
+  \centering
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+    Frames & LongVideoBench  & LVBench & VideoMME \\
+    \midrule
+    32   &61.40  & 40.81 & 61.25 \\
+    64   & 61.70  & 41.14 & 61.70 \\
+    128  & 62.45  & 43.31 & 62.59 \\
+    256  & 64.40 & 43.35 & 62.70 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+
+% \subsection{Long Video Context Evaluation}
+
+\paragraph{Multimodal Context Scaling.}
+We quantify how performance scales with available visual context by varying the number of frames $F \in \{32, 64, 128, 256\}$ under the same preprocessing and inference setup. We report per-benchmark scores (higher is better unless noted). As shown in Table~\ref{tab:scaling_context}, increasing the number of frames from 32 to 256 consistently improves scores across all evaluated benchmarks, whether tested videos are short or long.
+
+
+
+
+
+
+
+
+
+
+\subsection{Ablation}
+
+\paragraph{Models}
+We further verify the generality of our method on additional MLLM backbones beyond VideoChat-Flash. In particular, we apply the same conversion to LLaVA-Video-8B and Qwen3-VL-8B-Instruct \cite{bai2025qwen3} under a unified 50\% compression ratio, and report the VideoMME results before and after conversion in Table~\ref{tab:model_generalization}. These results are intended to show that the benefits of M$^2$LA are not tied to a single architecture, but transfer across different multimodal model families.
+
+\begin{table}[t]
+  \caption{Generalization of M$^2$LA to different MLLM backbones on VideoMME. ``Original'' denotes the pretrained model before conversion, and ``M$^2$LA'' denotes the converted model.}
+  \label{tab:model_generalization}
+  \centering
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    Model & Setting & KV Dim $\downarrow$ & VideoMME $\uparrow$ \\
+    \midrule
+    LLaVA-Video & Original & [1024] & [63.3] \\
+    LLaVA-Video & M$^2$LA & [530] & [62.9] \\
+    \midrule
+    Qwen3-VL & Original & [2048] & [68.89] \\
+    Qwen3-VL & M$^2$LA & [1024] & [69.4] \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Dynamic Latent Dimension.}
+We utilize MMPPL to guide the dimension setting of visual latent variables, while also using PPL as a reference. Table~\ref{tab:ablation_latent} demonstrates the impact of different dimension settings on transfer performance. We use the average number of dimensions for the KV cache per token to represent the space overhead.
+``Base'' denotes the original model configuration, featuring a uniform 512 dimensions per layer. For reference, we include ``mean-384'' and ``mean-640'', which correspond to average dimensions of 384 and 640 per layer, respectively. ``Linear-up'', ``linear-down''and ``dynamic'' represent strategies with linearly increasing, linearly decreasing and optimally searched dimensions, respectively.
+
+
+Under the dynamic setting, layer-wise ranks selected by MMPPL yield a more compact per-layer configuration.
+Despite reducing the overall average cache dimension compared to the mean-512 baseline (530 vs.\ 576), PPL further decreases (11.23 vs.\ 11.66) and MMPPL improves (3.61 vs.\ 4.03).
+This indicates that allocating tighter ranks per layer can enhance model confidence while saving KV-cache memory, achieving better accuracy--efficiency trade-offs than a uniform rank.The best result is shown in Figure \ref{fig:best_latent}.As the number of layers increases, the required dimension of Latent gradually decreases, which aligns with our previous viewpoint.
+
+
+
+\paragraph{Calibration Robustness.}
+Since there is a lightweight calibration stage to estimate the projection matrices, we further examine how sensitive this step is to the amount of calibration data. We keep the conversion recipe fixed and sweep the total calibration length from 16k to 256k. As shown in Table~\ref{tab:ablation_calibration}, the resulting PPL remains \textbf{highly stable} across all settings, with a variation of less than 0.02. This suggests that the calibration phase mainly captures stable principal directions rather than learning new capabilities, and therefore does not require large-scale data to obtain reliable projections.
+
+\begin{table}[t]
+  \caption{Robustness to calibration token length.}
+  \label{tab:ablation_calibration}
+  \centering
+  \begin{tabular}{@{}lccccc@{}}
+    \toprule
+    Length & 256k & 128k & 64k & 32k & 16k \\
+    \midrule
+    PPL$\downarrow$ & 11.9583 & 11.9760 & 11.9655 & 11.9708 & 11.9724 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+
+\paragraph{Frame Prompt.} \label{sec:ab_fp}
+
+We study the effectiveness of inserting textual anchors (``frame prompts''/landmarks) at the end of fixed-size frame groups, as described in Section ~\ref{subsec:m2la}. Our experiments empricially show that (i) enabling frame prompts improve performance across benchmarks; (ii) the  group size $n$ (frames per landmark) in this design is relative robust against video benchmark results. Specifically, we keep the backbone, token budget, and training data fixed, and only toggle the presence of frame prompts or vary $n \in \{4,8,16,32\}$.
+Sensitivity results are shown in Table~\ref{tab:frame_prompt_groupsize}.
+
+
+\begin{table}[t]
+  \caption{Ablation of latent dimension setting.}
+  \label{tab:ablation_latent}
+  \centering
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    Setting &cache cost$\downarrow$ & PPL$\downarrow$ & MMPPL$\downarrow$ \\
+    \midrule
+    % \textbf{baseline} & - & 9.1187 & \\
+    % \cmidrule{1-4}
+    mean-384 &448&13.1919 & 4.9123\\
+    \textbf{dynamic} &\underline{530}& \underline{11.2302} & \textbf{3.6141} \\
+    mean-512 &576 &11.6603 & 4.0437\\
+    linear-up &576 &11.9750 &4.3481 \\
+    linear-down &576 &11.6418 &3.7839\\
+    mean-640 &724 & 11.1071 & 3.6719\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[t]
+  \caption{Sensitivity to group size $n$ (frames per landmark). Larger $n$ means fewer landmarks. In LongVideoBench, its maximum frame number in evaluation is 128. }
+  \label{tab:frame_prompt_groupsize}
+  \centering
+  \begin{tabular}{@{}ccc@{}}
+    \toprule
+    Group size $n$ & LongVideoBench & LVBench \\
+    \midrule
+    4  & 0.62453 & 43.31  \\
+    8  & 0.6103 & 41.93 \\
+    16 & 0.6111 & 42.00  \\
+    32 & 0.6066 & 42.33  \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+
+% \begin{table}[t]
+%   \caption{Effect of frame prompts across benchmarks. Results are reported under matched token budgets. }
+%   \label{tab:frame_prompt_bench}
+%   \centering
+%   \begin{tabular}{@{}lccc@{}}
+%     \toprule
+%     Benchmark  & Without FP & With FP \\
+%     \midrule
+%     MVBench & -- & -- \\
+%     LongVideoBench  & 63.7 & 64.3 \\
+%     MLVU & -- & -- \\
+%     LVBench & -- & -- \\
+%     VideoMME & -- & -- \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
+
+\paragraph{Rope Head Dimension.}
+An important insight of M$^2$LA is that the dimensions saved by dynamically sizing the latent space can be traded for a larger RoPE dimension to improve model performance. In prior implementations such as DeepSeek‑MLA and related work, the RoPE head dimension is typically set to 64, whereas the NoPE head dimension is kept at the full head size (128) due to the presence of up‑projection matrices, yielding a total head dimension of 192. We hypothesize that a larger RoPE head better preserves performance. Moreover, recent studies\cite{Step325,hu2025multi} suggest that increasing the overall head dimension enhances expressivity; since the NoPE part is fixed, a larger RoPE head invariably implies a larger total head dimension. We therefore evaluate RoPE head dimensions in $\{16, 32, 64, 128\}$ while keeping the sum of RoPE and latent dimensions constant, reporting both PPL and MMPPL. The results in Table~\ref{tab:ablation_rope_head_dim} corroborate our hypothesis.
+
+\begin{table}[h]
+  \caption{Ablation study on rope head dimension. The total dimension (rope + latent) is kept constant.}
+  \label{tab:ablation_rope_head_dim}
+  \centering
+  \begin{tabular}{@{}ccc@{}}
+    \toprule
+    Rope Head Dim & PPL$\downarrow$ & MMPPL$\downarrow$ \\
+    \midrule
+    16 & 483.3289 & 293.5998 \\
+    32 & 72.0018 & 24.1352 \\
+    64 & 11.6603 & 4.0303 \\
+    128 & \textbf{11.3175} & \textbf{3.8848} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+
+
+
+
+
+% \subsection{Limitation}
+% A potential limitation of the given {\method} lies in its reliance on a calibration phase for reparameterizing attention blocks into MLA. The effectiveness of RoPE aggregation and least-squares factorization for non-positional channels is directly tied to the used calibration dataset. If such data does not adequately capture visual and textual patterns during inference, the resulting latent space might not be optimally expressive, potentially leading to performance degradation on out-of-distribution scenarios. Furthermore, while preserving all input tokens, the compression of each token's representation into a latent space, by definition, involves information reduction. Though empirical results show near-lossless performance on current benchmarks, the extent to which extremely fine-grained visual or textual details are preserved under high compression ratios might vary, posing challenges for tasks demanding highly nuanced distinctions not fully covered in the current evaluation.
+
+
+\section{Conclusion}
+\label{sec:conclusion}
+We present M$^2$LA, a training-light reparameterization that converts GQA blocks into Multimodel Multi-head Latent Attention for multimodal large models to address the challenge of processing long multimedia contexts. By compressing keys and values into a fixed-size latent space while sharing a compact RoPE component, M$^2$LA decouples KV-cache size from the number of visual tokens, preserving fine-grained spatiotemporal details under long contexts. 
+We further introduced modality-aware adapters, frame prompts that create high-salience textual anchors, and a dynamic latent budgeting strategy. Experiments on both show and long video benchmarks show near-lossless short-context accuracy, strong long-context scaling, and favorable memory--compute trade-offs. We believe representation compression offers a simple and general path to scale multimodal context capacity without sacrificing visual fidelity, while remaining orthogonal to token-number reduction and thus readily composable with it. Future work will explore more sophisticated dynamic latent rank adjustment, end-to-end learning of compression matrices, and extending {\method}'s principles to other efficient attention mechanisms for even greater memory and computational efficiencies.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%
+%% The acknowledgments section is defined using the "acks" environment
+%% (and NOT an unnumbered section). This ensures the proper
+%% identification of the section in the article metadata, and the
+%% consistent spelling of the heading.
+\begin{acks}
+To Robert, for the bagels and explaining CMYK and color spaces.
+\end{acks}
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{main}
+
+
+%%
+%% If your work has an appendix, this is the place to put it.
+\appendix
+
+\section{Research Methods}
+
+\subsection{Part One}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+malesuada, quam in pulvinar varius, metus nunc fermentum urna, id
+sollicitudin purus odio sit amet enim. Aliquam ullamcorper eu ipsum
+vel mollis. Curabitur quis dictum nisl. Phasellus vel semper risus, et
+lacinia dolor. Integer ultricies commodo sem nec semper.
+
+
+\end{document}
+\endinput
+%%
+%% End of file `sample-sigconf-authordraft.tex'.

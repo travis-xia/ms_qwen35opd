@@ -1,0 +1,50 @@
+\begin{table*}[h]
+    \caption{Results on video understanding benchmarks.} 
+    \centering
+    \addtolength\tabcolsep{-2.4pt}
+    \small  % 减小字体
+    \renewcommand{\arraystretch}{0.92}  % 减小行间距
+    \begin{tabular}{llc|c|c|c|c}
+    \toprule
+    \multicolumn{1}{c}{\multirow{2}{*}{Model}} & 
+    \multicolumn{1}{c}{\multirow{2}{*}{Size}} & 
+    \multicolumn{1}{c}{\multirow{2}{*}{KVcache/Token}} & 
+    \multicolumn{1}{c|}{MLVU Dev} &  
+    \multicolumn{1}{c|}{\multirow{2}{*}{MVBench}} & 
+    \multicolumn{1}{c|}{\multirow{2}{*}{LongVideoBench}} & 
+    \multicolumn{1}{c|}{\multirow{2}{*}{LVBench}} \\
+    
+    \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & M-avg & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\ 
+    \midrule
+    \textbf{Closed-source Models} \\
+    
+    GPT-4o  & -  & - & {64.6}  & - &\textbf{66.7} & 64.4 \\
+    % Gemini-1.5-Pro & - & - & - & 60.5 & 64.0 & - \\
+    Gemini-2.5-Pro & - & - & \underline{81.2} & - & - & \textbf{69.2} \\
+    Seed1.5-VL & 8B  & - & \textbf{82.1} &\textbf{74.4} & - &  \underline{64.6} \\
+    Eagle2.5 & 8B & -  & 77.6 & - & 66.4 & {-} \\
+    
+    \midrule
+    \textbf{Open-source Models}\\ 
+    
+    InternVL2.5\cite{chen2025expandingperformanceboundariesopensource} & 78B & 2048  & 75.7  & - & 63.6  & {-} \\
+    Qwen-2.5-VL\cite{bai2025qwen25vltechnicalreport} & 72B & 2048  & 74.6  & - & 60.7 & {47.3} \\
+    LLaVA-Video\cite{zhang2024video} & 72B & 2048  & 74.4  & - & 61.9 & {-} \\
+    InternVL2.5 &2B & 2048& 61.4&68.8& 46.0& - \\
+    LongVILA\cite{chen2024longvila}& 7B & 1024  & - & 67.1 &57.1  & {-} \\
+    InternVL2.5 & 8B & 1024 & {68.9} &72.0 & 60.0  & {-} \\
+    Qwen-2.5-VL & 8B & 1024& 70.2 & 69.6 & 56.0 & {45.3} \\
+    LLaVA-Video & 8B & 1024 & 70.8 & 58.6 & 58.2  & {-} \\
+    
+    NVILA\cite{liu2025nvila} & 8B & 1024 & 70.1 &  68.1 & 57.7 & {-} \\
+    VideoLLaMA3\cite{zhang2025videollama} & 8B & 1024 & 73.0 &65.5 & 59.8 & 45.3 \\
+    
+    VideoChat-Flash-{\method} & 8B & \textbf{530}& 72.7 & \underline{74.2}  & 64.3 & 46.1 \\
+    \bottomrule
+    \end{tabular}
+    
+    % \vspace{-4mm}
+    \label{tab:main_results} 
+    \end{table*}
+    
+    

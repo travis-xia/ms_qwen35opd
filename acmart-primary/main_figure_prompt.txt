@@ -1,0 +1,48 @@
+Create a clean vector-style overview figure for an ACM multimedia research paper.
+
+Canvas and style:
+- Wide two-column paper figure, 16:9 aspect ratio, white background.
+- Polished academic diagram, not photorealistic.
+- Use thin rounded rectangles, simple icons, arrows, and small PCBA/standard-document thumbnails.
+- Use a restrained color palette: teal for standards knowledge, blue for real visual evidence, amber for comparison/counting, dark gray for the student and final output.
+- Keep text short and readable. Do not add random labels, fake paragraphs, decorative gradients, or clutter.
+- The figure must work when printed in grayscale.
+
+Main title inside the figure:
+S2R-MOPD: Standards-to-Real Multi-Teacher On-Policy Distillation
+
+Left side: inputs and domains:
+1. A teal block labeled "Standards-derived VQA" with icons of a rule document, package standard diagram, defect taxonomy, cause/action notes.
+2. A blue block labeled "Real PCBA VQA" with icons of a production-line PCB crop, tiny components, solder joints, polarity mark, defect crop.
+3. An amber block labeled "Template / Counting VQA" with two image thumbnails labeled "reference" and "target", plus tiny component counters or pin counters.
+4. Under the three input blocks, show a small shared block labeled "Canonical answer schema" with fields: component, defect, side, count, cause, action.
+
+Center: teacher specialization:
+- Draw one shared base model block at the bottom center labeled "Shared PCBA base checkpoint".
+- From this base, draw three upward arrows to three specialist teacher boxes:
+  1. "Standards teacher" in teal, subtitle "rules, causes, handling"
+  2. "Real-visual teacher" in blue, subtitle "components, defects, attributes"
+  3. "Comparison/counting teacher" in amber, subtitle "template differences, exact counts"
+- Connect the left input blocks to the matching teachers.
+
+Right-center: on-policy distillation:
+- Show a dark gray student box labeled "Student samples its own answer trajectory".
+- From the student trajectory, draw arrows to the three teachers labeled "teacher prefill on student tokens".
+- Add a small router module labeled "Confidence-aware routing" that combines teacher scores with weights w_s, w_r, w_c.
+- Add a small verifier module labeled "Answer-level verifier" with icons for option accuracy, yes/no F1, and count nMAE.
+- Draw arrows from router and verifier back to the student labeled "dense token supervision + metric-aligned reward".
+
+Far right: deployment:
+- Show a single final model block labeled "Single deployable student".
+- Add a small decoding block labeled "Constrained normalized decoding".
+- Final outputs should be shown as compact chips: "component", "defect type", "count", "cause", "action".
+- Make it clear that no teacher ensemble is used at inference time.
+
+Visual emphasis:
+- Use a left-to-right flow: data domains -> specialist teachers -> on-policy fusion -> single student inference.
+- The most important visual message is standards-to-real transfer: rules and real images are separated during teacher specialization, then fused into one student.
+- Include subtle arrows from standards knowledge to real PCBA reasoning to show transfer of defect semantics.
+- Keep all text in English and avoid long sentences inside the figure.
+
+Negative prompt:
+No photorealistic factory scene, no 3D rendering, no cartoon characters, no busy background, no fake equations, no unreadable tiny text, no random logos, no excessive shadows, no gradient blobs, no decorative circuitry that overwhelms the diagram.

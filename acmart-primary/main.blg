@@ -1,0 +1,140 @@
+This is BibTeX, Version 0.99d (TeX Live 2025)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: ACM-Reference-Format.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: main.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Warning--empty publisher in alayrac2022flamingo
+Warning--empty address in alayrac2022flamingo
+Warning--empty publisher in antol2015vqa
+Warning--empty address in antol2015vqa
+Warning--no number and no volume in bai2025qwen3
+Warning--page numbers missing in both pages and numpages fields in bai2025qwen3
+Warning--empty publisher in batzner2024efficientad
+Warning--empty address in batzner2024efficientad
+Warning--empty publisher in bergmann2022loco
+Warning--empty address in bergmann2022loco
+Warning--empty publisher in bergmann2019mvtec
+Warning--empty address in bergmann2019mvtec
+Warning--no number and no volume in comanici2025gemini
+Warning--page numbers missing in both pages and numpages fields in comanici2025gemini
+Warning--no number and no volume in dai2023instructblip
+Warning--page numbers missing in both pages and numpages fields in dai2023instructblip
+Warning--empty publisher in defard2021padim
+Warning--empty address in defard2021padim
+Warning--empty publisher in fan2025manta
+Warning--empty address in fan2025manta
+Warning--no number and no volume in fu2023mme
+Warning--page numbers missing in both pages and numpages fields in fu2023mme
+Warning--no number and no volume in gu2023anomalygpt
+Warning--page numbers missing in both pages and numpages fields in gu2023anomalygpt
+Warning--empty publisher in guu2020realm
+Warning--empty address in guu2020realm
+Warning--no number and no volume in hinton2015distilling
+Warning--page numbers missing in both pages and numpages fields in hinton2015distilling
+Warning--empty publisher in hu2021lora
+Warning--empty address in hu2021lora
+Warning--page numbers missing in both pages and numpages fields in hu2021lora
+Warning--no number and no volume in jeong2023winclip
+Warning--page numbers missing in both pages and numpages fields in jeong2023winclip
+Warning--no number and no volume in jiang2026imagine
+Warning--page numbers missing in both pages and numpages fields in jiang2026imagine
+Warning--no number and no volume in jiang2025vknowu
+Warning--page numbers missing in both pages and numpages fields in jiang2025vknowu
+Warning--no number and no volume in jiang2025mmad
+Warning--page numbers missing in both pages and numpages fields in jiang2025mmad
+Warning--empty publisher in karpukhin2020dense
+Warning--empty address in karpukhin2020dense
+Warning--empty publisher in kim2016sequence
+Warning--empty address in kim2016sequence
+Warning--empty publisher in lewis2020rag
+Warning--empty address in lewis2020rag
+Warning--empty publisher in li2021cutpaste
+Warning--empty address in li2021cutpaste
+Warning--empty publisher in li2023blip2
+Warning--empty address in li2023blip2
+Warning--no number and no volume in liu2023llava
+Warning--page numbers missing in both pages and numpages fields in liu2023llava
+Warning--no number and no volume in liu2023mmbench
+Warning--page numbers missing in both pages and numpages fields in liu2023mmbench
+Warning--empty publisher in liu2025nvila
+Warning--empty address in liu2025nvila
+Warning--no number and no volume in lu2024mathvista
+Warning--page numbers missing in both pages and numpages fields in lu2024mathvista
+Warning--no number and no volume in ma2026mopd
+Warning--page numbers missing in both pages and numpages fields in ma2026mopd
+Warning--no number and no volume in openai2023gpt4
+Warning--page numbers missing in both pages and numpages fields in openai2023gpt4
+Warning--empty publisher in radford2021clip
+Warning--empty address in radford2021clip
+Warning--empty publisher in rafailov2023direct
+Warning--empty address in rafailov2023direct
+Warning--empty publisher in roth2022patchcore
+Warning--empty address in roth2022patchcore
+Warning--empty publisher in rusu2016policy
+Warning--empty address in rusu2016policy
+Warning--page numbers missing in both pages and numpages fields in rusu2016policy
+Warning--no number and no volume in schulman2017ppo
+Warning--page numbers missing in both pages and numpages fields in schulman2017ppo
+Warning--no number and no volume in unipcb2026
+Warning--page numbers missing in both pages and numpages fields in unipcb2026
+Warning--no number and no volume in wang2024realiad
+Warning--page numbers missing in both pages and numpages fields in wang2024realiad
+Warning--no number and no volume in xue2024xgen
+Warning--page numbers missing in both pages and numpages fields in xue2024xgen
+Warning--no number and no volume in yue2024mmmu
+Warning--page numbers missing in both pages and numpages fields in yue2024mmmu
+Warning--empty publisher in zavrtanik2021draem
+Warning--empty address in zavrtanik2021draem
+Warning--empty publisher in zou2022visa
+Warning--empty address in zou2022visa
+You've used 48 entries,
+            6056 wiz_defined-function locations,
+            1935 strings with 33702 characters,
+and the built_in function-call counts, 66606 in all, are:
+= -- 7578
+> -- 3969
+< -- 0
++ -- 1418
+- -- 1381
+* -- 5947
+:= -- 7490
+add.period$ -- 237
+call.type$ -- 48
+change.case$ -- 639
+chr.to.int$ -- 43
+cite$ -- 132
+duplicate$ -- 4808
+empty$ -- 3400
+format.name$ -- 1554
+if$ -- 15485
+int.to.chr$ -- 7
+int.to.str$ -- 1
+missing$ -- 185
+newline$ -- 423
+num.names$ -- 331
+pop$ -- 2400
+preamble$ -- 1
+purify$ -- 1010
+quote$ -- 0
+skip$ -- 1700
+stack$ -- 0
+substring$ -- 3654
+swap$ -- 409
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 1136
+warning$ -- 84
+while$ -- 219
+width$ -- 0
+write$ -- 917
+(There were 84 warnings)
