@@ -2,7 +2,7 @@ PWD /Users/xiasheng/Documents/创智学院/challenge/ms_qwen35opd/acmart-primary
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT main.tex
+INPUT /Users/xiasheng/Documents/创智学院/challenge/ms_qwen35opd/acmart-primary/main.tex
 OUTPUT main.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/acmart/acmart.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/acmart/acmart.cls

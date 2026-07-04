@@ -70,7 +70,7 @@
   \bibinfo{person}{Lianghao Deng}, \bibinfo{person}{Wei Ding},
   \bibinfo{person}{Chang Gao}, \bibinfo{person}{Chunjiang Ge}, {et~al\mbox{.}}}
   \bibinfo{year}{2025}\natexlab{a}.
-\newblock \showarticletitle{Qwen3-vl technical report}.
+\newblock \showarticletitle{{Qwen3-VL} Technical Report}.
 \newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2511.21631}}
   (\bibinfo{year}{2025}).
 \newblock
@@ -468,9 +468,9 @@
   \bibinfo{person}{Haocheng Xi}, \bibinfo{person}{Shiyi Cao},
   \bibinfo{person}{Yuxian Gu}, \bibinfo{person}{Dacheng Li}, {et~al\mbox{.}}}
   \bibinfo{year}{2025}\natexlab{}.
-\newblock \showarticletitle{Nvila: Efficient frontier visual language models}.
-  In \bibinfo{booktitle}{\emph{Proceedings of the Computer Vision and Pattern
-  Recognition Conference}}. \bibinfo{pages}{4122--4134}.
+\newblock \showarticletitle{{NVILA}: Efficient Frontier Visual Language
+  Models}. In \bibinfo{booktitle}{\emph{Proceedings of the Computer Vision and
+  Pattern Recognition Conference}}. \bibinfo{pages}{4122--4134}.
 \newblock
 
 
@@ -711,8 +711,8 @@
   \bibinfo{person}{Honglu Zhou}, \bibinfo{person}{Viraj Prabhu},
   \bibinfo{person}{Yutong Dai}, \bibinfo{person}{Michael~S Ryoo},
   {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{xgen-mm (blip-3): A family of open large multimodal
-  models}.
+\newblock \showarticletitle{{xGen-MM} ({BLIP}-3): A Family of Open Large
+  Multimodal Models}.
 \newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2408.08872}}
   (\bibinfo{year}{2024}).
 \newblock

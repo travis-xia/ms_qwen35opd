@@ -164,9 +164,42 @@ def score_rows(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
     }
 
 
+def _load_jsonl(path: Path) -> List[Dict[str, Any]]:
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def _source_label(row: Dict[str, Any]) -> Optional[str]:
+    messages = row.get("messages") or []
+    if messages and messages[-1].get("role") == "assistant":
+        return str(messages[-1].get("content", "")).strip()
+    return None
+
+
+def attach_source_metadata(rows: List[Dict[str, Any]], source_rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    if len(rows) != len(source_rows):
+        raise ValueError(f"Result/source length mismatch: result={len(rows)}, source={len(source_rows)}")
+
+    merged_rows = []
+    for row, source in zip(rows, source_rows):
+        merged = dict(row)
+        for key in ("id", "domain", "task"):
+            if key not in merged and key in source:
+                merged[key] = source[key]
+        if not merged.get("labels"):
+            label = _source_label(source)
+            if label is not None:
+                merged["labels"] = label
+        merged_rows.append(merged)
+    return merged_rows
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Score PCBA swift infer result JSONL.")
     parser.add_argument("result_jsonl", help="Path to swift infer result JSONL.")
+    parser.add_argument(
+        "--source-jsonl",
+        help="Original PCBA validation JSONL used by swift infer. Used to restore id/domain/task metadata.",
+    )
     parser.add_argument("--summary-json", help="Optional path to write score summary JSON.")
     return parser.parse_args()
 
@@ -174,12 +207,16 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     result_path = Path(args.result_jsonl)
-    rows = [json.loads(line) for line in result_path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    rows = _load_jsonl(result_path)
     if not rows:
         raise SystemExit(f"[error] empty result file: {result_path}")
+    if args.source_jsonl:
+        rows = attach_source_metadata(rows, _load_jsonl(Path(args.source_jsonl)))
 
     summary = score_rows(rows)
     summary["result_jsonl"] = str(result_path)
+    if args.source_jsonl:
+        summary["source_jsonl"] = args.source_jsonl
 
     print(_format_stats("val_all", summary["val_all"]))
     for domain in ("standard", "realworld"):

@@ -1,13 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1783206812.70057 "main.aux" "main.bbl" "main" 1783206814.3362 0
-  "./main.bib" 1783206747.74091 49825 f058f3541e3a03769176cb98f830ace6 ""
+["bibtex main"] 1783207561.98563 "main.aux" "main.bbl" "main" 1783207816.26586 0
+  "./main.bib" 1783207519.35871 48476 a349a75ca609d0c8a1cd6ad140520078 ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/acmart/ACM-Reference-Format.bst" 1735764768 90749 48abc1cbed6fafc6fc31528e3aa606ca ""
-  "main.aux" 1783206813.91762 14108 2ab6e49ef4fd57854f0270d3100251e7 "pdflatex"
+  "main.aux" 1783207815.91182 14154 9aff71be4e93c406aefc12d269590b01 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1783206812.82738 "main.tex" "main.pdf" "main" 1783206814.33634 0
+["pdflatex"] 1783207814.85738 "/Users/xiasheng/Documents/创智学院/challenge/ms_qwen35opd/acmart-primary/main.tex" "main.pdf" "main" 1783207816.26601 0
+  "/Users/xiasheng/Documents/创智学院/challenge/ms_qwen35opd/acmart-primary/main.tex" 1783207814.65221 41050 18cb9e28e8d2c1d11214ae225eec6e42 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc" 1490131464 2921 8ca0eb0831f9bc5da080d3697cfe67bf ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc" 1490131464 2933 9ad527ce78d7c5fa0a642dead095f172 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc" 1490131464 2934 a4a9158faed2e9e89c771b4e3b7fc12f ""
@@ -228,10 +229,10 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1746064714 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1746064573 3345733 725783bb990d4cd2704d1875c5ea5fdc ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "main.aux" 1783206813.91762 14108 2ab6e49ef4fd57854f0270d3100251e7 "pdflatex"
-  "main.bbl" 1783206812.82611 33329 c586348c3c0d0d18f06ae2e1638ec7cb "bibtex main"
-  "main.out" 1783206813.91865 2956 df0298b15694f99978f50158abb401e5 "pdflatex"
-  "main.tex" 1783191135.28607 40985 bd058e07f1fe5d4a9d88d2b0dc540d82 ""
+  "main.aux" 1783207815.91182 14154 9aff71be4e93c406aefc12d269590b01 "pdflatex"
+  "main.bbl" 1783207562.10052 33337 e16a9b97ea2e5013965bb817669fd7a3 "bibtex main"
+  "main.out" 1783207815.91272 2956 df0298b15694f99978f50158abb401e5 "pdflatex"
+  "main.tex" 1783207814.65221 41050 18cb9e28e8d2c1d11214ae225eec6e42 ""
   "pic/pcba_data.png" 1783084785.37696 637832 f7ee68639b2cc0547254620a1d83c415 ""
   "pic/s2r.png" 1783084334.95668 1229293 c185e933ffdb15ebacf50cdb3be93257 ""
   (generated)

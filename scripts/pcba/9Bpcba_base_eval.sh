@@ -41,7 +41,10 @@ swift infer \
   --torch_dtype bfloat16 \
   --attn_impl sdpa
 
-python3 PCBA/score_pcba_infer_result.py "${RESULT_PATH}" --summary-json "${SUMMARY_PATH}"
+python3 PCBA/score_pcba_infer_result.py \
+  "${RESULT_PATH}" \
+  --source-jsonl "${DATASET}" \
+  --summary-json "${SUMMARY_PATH}"
 
 echo "[info] result_jsonl: ${RESULT_PATH}"
 echo "[info] summary_json: ${SUMMARY_PATH}"
