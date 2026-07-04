@@ -80,8 +80,7 @@ The design is inspired by recent multi-teacher on-policy distillation for langua
 Our contributions are:
 \begin{itemize}
   \item We frame the PCBA Standard-to-Real Challenge as a \emph{two-domain teacher specialization and on-policy distillation} problem, matching the benchmark's construction rather than relying on flat mixed SFT.
-  \item We propose \method, a domain-routed multi-LoRA-teacher on-policy distillation method that integrates a standard-domain teacher and a real-world teacher into a single student.
-  \item We introduce a lightweight LoRA teacher design that reduces the cost of training multiple domain teachers, together with PCBA-specific components: canonical prompt and answer formatting, released input-format preservation, and answer-level verifiers aligned with accuracy, F1, and normalized MAE.
+  \item We propose \method, a domain-routed multi-LoRA-teacher on-policy distillation method that integrates standard-domain and real-world LoRA teachers into a single student, with PCBA-specific prompt canonicalization, input-format preservation, and metric-aligned answer verifiers.
   \item Our Qwen3.5-27B submission achieves 90.920129 on the official public evaluation and ranks first among public-test submissions; controlled ablations are conducted with Qwen3.5-9B.
 \end{itemize}
 
@@ -103,7 +102,7 @@ Knowledge distillation compresses teacher behavior into a student, with sequence
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{pic/s2r.png}
-\caption{Overview of \method. Standards-derived and real-world PCBA samples are anchored by a shared PCBA base model and specialized into two frozen domain LoRA teachers. During training, the student generates an on-policy answer trajectory; a deterministic domain router selects the matching teacher adapter to prefill and score the same trajectory, providing token-level OPD supervision. Answer-level verifiers normalize task outputs and add metric-aligned auxiliary supervision for accuracy, F1, and normalized-MAE tasks. After distillation, only one deployable student is submitted.}
+\caption{Overview of \method. Standards-derived and real-world PCBA samples are anchored by a shared PCBA base model and specialized into two frozen domain LoRA teachers. During training, the student generates an on-policy answer trajectory; a deterministic domain router selects the matching teacher adapter to prefill and score the same trajectory, providing token-level OPD supervision. }
 \Description{Overview figure of STEER, showing standard-derived and real-world PCBA data, a shared PCBA base model, two frozen domain LoRA teachers, domain-routed token-level teacher scoring on student trajectories, answer-level verifiers, and one final student.}
 \label{fig:main}
 \vspace{-1.2em}
@@ -161,7 +160,7 @@ Together, the two LoRA teachers match the two data domains of the challenge. The
 \paragraph{Homologous initialization.}
 All teachers are initialized from the same PCBA base checkpoint as the student, and only their LoRA adapters are specialized. This choice follows the stability observation in multi-teacher on-policy distillation: teachers that are behaviorally close to the student provide useful dense gradients, while distributionally distant teachers can destabilize on-policy learning~\cite{ma2026mopd}. In our setting, sharing the backbone makes this homology explicit and keeps answer format and domain terminology aligned.
 
-\subsection{Domain Routing}
+\paragraph{Domain routing.}
 \label{subsec:routing}
 
 For each prompt $x$, a deterministic domain function $d(x)\in\{\mathrm{std},\mathrm{real}\}$ selects the teacher. Standards-derived questions are routed to $\pi_{\phi_{\mathrm{std}}}$; real-world questions are routed to $\pi_{\phi_{\mathrm{real}}}$. In implementation this domain id selects the corresponding LoRA adapter in the shared teacher server. This is the same prompt-to-domain routing used in MOPD: the route determines which frozen domain teacher scores the student's sampled trajectory. The router is not a learned module and is not used at inference time, because the final model is the distilled student.
@@ -232,14 +231,8 @@ The supervised term $\mathcal{L}_{\mathrm{ans}}$ is computed only on the normali
 
 For multiple-choice questions, the verifier evaluates the option after answer normalization, not the free-form rationale. For defect existence, we maintain a balanced replay buffer so that positive/negative supervision does not collapse to the dominant class. For counting, the verifier is intentionally smooth: an answer off by one should be penalized less than a completely implausible count during training, even though the official accuracy component may be exact. This smooth reward improves sample efficiency while preserving exact-integer supervision on the normalized answer span.
 
-\subsection{Standards-to-Real Curriculum}
-\label{subsec:curriculum}
-
-We use a curriculum that mirrors the benchmark's intended transfer direction. The first phase trains the PCBA base model on the canonical prompt and answer protocol across all public training questions. The second phase trains the standard-domain and real-world LoRA teachers independently with domain-specific data. The third phase performs \method{} domain-routed distillation with mixed-domain batches. In the fourth phase, we run short verifier tuning on normalized answer spans.
-
-Concretely, the pipeline starts with prompt and answer canonicalization, including option formatting, numeric-answer formatting, family and input-format metadata, and the original image or template views provided by each sample. It then trains a shared PCBA base policy, specializes two LoRA teachers from that base, freezes the teachers during domain-routed on-policy distillation, and finishes with metric tuning for option scoring, numeric answer normalization, and answer-span likelihood. Because each stage has a clear output, either domain adapter can be retrained and distilled again without restarting the full recipe.
-
-The curriculum preserves the released input structure rather than introducing additional augmentation. Single-image, multi-image, and template-target examples are kept in their original formats, while only the prompt wrapper and answer format are canonicalized. Standards-derived samples keep their original question and option wording, which preserves the standard-derived taxonomy while presenting the answer through the same short-output protocol as real-world samples. This keeps the standard-to-real transfer claim tied to domain-routed supervision rather than to extra image preprocessing.
+\paragraph{Training recipe.}
+The full training recipe keeps the standard-to-real transfer direction and folds the curriculum into verifier-aligned training. We first canonicalize the released samples into the shared prompt and short-answer protocol, preserving the original image structure, template-target pairs, question wording, options, family metadata, and numeric-answer format. We then train a shared PCBA base policy, specialize the standard-domain and real-world LoRA teachers from this base, freeze the teachers, and run mixed-domain on-policy distillation with domain-routed teacher prefill. The last stage is short verifier tuning on normalized answer spans, calibrating option scoring, defect-existence balance, numeric normalization, and answer-span likelihood under Eq.~\ref{eq:final_loss}. Thus the recipe uses the verifiers as the metric-aligned end of the same training pipeline rather than as a separate post-processing step.
 
 \vspace{-0.3em}
 
@@ -247,7 +240,7 @@ The curriculum preserves the released input structure rather than introducing ad
 \label{sec:rationale}
 
 \paragraph{Benchmark-driven decomposition.}
-The key design choice is to preserve the benchmark's two-domain asymmetry. Standards-derived items are not merely extra training samples; they carry normative semantics about defect definitions, causes, and handling. Real images are not merely noisier versions of the same samples; they expose the visual state under clutter, lighting variation, dense component layouts, template comparisons, and exact counting requirements. Flat SFT collapses these signals into one average answer style, making it easy to memorize that a defect name implies a handling action while failing to verify that the defect is actually present. \method{} keeps the domains commensurable through a shared prompt and answer protocol, but specializes one teacher per domain before distilling them into one student.
+The key design choice is to preserve the benchmark's two-domain asymmetry. Standards-derived items carry normative semantics about defect definitions, causes, and handling, while real images expose clutter, dense layouts, template comparisons, and exact counting requirements. Flat SFT collapses these signals into one average answer style, making it easy to memorize defect-policy associations without verifying the visual evidence. \method{} keeps the domains aligned through a shared prompt and answer protocol, but specializes one teacher per domain before distilling them into one student.
 
 \paragraph{Behavior-space distillation.}
 Retrieval, inference-time ensembling, and parameter merging each solve only part of the problem. Retrieval supplies rules but cannot inspect polarity marks or solder joints. Ensembling preserves domain experts but increases cost and multiplies answer formats. Weight merging mixes checkpoints that have deliberately learned different domain priors. Domain-routed on-policy distillation instead treats the two teachers as training instruments: standards knowledge and real-image perception supervise the student's own trajectories. The final system therefore internalizes standard-to-real transfer as one deployable policy, without carrying a router, an ensemble, or an external rule engine at inference time.

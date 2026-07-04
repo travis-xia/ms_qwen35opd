@@ -38,60 +38,29 @@
 
 \bibitem[Alayrac et~al\mbox{.}(2022)]%
         {alayrac2022flamingo}
-\bibfield{author}{\bibinfo{person}{Jean-Baptiste Alayrac},
-  \bibinfo{person}{Jeff Donahue}, \bibinfo{person}{Pauline Luc},
-  \bibinfo{person}{Antoine Miech}, \bibinfo{person}{Iain Barr},
-  \bibinfo{person}{Yana Hasson}, \bibinfo{person}{Karel Lenc},
-  \bibinfo{person}{Arthur Mensch}, \bibinfo{person}{Katie Millican},
-  \bibinfo{person}{Malcolm Reynolds}, {et~al\mbox{.}}}
-  \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{Flamingo: A Visual Language Model for Few-Shot
-  Learning}. In \bibinfo{booktitle}{\emph{NeurIPS}}.
-  \bibinfo{pages}{23716--23736}.
+\bibfield{author}{\bibinfo{person}{Jean-Baptiste Alayrac}, \bibinfo{person}{Jeff Donahue}, \bibinfo{person}{Pauline Luc}, \bibinfo{person}{Antoine Miech}, \bibinfo{person}{Iain Barr}, \bibinfo{person}{Yana Hasson}, \bibinfo{person}{Karel Lenc}, \bibinfo{person}{Arthur Mensch}, \bibinfo{person}{Katie Millican}, \bibinfo{person}{Malcolm Reynolds}, {et~al\mbox{.}}} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Flamingo: A Visual Language Model for Few-Shot Learning}. In \bibinfo{booktitle}{\emph{NeurIPS}}. \bibinfo{pages}{23716--23736}.
 \newblock
 
 
 \bibitem[Antol et~al\mbox{.}(2015)]%
         {antol2015vqa}
-\bibfield{author}{\bibinfo{person}{Stanislaw Antol}, \bibinfo{person}{Aishwarya
-  Agrawal}, \bibinfo{person}{Jiasen Lu}, \bibinfo{person}{Margaret Mitchell},
-  \bibinfo{person}{Dhruv Batra}, \bibinfo{person}{C.~Lawrence Zitnick}, {and}
-  \bibinfo{person}{Devi Parikh}.} \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{{VQA}: Visual Question Answering}. In
-  \bibinfo{booktitle}{\emph{ICCV}}. \bibinfo{pages}{2425--2433}.
+\bibfield{author}{\bibinfo{person}{Stanislaw Antol}, \bibinfo{person}{Aishwarya Agrawal}, \bibinfo{person}{Jiasen Lu}, \bibinfo{person}{Margaret Mitchell}, \bibinfo{person}{Dhruv Batra}, \bibinfo{person}{C.~Lawrence Zitnick}, {and} \bibinfo{person}{Devi Parikh}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{{VQA}: Visual Question Answering}. In \bibinfo{booktitle}{\emph{ICCV}}. \bibinfo{pages}{2425--2433}.
 \newblock
 
 
 \bibitem[Bai et~al\mbox{.}(2025a)]%
         {bai2025qwen3}
-\bibfield{author}{\bibinfo{person}{Shuai Bai}, \bibinfo{person}{Yuxuan Cai},
-  \bibinfo{person}{Ruizhe Chen}, \bibinfo{person}{Keqin Chen},
-  \bibinfo{person}{Xionghui Chen}, \bibinfo{person}{Zesen Cheng},
-  \bibinfo{person}{Lianghao Deng}, \bibinfo{person}{Wei Ding},
-  \bibinfo{person}{Chang Gao}, \bibinfo{person}{Chunjiang Ge}, {et~al\mbox{.}}}
-  \bibinfo{year}{2025}\natexlab{a}.
+\bibfield{author}{\bibinfo{person}{Shuai Bai}, \bibinfo{person}{Yuxuan Cai}, \bibinfo{person}{Ruizhe Chen}, \bibinfo{person}{Keqin Chen}, \bibinfo{person}{Xionghui Chen}, \bibinfo{person}{Zesen Cheng}, \bibinfo{person}{Lianghao Deng}, \bibinfo{person}{Wei Ding}, \bibinfo{person}{Chang Gao}, \bibinfo{person}{Chunjiang Ge}, {et~al\mbox{.}}} \bibinfo{year}{2025}\natexlab{a}.
 \newblock \showarticletitle{{Qwen3-VL} Technical Report}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2511.21631}}
-  (\bibinfo{year}{2025}).
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2511.21631}} (\bibinfo{year}{2025}).
 \newblock
 
 
 \bibitem[Bai et~al\mbox{.}(2025b)]%
         {bai2025qwen25vltechnicalreport}
-\bibfield{author}{\bibinfo{person}{Shuai Bai}, \bibinfo{person}{Keqin Chen},
-  \bibinfo{person}{Xuejing Liu}, \bibinfo{person}{Jialin Wang},
-  \bibinfo{person}{Wenbin Ge}, \bibinfo{person}{Sibo Song},
-  \bibinfo{person}{Kai Dang}, \bibinfo{person}{Peng Wang},
-  \bibinfo{person}{Shijie Wang}, \bibinfo{person}{Jun Tang},
-  \bibinfo{person}{Humen Zhong}, \bibinfo{person}{Yuanzhi Zhu},
-  \bibinfo{person}{Mingkun Yang}, \bibinfo{person}{Zhaohai Li},
-  \bibinfo{person}{Jianqiang Wan}, \bibinfo{person}{Pengfei Wang},
-  \bibinfo{person}{Wei Ding}, \bibinfo{person}{Zheren Fu},
-  \bibinfo{person}{Yiheng Xu}, \bibinfo{person}{Jiabo Ye}, \bibinfo{person}{Xi
-  Zhang}, \bibinfo{person}{Tianbao Xie}, \bibinfo{person}{Zesen Cheng},
-  \bibinfo{person}{Hang Zhang}, \bibinfo{person}{Zhibo Yang},
-  \bibinfo{person}{Haiyang Xu}, {and} \bibinfo{person}{Junyang Lin}.}
-  \bibinfo{year}{2025}\natexlab{b}.
+\bibfield{author}{\bibinfo{person}{Shuai Bai}, \bibinfo{person}{Keqin Chen}, \bibinfo{person}{Xuejing Liu}, \bibinfo{person}{Jialin Wang}, \bibinfo{person}{Wenbin Ge}, \bibinfo{person}{Sibo Song}, \bibinfo{person}{Kai Dang}, \bibinfo{person}{Peng Wang}, \bibinfo{person}{Shijie Wang}, \bibinfo{person}{Jun Tang}, \bibinfo{person}{Humen Zhong}, \bibinfo{person}{Yuanzhi Zhu}, \bibinfo{person}{Mingkun Yang}, \bibinfo{person}{Zhaohai Li}, \bibinfo{person}{Jianqiang Wan}, \bibinfo{person}{Pengfei Wang}, \bibinfo{person}{Wei Ding}, \bibinfo{person}{Zheren Fu}, \bibinfo{person}{Yiheng Xu}, \bibinfo{person}{Jiabo Ye}, \bibinfo{person}{Xi Zhang}, \bibinfo{person}{Tianbao Xie}, \bibinfo{person}{Zesen Cheng}, \bibinfo{person}{Hang Zhang}, \bibinfo{person}{Zhibo Yang}, \bibinfo{person}{Haiyang Xu}, {and} \bibinfo{person}{Junyang Lin}.} \bibinfo{year}{2025}\natexlab{b}.
 \newblock \bibinfo{title}{Qwen2.5-VL Technical Report}.
 \newblock
 \showeprint[arxiv]{2502.13923}~[cs.CV]
@@ -103,65 +72,31 @@
 
 \bibitem[Batzner et~al\mbox{.}(2024)]%
         {batzner2024efficientad}
-\bibfield{author}{\bibinfo{person}{Kilian Batzner}, \bibinfo{person}{Lars
-  Heckler}, {and} \bibinfo{person}{Rebecca K{\"o}nig}.}
-  \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{{EfficientAD}: Accurate Visual Anomaly Detection at
-  Millisecond-Level Latencies}. In \bibinfo{booktitle}{\emph{WACV}}.
-  \bibinfo{pages}{128--138}.
+\bibfield{author}{\bibinfo{person}{Kilian Batzner}, \bibinfo{person}{Lars Heckler}, {and} \bibinfo{person}{Rebecca K{\"o}nig}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{EfficientAD}: Accurate Visual Anomaly Detection at Millisecond-Level Latencies}. In \bibinfo{booktitle}{\emph{WACV}}. \bibinfo{pages}{128--138}.
 \newblock
 
 
 \bibitem[Bergmann et~al\mbox{.}(2022)]%
         {bergmann2022loco}
-\bibfield{author}{\bibinfo{person}{Paul Bergmann}, \bibinfo{person}{Kilian
-  Batzner}, \bibinfo{person}{Michael Fauser}, \bibinfo{person}{David
-  Sattlegger}, {and} \bibinfo{person}{Carsten Steger}.}
-  \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{Beyond Dents and Scratches: Logical Constraints in
-  Unsupervised Anomaly Detection and Localization}.
-\newblock \bibinfo{journal}{\emph{International Journal of Computer Vision}}
-  \bibinfo{volume}{130} (\bibinfo{year}{2022}), \bibinfo{pages}{947--969}.
+\bibfield{author}{\bibinfo{person}{Paul Bergmann}, \bibinfo{person}{Kilian Batzner}, \bibinfo{person}{Michael Fauser}, \bibinfo{person}{David Sattlegger}, {and} \bibinfo{person}{Carsten Steger}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Beyond Dents and Scratches: Logical Constraints in Unsupervised Anomaly Detection and Localization}.
+\newblock \bibinfo{journal}{\emph{International Journal of Computer Vision}}  \bibinfo{volume}{130} (\bibinfo{year}{2022}), \bibinfo{pages}{947--969}.
 \newblock
 \href{https://doi.org/10.1007/s11263-022-01578-9}{doi:\nolinkurl{10.1007/s11263-022-01578-9}}
 
 
 \bibitem[Bergmann et~al\mbox{.}(2019)]%
         {bergmann2019mvtec}
-\bibfield{author}{\bibinfo{person}{Paul Bergmann}, \bibinfo{person}{Michael
-  Fauser}, \bibinfo{person}{David Sattlegger}, {and} \bibinfo{person}{Carsten
-  Steger}.} \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{{MVTec AD}: A Comprehensive Real-World Dataset for
-  Unsupervised Anomaly Detection}. In \bibinfo{booktitle}{\emph{CVPR}}.
-  \bibinfo{pages}{9592--9600}.
+\bibfield{author}{\bibinfo{person}{Paul Bergmann}, \bibinfo{person}{Michael Fauser}, \bibinfo{person}{David Sattlegger}, {and} \bibinfo{person}{Carsten Steger}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{{MVTec AD}: A Comprehensive Real-World Dataset for Unsupervised Anomaly Detection}. In \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{9592--9600}.
 \newblock
 
 
 \bibitem[Chen et~al\mbox{.}(2025)]%
         {chen2025expandingperformanceboundariesopensource}
-\bibfield{author}{\bibinfo{person}{Zhe Chen}, \bibinfo{person}{Weiyun Wang},
-  \bibinfo{person}{Yue Cao}, \bibinfo{person}{Yangzhou Liu},
-  \bibinfo{person}{Zhangwei Gao}, \bibinfo{person}{Erfei Cui},
-  \bibinfo{person}{Jinguo Zhu}, \bibinfo{person}{Shenglong Ye},
-  \bibinfo{person}{Hao Tian}, \bibinfo{person}{Zhaoyang Liu},
-  \bibinfo{person}{Lixin Gu}, \bibinfo{person}{Xuehui Wang},
-  \bibinfo{person}{Qingyun Li}, \bibinfo{person}{Yiming Ren},
-  \bibinfo{person}{Zixuan Chen}, \bibinfo{person}{Jiapeng Luo},
-  \bibinfo{person}{Jiahao Wang}, \bibinfo{person}{Tan Jiang},
-  \bibinfo{person}{Bo Wang}, \bibinfo{person}{Conghui He},
-  \bibinfo{person}{Botian Shi}, \bibinfo{person}{Xingcheng Zhang},
-  \bibinfo{person}{Han Lv}, \bibinfo{person}{Yi Wang}, \bibinfo{person}{Wenqi
-  Shao}, \bibinfo{person}{Pei Chu}, \bibinfo{person}{Zhongying Tu},
-  \bibinfo{person}{Tong He}, \bibinfo{person}{Zhiyong Wu},
-  \bibinfo{person}{Huipeng Deng}, \bibinfo{person}{Jiaye Ge},
-  \bibinfo{person}{Kai Chen}, \bibinfo{person}{Kaipeng Zhang},
-  \bibinfo{person}{Limin Wang}, \bibinfo{person}{Min Dou},
-  \bibinfo{person}{Lewei Lu}, \bibinfo{person}{Xizhou Zhu},
-  \bibinfo{person}{Tong Lu}, \bibinfo{person}{Dahua Lin}, \bibinfo{person}{Yu
-  Qiao}, \bibinfo{person}{Jifeng Dai}, {and} \bibinfo{person}{Wenhai Wang}.}
-  \bibinfo{year}{2025}\natexlab{}.
-\newblock \bibinfo{title}{Expanding Performance Boundaries of Open-Source
-  Multimodal Models with Model, Data, and Test-Time Scaling}.
+\bibfield{author}{\bibinfo{person}{Zhe Chen}, \bibinfo{person}{Weiyun Wang}, \bibinfo{person}{Yue Cao}, \bibinfo{person}{Yangzhou Liu}, \bibinfo{person}{Zhangwei Gao}, \bibinfo{person}{Erfei Cui}, \bibinfo{person}{Jinguo Zhu}, \bibinfo{person}{Shenglong Ye}, \bibinfo{person}{Hao Tian}, \bibinfo{person}{Zhaoyang Liu}, \bibinfo{person}{Lixin Gu}, \bibinfo{person}{Xuehui Wang}, \bibinfo{person}{Qingyun Li}, \bibinfo{person}{Yiming Ren}, \bibinfo{person}{Zixuan Chen}, \bibinfo{person}{Jiapeng Luo}, \bibinfo{person}{Jiahao Wang}, \bibinfo{person}{Tan Jiang}, \bibinfo{person}{Bo Wang}, \bibinfo{person}{Conghui He}, \bibinfo{person}{Botian Shi}, \bibinfo{person}{Xingcheng Zhang}, \bibinfo{person}{Han Lv}, \bibinfo{person}{Yi Wang}, \bibinfo{person}{Wenqi Shao}, \bibinfo{person}{Pei Chu}, \bibinfo{person}{Zhongying Tu}, \bibinfo{person}{Tong He}, \bibinfo{person}{Zhiyong Wu}, \bibinfo{person}{Huipeng Deng}, \bibinfo{person}{Jiaye Ge}, \bibinfo{person}{Kai Chen}, \bibinfo{person}{Kaipeng Zhang}, \bibinfo{person}{Limin Wang}, \bibinfo{person}{Min Dou}, \bibinfo{person}{Lewei Lu}, \bibinfo{person}{Xizhou Zhu}, \bibinfo{person}{Tong Lu}, \bibinfo{person}{Dahua Lin}, \bibinfo{person}{Yu Qiao}, \bibinfo{person}{Jifeng Dai}, {and} \bibinfo{person}{Wenhai Wang}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{Expanding Performance Boundaries of Open-Source Multimodal Models with Model, Data, and Test-Time Scaling}.
 \newblock
 \showeprint[arxiv]{2412.05271}~[cs.CV]
 \urldef\tempurl%
@@ -172,261 +107,156 @@
 
 \bibitem[Comanici et~al\mbox{.}(2025)]%
         {comanici2025gemini}
-\bibfield{author}{\bibinfo{person}{Gheorghe Comanici}, \bibinfo{person}{Eric
-  Bieber}, \bibinfo{person}{Mike Schaekermann}, \bibinfo{person}{Ice Pasupat},
-  \bibinfo{person}{Noveen Sachdeva}, \bibinfo{person}{Inderjit Dhillon},
-  \bibinfo{person}{Marcel Blistein}, \bibinfo{person}{Ori Ram},
-  \bibinfo{person}{Dan Zhang}, \bibinfo{person}{Evan Rosen}, {et~al\mbox{.}}}
-  \bibinfo{year}{2025}\natexlab{}.
-\newblock \showarticletitle{Gemini 2.5: Pushing the frontier with advanced
-  reasoning, multimodality, long context, and next generation agentic
-  capabilities}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2507.06261}}
-  (\bibinfo{year}{2025}).
+\bibfield{author}{\bibinfo{person}{Gheorghe Comanici}, \bibinfo{person}{Eric Bieber}, \bibinfo{person}{Mike Schaekermann}, \bibinfo{person}{Ice Pasupat}, \bibinfo{person}{Noveen Sachdeva}, \bibinfo{person}{Inderjit Dhillon}, \bibinfo{person}{Marcel Blistein}, \bibinfo{person}{Ori Ram}, \bibinfo{person}{Dan Zhang}, \bibinfo{person}{Evan Rosen}, {et~al\mbox{.}}} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Gemini 2.5: Pushing the frontier with advanced reasoning, multimodality, long context, and next generation agentic capabilities}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2507.06261}} (\bibinfo{year}{2025}).
 \newblock
 
 
 \bibitem[Dai et~al\mbox{.}(2023)]%
         {dai2023instructblip}
-\bibfield{author}{\bibinfo{person}{Wenliang Dai}, \bibinfo{person}{Junnan Li},
-  \bibinfo{person}{Dongxu Li}, \bibinfo{person}{Anthony Meng~Huat Tiong},
-  \bibinfo{person}{Junqi Zhao}, \bibinfo{person}{Weisheng Wang},
-  \bibinfo{person}{Boyang Li}, \bibinfo{person}{Pascale Fung}, {and}
-  \bibinfo{person}{Steven Hoi}.} \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{{InstructBLIP}: Towards General-Purpose
-  Vision-Language Models with Instruction Tuning}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2305.06500}}
-  (\bibinfo{year}{2023}).
+\bibfield{author}{\bibinfo{person}{Wenliang Dai}, \bibinfo{person}{Junnan Li}, \bibinfo{person}{Dongxu Li}, \bibinfo{person}{Anthony Meng~Huat Tiong}, \bibinfo{person}{Junqi Zhao}, \bibinfo{person}{Weisheng Wang}, \bibinfo{person}{Boyang Li}, \bibinfo{person}{Pascale Fung}, {and} \bibinfo{person}{Steven Hoi}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{InstructBLIP}: Towards General-Purpose Vision-Language Models with Instruction Tuning}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2305.06500}} (\bibinfo{year}{2023}).
 \newblock
 
 
 \bibitem[Defard et~al\mbox{.}(2021)]%
         {defard2021padim}
-\bibfield{author}{\bibinfo{person}{Thomas Defard}, \bibinfo{person}{Aleksandr
-  Setkov}, \bibinfo{person}{Angelique Loesch}, {and} \bibinfo{person}{Romaric
-  Audigier}.} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{{PaDiM}: A Patch Distribution Modeling Framework
-  for Anomaly Detection and Localization}. In \bibinfo{booktitle}{\emph{ICPR}}.
-  \bibinfo{pages}{475--489}.
+\bibfield{author}{\bibinfo{person}{Thomas Defard}, \bibinfo{person}{Aleksandr Setkov}, \bibinfo{person}{Angelique Loesch}, {and} \bibinfo{person}{Romaric Audigier}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{{PaDiM}: A Patch Distribution Modeling Framework for Anomaly Detection and Localization}. In \bibinfo{booktitle}{\emph{ICPR}}. \bibinfo{pages}{475--489}.
 \newblock
 
 
 \bibitem[Fan et~al\mbox{.}(2025)]%
         {fan2025manta}
-\bibfield{author}{\bibinfo{person}{Lei Fan}, \bibinfo{person}{Dongdong Fan},
-  \bibinfo{person}{Zhiguang Hu}, \bibinfo{person}{Yiwen Ding},
-  \bibinfo{person}{Donglin Di}, \bibinfo{person}{Kai Yi},
-  \bibinfo{person}{Maurice Pagnucco}, {and} \bibinfo{person}{Yang Song}.}
-  \bibinfo{year}{2025}\natexlab{}.
-\newblock \showarticletitle{{MANTA}: A Large-Scale Multi-View and Visual-Text
-  Anomaly Detection Dataset for Tiny Objects}. In
-  \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{25518--25527}.
+\bibfield{author}{\bibinfo{person}{Lei Fan}, \bibinfo{person}{Dongdong Fan}, \bibinfo{person}{Zhiguang Hu}, \bibinfo{person}{Yiwen Ding}, \bibinfo{person}{Donglin Di}, \bibinfo{person}{Kai Yi}, \bibinfo{person}{Maurice Pagnucco}, {and} \bibinfo{person}{Yang Song}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{MANTA}: A Large-Scale Multi-View and Visual-Text Anomaly Detection Dataset for Tiny Objects}. In \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{25518--25527}.
 \newblock
 
 
 \bibitem[Fu et~al\mbox{.}(2023)]%
         {fu2023mme}
-\bibfield{author}{\bibinfo{person}{Chaoyou Fu}, \bibinfo{person}{Peixian Chen},
-  \bibinfo{person}{Yunhang Shen}, \bibinfo{person}{Yulei Qin},
-  \bibinfo{person}{Mengdan Zhang}, \bibinfo{person}{Xu Lin},
-  \bibinfo{person}{Jinrui Yang}, \bibinfo{person}{Xiawu Zheng},
-  \bibinfo{person}{Ke Li}, \bibinfo{person}{Xing Sun}, {et~al\mbox{.}}}
-  \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{{MME}: A Comprehensive Evaluation Benchmark for
-  Multimodal Large Language Models}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2306.13394}}
-  (\bibinfo{year}{2023}).
+\bibfield{author}{\bibinfo{person}{Chaoyou Fu}, \bibinfo{person}{Peixian Chen}, \bibinfo{person}{Yunhang Shen}, \bibinfo{person}{Yulei Qin}, \bibinfo{person}{Mengdan Zhang}, \bibinfo{person}{Xu Lin}, \bibinfo{person}{Jinrui Yang}, \bibinfo{person}{Xiawu Zheng}, \bibinfo{person}{Ke Li}, \bibinfo{person}{Xing Sun}, {et~al\mbox{.}}} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{MME}: A Comprehensive Evaluation Benchmark for Multimodal Large Language Models}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2306.13394}} (\bibinfo{year}{2023}).
 \newblock
 
 
 \bibitem[Goyal et~al\mbox{.}(2017)]%
         {goyal2017making}
-\bibfield{author}{\bibinfo{person}{Yash Goyal}, \bibinfo{person}{Tejas Khot},
-  \bibinfo{person}{Douglas Summers-Stay}, \bibinfo{person}{Dhruv Batra}, {and}
-  \bibinfo{person}{Devi Parikh}.} \bibinfo{year}{2017}\natexlab{}.
-\newblock \showarticletitle{Making the {V} in {VQA} Matter: Elevating the Role
-  of Image Understanding in Visual Question Answering}. In
-  \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{6904--6913}.
+\bibfield{author}{\bibinfo{person}{Yash Goyal}, \bibinfo{person}{Tejas Khot}, \bibinfo{person}{Douglas Summers-Stay}, \bibinfo{person}{Dhruv Batra}, {and} \bibinfo{person}{Devi Parikh}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Making the {V} in {VQA} Matter: Elevating the Role of Image Understanding in Visual Question Answering}. In \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{6904--6913}.
 \newblock
 
 
 \bibitem[Gu et~al\mbox{.}(2023)]%
         {gu2023anomalygpt}
-\bibfield{author}{\bibinfo{person}{Zhaopeng Gu}, \bibinfo{person}{Bingke Zhu},
-  \bibinfo{person}{Guibo Zhu}, \bibinfo{person}{Yingying Chen},
-  \bibinfo{person}{Ming Tang}, {and} \bibinfo{person}{Jinqiao Wang}.}
-  \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{{AnomalyGPT}: Detecting Industrial Anomalies Using
-  Large Vision-Language Models}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2308.15366}}
-  (\bibinfo{year}{2023}).
+\bibfield{author}{\bibinfo{person}{Zhaopeng Gu}, \bibinfo{person}{Bingke Zhu}, \bibinfo{person}{Guibo Zhu}, \bibinfo{person}{Yingying Chen}, \bibinfo{person}{Ming Tang}, {and} \bibinfo{person}{Jinqiao Wang}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{AnomalyGPT}: Detecting Industrial Anomalies Using Large Vision-Language Models}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2308.15366}} (\bibinfo{year}{2023}).
 \newblock
 
 
 \bibitem[Gurari et~al\mbox{.}(2018)]%
         {gurari2018vizwiz}
-\bibfield{author}{\bibinfo{person}{Danna Gurari}, \bibinfo{person}{Qing Li},
-  \bibinfo{person}{Abigale~J. Stangl}, \bibinfo{person}{Anhong Guo},
-  \bibinfo{person}{Chi Lin}, \bibinfo{person}{Kristen Grauman},
-  \bibinfo{person}{Jiebo Luo}, {and} \bibinfo{person}{Jeffrey~P. Bigham}.}
-  \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{{VizWiz} Grand Challenge: Answering Visual
-  Questions From Blind People}. In \bibinfo{booktitle}{\emph{CVPR}}.
-  \bibinfo{pages}{3608--3617}.
+\bibfield{author}{\bibinfo{person}{Danna Gurari}, \bibinfo{person}{Qing Li}, \bibinfo{person}{Abigale~J. Stangl}, \bibinfo{person}{Anhong Guo}, \bibinfo{person}{Chi Lin}, \bibinfo{person}{Kristen Grauman}, \bibinfo{person}{Jiebo Luo}, {and} \bibinfo{person}{Jeffrey~P. Bigham}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{{VizWiz} Grand Challenge: Answering Visual Questions From Blind People}. In \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{3608--3617}.
 \newblock
 
 
 \bibitem[Guu et~al\mbox{.}(2020)]%
         {guu2020realm}
-\bibfield{author}{\bibinfo{person}{Kelvin Guu}, \bibinfo{person}{Kenton Lee},
-  \bibinfo{person}{Zora Tung}, \bibinfo{person}{Panupong Pasupat}, {and}
-  \bibinfo{person}{Ming-Wei Chang}.} \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{{REALM}: Retrieval-Augmented Language Model
-  Pre-Training}. In \bibinfo{booktitle}{\emph{ICML}}.
-  \bibinfo{pages}{3929--3938}.
+\bibfield{author}{\bibinfo{person}{Kelvin Guu}, \bibinfo{person}{Kenton Lee}, \bibinfo{person}{Zora Tung}, \bibinfo{person}{Panupong Pasupat}, {and} \bibinfo{person}{Ming-Wei Chang}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{REALM}: Retrieval-Augmented Language Model Pre-Training}. In \bibinfo{booktitle}{\emph{ICML}}. \bibinfo{pages}{3929--3938}.
 \newblock
 
 
 \bibitem[Hinton et~al\mbox{.}(2015)]%
         {hinton2015distilling}
-\bibfield{author}{\bibinfo{person}{Geoffrey Hinton}, \bibinfo{person}{Oriol
-  Vinyals}, {and} \bibinfo{person}{Jeff Dean}.}
-  \bibinfo{year}{2015}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Geoffrey Hinton}, \bibinfo{person}{Oriol Vinyals}, {and} \bibinfo{person}{Jeff Dean}.} \bibinfo{year}{2015}\natexlab{}.
 \newblock \showarticletitle{Distilling the Knowledge in a Neural Network}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1503.02531}}
-  (\bibinfo{year}{2015}).
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1503.02531}} (\bibinfo{year}{2015}).
 \newblock
 
 
 \bibitem[Hu et~al\mbox{.}(2022)]%
         {hu2021lora}
-\bibfield{author}{\bibinfo{person}{Edward~J. Hu}, \bibinfo{person}{Yelong
-  Shen}, \bibinfo{person}{Phillip Wallis}, \bibinfo{person}{Zeyuan Allen-Zhu},
-  \bibinfo{person}{Yuanzhi Li}, \bibinfo{person}{Shean Wang},
-  \bibinfo{person}{Lu Wang}, {and} \bibinfo{person}{Weizhu Chen}.}
-  \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{{LoRA}: Low-Rank Adaptation of Large Language
-  Models}. In \bibinfo{booktitle}{\emph{ICLR}}.
+\bibfield{author}{\bibinfo{person}{Edward~J. Hu}, \bibinfo{person}{Yelong Shen}, \bibinfo{person}{Phillip Wallis}, \bibinfo{person}{Zeyuan Allen-Zhu}, \bibinfo{person}{Yuanzhi Li}, \bibinfo{person}{Shean Wang}, \bibinfo{person}{Lu Wang}, {and} \bibinfo{person}{Weizhu Chen}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{{LoRA}: Low-Rank Adaptation of Large Language Models}. In \bibinfo{booktitle}{\emph{ICLR}}.
 \newblock
 
 
 \bibitem[Hudson and Manning(2019)]%
         {hudson2019gqa}
-\bibfield{author}{\bibinfo{person}{Drew~A. Hudson} {and}
-  \bibinfo{person}{Christopher~D. Manning}.} \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{{GQA}: A New Dataset for Real-World Visual
-  Reasoning and Compositional Question Answering}. In
-  \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{6700--6709}.
+\bibfield{author}{\bibinfo{person}{Drew~A. Hudson} {and} \bibinfo{person}{Christopher~D. Manning}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{{GQA}: A New Dataset for Real-World Visual Reasoning and Compositional Question Answering}. In \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{6700--6709}.
 \newblock
 
 
 \bibitem[Jeong et~al\mbox{.}(2023)]%
         {jeong2023winclip}
-\bibfield{author}{\bibinfo{person}{Jongheon Jeong}, \bibinfo{person}{Yang Zou},
-  \bibinfo{person}{Taewan Kim}, \bibinfo{person}{Dongqing Zhang},
-  \bibinfo{person}{Avinash Ravichandran}, {and} \bibinfo{person}{Onkar
-  Dabeer}.} \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{{WinCLIP}: Zero-/Few-Shot Anomaly Classification
-  and Segmentation}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2303.14814}}
-  (\bibinfo{year}{2023}).
+\bibfield{author}{\bibinfo{person}{Jongheon Jeong}, \bibinfo{person}{Yang Zou}, \bibinfo{person}{Taewan Kim}, \bibinfo{person}{Dongqing Zhang}, \bibinfo{person}{Avinash Ravichandran}, {and} \bibinfo{person}{Onkar Dabeer}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{WinCLIP}: Zero-/Few-Shot Anomaly Classification and Segmentation}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2303.14814}} (\bibinfo{year}{2023}).
 \newblock
 
 
 \bibitem[Jiang et~al\mbox{.}(2025b)]%
         {jiang2025vknowu}
-\bibfield{author}{\bibinfo{person}{Tianxiang Jiang}, \bibinfo{person}{Sheng
-  Xia}, \bibinfo{person}{Yicheng Xu}, \bibinfo{person}{Linquan Wu},
-  \bibinfo{person}{Xiangyu Zeng}, \bibinfo{person}{Limin Wang},
-  \bibinfo{person}{Yu Qiao}, {and} \bibinfo{person}{Yi Wang}.}
-  \bibinfo{year}{2025}\natexlab{b}.
-\newblock \showarticletitle{{VKnowU}: Evaluating Visual Knowledge Understanding
-  in Multimodal {LLMs}}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2511.20272}}
-  (\bibinfo{year}{2025}).
+\bibfield{author}{\bibinfo{person}{Tianxiang Jiang}, \bibinfo{person}{Sheng Xia}, \bibinfo{person}{Yicheng Xu}, \bibinfo{person}{Linquan Wu}, \bibinfo{person}{Xiangyu Zeng}, \bibinfo{person}{Limin Wang}, \bibinfo{person}{Yu Qiao}, {and} \bibinfo{person}{Yi Wang}.} \bibinfo{year}{2025}\natexlab{b}.
+\newblock \showarticletitle{{VKnowU}: Evaluating Visual Knowledge Understanding in Multimodal {LLMs}}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2511.20272}} (\bibinfo{year}{2025}).
 \newblock
 
 
 \bibitem[Jiang et~al\mbox{.}(2025a)]%
         {jiang2025mmad}
-\bibfield{author}{\bibinfo{person}{Xi Jiang}, \bibinfo{person}{Jian Li},
-  \bibinfo{person}{Hanqiu Deng}, \bibinfo{person}{Yong Liu},
-  \bibinfo{person}{Bin-Bin Gao}, \bibinfo{person}{Yifeng Zhou},
-  \bibinfo{person}{Jialin Li}, \bibinfo{person}{Chengjie Wang}, {and}
-  \bibinfo{person}{Feng Zheng}.} \bibinfo{year}{2025}\natexlab{a}.
-\newblock \showarticletitle{{MMAD}: A Comprehensive Benchmark for Multimodal
-  Large Language Models in Industrial Anomaly Detection}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2410.09453}}
-  (\bibinfo{year}{2025}).
+\bibfield{author}{\bibinfo{person}{Xi Jiang}, \bibinfo{person}{Jian Li}, \bibinfo{person}{Hanqiu Deng}, \bibinfo{person}{Yong Liu}, \bibinfo{person}{Bin-Bin Gao}, \bibinfo{person}{Yifeng Zhou}, \bibinfo{person}{Jialin Li}, \bibinfo{person}{Chengjie Wang}, {and} \bibinfo{person}{Feng Zheng}.} \bibinfo{year}{2025}\natexlab{a}.
+\newblock \showarticletitle{{MMAD}: A Comprehensive Benchmark for Multimodal Large Language Models in Industrial Anomaly Detection}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2410.09453}} (\bibinfo{year}{2025}).
 \newblock
 
 
 \bibitem[Karpukhin et~al\mbox{.}(2020)]%
         {karpukhin2020dense}
-\bibfield{author}{\bibinfo{person}{Vladimir Karpukhin}, \bibinfo{person}{Barlas
-  Oguz}, \bibinfo{person}{Sewon Min}, \bibinfo{person}{Patrick Lewis},
-  \bibinfo{person}{Ledell Wu}, \bibinfo{person}{Sergey Edunov},
-  \bibinfo{person}{Danqi Chen}, {and} \bibinfo{person}{Wen-tau Yih}.}
-  \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Dense Passage Retrieval for Open-Domain Question
-  Answering}. In \bibinfo{booktitle}{\emph{EMNLP}}.
-  \bibinfo{pages}{6769--6781}.
+\bibfield{author}{\bibinfo{person}{Vladimir Karpukhin}, \bibinfo{person}{Barlas Oguz}, \bibinfo{person}{Sewon Min}, \bibinfo{person}{Patrick Lewis}, \bibinfo{person}{Ledell Wu}, \bibinfo{person}{Sergey Edunov}, \bibinfo{person}{Danqi Chen}, {and} \bibinfo{person}{Wen-tau Yih}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Dense Passage Retrieval for Open-Domain Question Answering}. In \bibinfo{booktitle}{\emph{EMNLP}}. \bibinfo{pages}{6769--6781}.
 \newblock
 
 
 \bibitem[Kim and Rush(2016)]%
         {kim2016sequence}
-\bibfield{author}{\bibinfo{person}{Yoon Kim} {and}
-  \bibinfo{person}{Alexander~M. Rush}.} \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{Sequence-Level Knowledge Distillation}. In
-  \bibinfo{booktitle}{\emph{EMNLP}}. \bibinfo{pages}{1317--1327}.
+\bibfield{author}{\bibinfo{person}{Yoon Kim} {and} \bibinfo{person}{Alexander~M. Rush}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Sequence-Level Knowledge Distillation}. In \bibinfo{booktitle}{\emph{EMNLP}}. \bibinfo{pages}{1317--1327}.
 \newblock
 
 
 \bibitem[Lewis et~al\mbox{.}(2020)]%
         {lewis2020rag}
-\bibfield{author}{\bibinfo{person}{Patrick Lewis}, \bibinfo{person}{Ethan
-  Perez}, \bibinfo{person}{Aleksandra Piktus}, \bibinfo{person}{Fabio Petroni},
-  \bibinfo{person}{Vladimir Karpukhin}, \bibinfo{person}{Naman Goyal},
-  \bibinfo{person}{Heinrich K{\"u}ttler}, \bibinfo{person}{Mike Lewis},
-  \bibinfo{person}{Wen-tau Yih}, \bibinfo{person}{Tim Rockt{\"a}schel},
-  {et~al\mbox{.}}} \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Retrieval-Augmented Generation for
-  Knowledge-Intensive {NLP} Tasks}. In \bibinfo{booktitle}{\emph{NeurIPS}}.
-  \bibinfo{pages}{9459--9474}.
+\bibfield{author}{\bibinfo{person}{Patrick Lewis}, \bibinfo{person}{Ethan Perez}, \bibinfo{person}{Aleksandra Piktus}, \bibinfo{person}{Fabio Petroni}, \bibinfo{person}{Vladimir Karpukhin}, \bibinfo{person}{Naman Goyal}, \bibinfo{person}{Heinrich K{\"u}ttler}, \bibinfo{person}{Mike Lewis}, \bibinfo{person}{Wen-tau Yih}, \bibinfo{person}{Tim Rockt{\"a}schel}, {et~al\mbox{.}}} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Retrieval-Augmented Generation for Knowledge-Intensive {NLP} Tasks}. In \bibinfo{booktitle}{\emph{NeurIPS}}. \bibinfo{pages}{9459--9474}.
 \newblock
 
 
 \bibitem[Li et~al\mbox{.}(2021)]%
         {li2021cutpaste}
-\bibfield{author}{\bibinfo{person}{Chun-Liang Li}, \bibinfo{person}{Kihyuk
-  Sohn}, \bibinfo{person}{Jinsung Yoon}, {and} \bibinfo{person}{Tomas
-  Pfister}.} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{{CutPaste}: Self-Supervised Learning for Anomaly
-  Detection and Localization}. In \bibinfo{booktitle}{\emph{CVPR}}.
-  \bibinfo{pages}{9664--9674}.
+\bibfield{author}{\bibinfo{person}{Chun-Liang Li}, \bibinfo{person}{Kihyuk Sohn}, \bibinfo{person}{Jinsung Yoon}, {and} \bibinfo{person}{Tomas Pfister}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{{CutPaste}: Self-Supervised Learning for Anomaly Detection and Localization}. In \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{9664--9674}.
 \newblock
 
 
 \bibitem[Li et~al\mbox{.}(2023)]%
         {li2023blip2}
-\bibfield{author}{\bibinfo{person}{Junnan Li}, \bibinfo{person}{Dongxu Li},
-  \bibinfo{person}{Silvio Savarese}, {and} \bibinfo{person}{Steven Hoi}.}
-  \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{{BLIP-2}: Bootstrapping Language-Image Pre-Training
-  With Frozen Image Encoders and Large Language Models}. In
-  \bibinfo{booktitle}{\emph{ICML}}. \bibinfo{pages}{19730--19742}.
+\bibfield{author}{\bibinfo{person}{Junnan Li}, \bibinfo{person}{Dongxu Li}, \bibinfo{person}{Silvio Savarese}, {and} \bibinfo{person}{Steven Hoi}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{BLIP-2}: Bootstrapping Language-Image Pre-Training With Frozen Image Encoders and Large Language Models}. In \bibinfo{booktitle}{\emph{ICML}}. \bibinfo{pages}{19730--19742}.
 \newblock
 
 
 \bibitem[Liu et~al\mbox{.}(2024)]%
         {Liu24}
-\bibfield{author}{\bibinfo{person}{Haotian Liu}, \bibinfo{person}{Chunyuan Li},
-  \bibinfo{person}{Yuheng Li}, \bibinfo{person}{Bo Li},
-  \bibinfo{person}{Yuanhan Zhang}, \bibinfo{person}{Sheng Shen}, {and}
-  \bibinfo{person}{Yong~Jae Lee}.} \bibinfo{year}{2024}\natexlab{}.
-\newblock \bibinfo{title}{LLaVA-NeXT: Improved reasoning, OCR, and world
-  knowledge}.
+\bibfield{author}{\bibinfo{person}{Haotian Liu}, \bibinfo{person}{Chunyuan Li}, \bibinfo{person}{Yuheng Li}, \bibinfo{person}{Bo Li}, \bibinfo{person}{Yuanhan Zhang}, \bibinfo{person}{Sheng Shen}, {and} \bibinfo{person}{Yong~Jae Lee}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{LLaVA-NeXT: Improved reasoning, OCR, and world knowledge}.
 \newblock
 \urldef\tempurl%
 \url{https://llava-vl.github.io/blog/2024-01-30-llava-next/}
@@ -436,72 +266,40 @@
 
 \bibitem[Liu et~al\mbox{.}(2023b)]%
         {liu2023llava}
-\bibfield{author}{\bibinfo{person}{Haotian Liu}, \bibinfo{person}{Chunyuan Li},
-  \bibinfo{person}{Qingyang Wu}, {and} \bibinfo{person}{Yong~Jae Lee}.}
-  \bibinfo{year}{2023}\natexlab{b}.
+\bibfield{author}{\bibinfo{person}{Haotian Liu}, \bibinfo{person}{Chunyuan Li}, \bibinfo{person}{Qingyang Wu}, {and} \bibinfo{person}{Yong~Jae Lee}.} \bibinfo{year}{2023}\natexlab{b}.
 \newblock \showarticletitle{Visual Instruction Tuning}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2304.08485}}
-  (\bibinfo{year}{2023}).
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2304.08485}} (\bibinfo{year}{2023}).
 \newblock
 
 
 \bibitem[Liu et~al\mbox{.}(2023a)]%
         {liu2023mmbench}
-\bibfield{author}{\bibinfo{person}{Yuan Liu}, \bibinfo{person}{Haodong Duan},
-  \bibinfo{person}{Yuanhan Zhang}, \bibinfo{person}{Bo Li},
-  \bibinfo{person}{Songyang Zhang}, \bibinfo{person}{Wangbo Zhao},
-  \bibinfo{person}{Yike Yuan}, \bibinfo{person}{Jiaqi Wang},
-  \bibinfo{person}{Conghui He}, \bibinfo{person}{Ziwei Liu}, {et~al\mbox{.}}}
-  \bibinfo{year}{2023}\natexlab{a}.
-\newblock \showarticletitle{{MMBench}: Is Your Multi-Modal Model an All-Around
-  Player?}
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2307.06281}}
-  (\bibinfo{year}{2023}).
+\bibfield{author}{\bibinfo{person}{Yuan Liu}, \bibinfo{person}{Haodong Duan}, \bibinfo{person}{Yuanhan Zhang}, \bibinfo{person}{Bo Li}, \bibinfo{person}{Songyang Zhang}, \bibinfo{person}{Wangbo Zhao}, \bibinfo{person}{Yike Yuan}, \bibinfo{person}{Jiaqi Wang}, \bibinfo{person}{Conghui He}, \bibinfo{person}{Ziwei Liu}, {et~al\mbox{.}}} \bibinfo{year}{2023}\natexlab{a}.
+\newblock \showarticletitle{{MMBench}: Is Your Multi-Modal Model an All-Around Player?}
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2307.06281}} (\bibinfo{year}{2023}).
 \newblock
 
 
 \bibitem[Liu et~al\mbox{.}(2025)]%
         {liu2025nvila}
-\bibfield{author}{\bibinfo{person}{Zhijian Liu}, \bibinfo{person}{Ligeng Zhu},
-  \bibinfo{person}{Baifeng Shi}, \bibinfo{person}{Zhuoyang Zhang},
-  \bibinfo{person}{Yuming Lou}, \bibinfo{person}{Shang Yang},
-  \bibinfo{person}{Haocheng Xi}, \bibinfo{person}{Shiyi Cao},
-  \bibinfo{person}{Yuxian Gu}, \bibinfo{person}{Dacheng Li}, {et~al\mbox{.}}}
-  \bibinfo{year}{2025}\natexlab{}.
-\newblock \showarticletitle{{NVILA}: Efficient Frontier Visual Language
-  Models}. In \bibinfo{booktitle}{\emph{Proceedings of the Computer Vision and
-  Pattern Recognition Conference}}. \bibinfo{pages}{4122--4134}.
+\bibfield{author}{\bibinfo{person}{Zhijian Liu}, \bibinfo{person}{Ligeng Zhu}, \bibinfo{person}{Baifeng Shi}, \bibinfo{person}{Zhuoyang Zhang}, \bibinfo{person}{Yuming Lou}, \bibinfo{person}{Shang Yang}, \bibinfo{person}{Haocheng Xi}, \bibinfo{person}{Shiyi Cao}, \bibinfo{person}{Yuxian Gu}, \bibinfo{person}{Dacheng Li}, {et~al\mbox{.}}} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{NVILA}: Efficient Frontier Visual Language Models}. In \bibinfo{booktitle}{\emph{Proceedings of the Computer Vision and Pattern Recognition Conference}}. \bibinfo{pages}{4122--4134}.
 \newblock
 
 
 \bibitem[Lu et~al\mbox{.}(2024)]%
         {lu2024mathvista}
-\bibfield{author}{\bibinfo{person}{Pan Lu}, \bibinfo{person}{Hritik Bansal},
-  \bibinfo{person}{Tony Xia}, \bibinfo{person}{Jiacheng Liu},
-  \bibinfo{person}{Chunyuan Li}, \bibinfo{person}{Hannaneh Hajishirzi},
-  \bibinfo{person}{Hao Cheng}, \bibinfo{person}{Kai-Wei Chang},
-  \bibinfo{person}{Michel Galley}, {and} \bibinfo{person}{Jianfeng Gao}.}
-  \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{{MathVista}: Evaluating Mathematical Reasoning of
-  Foundation Models in Visual Contexts}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2310.02255}}
-  (\bibinfo{year}{2024}).
+\bibfield{author}{\bibinfo{person}{Pan Lu}, \bibinfo{person}{Hritik Bansal}, \bibinfo{person}{Tony Xia}, \bibinfo{person}{Jiacheng Liu}, \bibinfo{person}{Chunyuan Li}, \bibinfo{person}{Hannaneh Hajishirzi}, \bibinfo{person}{Hao Cheng}, \bibinfo{person}{Kai-Wei Chang}, \bibinfo{person}{Michel Galley}, {and} \bibinfo{person}{Jianfeng Gao}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{MathVista}: Evaluating Mathematical Reasoning of Foundation Models in Visual Contexts}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2310.02255}} (\bibinfo{year}{2024}).
 \newblock
 
 
 \bibitem[Ma et~al\mbox{.}(2026)]%
         {ma2026mopd}
-\bibfield{author}{\bibinfo{person}{Wenhan Ma}, \bibinfo{person}{Jianyu Wei},
-  \bibinfo{person}{Liang Zhao}, \bibinfo{person}{Hailin Zhang},
-  \bibinfo{person}{Bangjun Xiao}, \bibinfo{person}{Lei Li},
-  \bibinfo{person}{Qibin Yang}, \bibinfo{person}{Bofei Gao},
-  \bibinfo{person}{Yudong Wang}, \bibinfo{person}{Rang Li},
-  \bibinfo{person}{Jinhao Dong}, \bibinfo{person}{Zhifang Sui}, {and}
-  \bibinfo{person}{Fuli Luo}.} \bibinfo{year}{2026}\natexlab{}.
-\newblock \showarticletitle{{MOPD}: Multi-Teacher On-Policy Distillation for
-  Capability Integration in {LLM} Post-Training}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2606.30406}}
-  (\bibinfo{year}{2026}).
+\bibfield{author}{\bibinfo{person}{Wenhan Ma}, \bibinfo{person}{Jianyu Wei}, \bibinfo{person}{Liang Zhao}, \bibinfo{person}{Hailin Zhang}, \bibinfo{person}{Bangjun Xiao}, \bibinfo{person}{Lei Li}, \bibinfo{person}{Qibin Yang}, \bibinfo{person}{Bofei Gao}, \bibinfo{person}{Yudong Wang}, \bibinfo{person}{Rang Li}, \bibinfo{person}{Jinhao Dong}, \bibinfo{person}{Zhifang Sui}, {and} \bibinfo{person}{Fuli Luo}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{MOPD}: Multi-Teacher On-Policy Distillation for Capability Integration in {LLM} Post-Training}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2606.30406}} (\bibinfo{year}{2026}).
 \newblock
 
 
@@ -509,19 +307,15 @@
         {openai2023gpt4}
 \bibfield{author}{\bibinfo{person}{{OpenAI}}.} \bibinfo{year}{2023}\natexlab{}.
 \newblock \showarticletitle{{GPT-4} Technical Report}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2303.08774}}
-  (\bibinfo{year}{2023}).
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2303.08774}} (\bibinfo{year}{2023}).
 \newblock
 
 
 \bibitem[{PCBA Standard-to-Real Challenge Organizers}(2026a)]%
         {pcba_challenge_eval}
-\bibfield{author}{\bibinfo{person}{{PCBA Standard-to-Real Challenge
-  Organizers}}.} \bibinfo{year}{2026}\natexlab{a}.
-\newblock \bibinfo{title}{{ACM MM 2026 PCBA Standard-to-Real Grand Challenge on
-  CodaBench}}.
-\newblock
-  \bibinfo{howpublished}{\url{https://www.codabench.org/competitions/16306/}}.
+\bibfield{author}{\bibinfo{person}{{PCBA Standard-to-Real Challenge Organizers}}.} \bibinfo{year}{2026}\natexlab{a}.
+\newblock \bibinfo{title}{{ACM MM 2026 PCBA Standard-to-Real Grand Challenge on CodaBench}}.
+\newblock \bibinfo{howpublished}{\url{https://www.codabench.org/competitions/16306/}}.
 \newblock
 \newblock
 \shownote{Accessed: 2026-07-02}.
@@ -529,11 +323,9 @@
 
 \bibitem[{PCBA Standard-to-Real Challenge Organizers}(2026b)]%
         {pcba_challenge_dataset}
-\bibfield{author}{\bibinfo{person}{{PCBA Standard-to-Real Challenge
-  Organizers}}.} \bibinfo{year}{2026}\natexlab{b}.
+\bibfield{author}{\bibinfo{person}{{PCBA Standard-to-Real Challenge Organizers}}.} \bibinfo{year}{2026}\natexlab{b}.
 \newblock \bibinfo{title}{{PCBA Standard-to-Real Challenge Dataset}}.
-\newblock
-  \bibinfo{howpublished}{\url{https://huggingface.co/datasets/aimmifm/PCBA_Standard-to-Real_Challenge}}.
+\newblock \bibinfo{howpublished}{\url{https://huggingface.co/datasets/aimmifm/PCBA_Standard-to-Real_Challenge}}.
 \newblock
 \newblock
 \shownote{Accessed: 2026-07-02}.
@@ -541,11 +333,9 @@
 
 \bibitem[{PCBA Standard-to-Real Challenge Organizers}(2026c)]%
         {pcba_challenge_website}
-\bibfield{author}{\bibinfo{person}{{PCBA Standard-to-Real Challenge
-  Organizers}}.} \bibinfo{year}{2026}\natexlab{c}.
+\bibfield{author}{\bibinfo{person}{{PCBA Standard-to-Real Challenge Organizers}}.} \bibinfo{year}{2026}\natexlab{c}.
 \newblock \bibinfo{title}{{PCBA Standard-to-Real Grand Challenge}}.
-\newblock
-  \bibinfo{howpublished}{\url{https://sites.google.com/cmlab.csie.ntu.edu.tw/asus-ntu-pcba-vqa-challenge/home}}.
+\newblock \bibinfo{howpublished}{\url{https://sites.google.com/cmlab.csie.ntu.edu.tw/asus-ntu-pcba-vqa-challenge/home}}.
 \newblock
 \newblock
 \shownote{Accessed: 2026-07-02}.
@@ -553,148 +343,67 @@
 
 \bibitem[Radford et~al\mbox{.}(2021)]%
         {radford2021clip}
-\bibfield{author}{\bibinfo{person}{Alec Radford}, \bibinfo{person}{Jong~Wook
-  Kim}, \bibinfo{person}{Chris Hallacy}, \bibinfo{person}{Aditya Ramesh},
-  \bibinfo{person}{Gabriel Goh}, \bibinfo{person}{Sandhini Agarwal},
-  \bibinfo{person}{Girish Sastry}, \bibinfo{person}{Amanda Askell},
-  \bibinfo{person}{Pamela Mishkin}, \bibinfo{person}{Jack Clark},
-  \bibinfo{person}{Gretchen Krueger}, {and} \bibinfo{person}{Ilya Sutskever}.}
-  \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{Learning Transferable Visual Models From Natural
-  Language Supervision}. In \bibinfo{booktitle}{\emph{ICML}}.
-  \bibinfo{pages}{8748--8763}.
+\bibfield{author}{\bibinfo{person}{Alec Radford}, \bibinfo{person}{Jong~Wook Kim}, \bibinfo{person}{Chris Hallacy}, \bibinfo{person}{Aditya Ramesh}, \bibinfo{person}{Gabriel Goh}, \bibinfo{person}{Sandhini Agarwal}, \bibinfo{person}{Girish Sastry}, \bibinfo{person}{Amanda Askell}, \bibinfo{person}{Pamela Mishkin}, \bibinfo{person}{Jack Clark}, \bibinfo{person}{Gretchen Krueger}, {and} \bibinfo{person}{Ilya Sutskever}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Learning Transferable Visual Models From Natural Language Supervision}. In \bibinfo{booktitle}{\emph{ICML}}. \bibinfo{pages}{8748--8763}.
 \newblock
 
 
 \bibitem[Rafailov et~al\mbox{.}(2023)]%
         {rafailov2023direct}
-\bibfield{author}{\bibinfo{person}{Rafael Rafailov}, \bibinfo{person}{Archit
-  Sharma}, \bibinfo{person}{Eric Mitchell}, \bibinfo{person}{Stefano Ermon},
-  \bibinfo{person}{Christopher~D. Manning}, {and} \bibinfo{person}{Chelsea
-  Finn}.} \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{Direct Preference Optimization: Your Language Model
-  Is Secretly a Reward Model}. In \bibinfo{booktitle}{\emph{NeurIPS}}.
-  \bibinfo{pages}{53728--53741}.
+\bibfield{author}{\bibinfo{person}{Rafael Rafailov}, \bibinfo{person}{Archit Sharma}, \bibinfo{person}{Eric Mitchell}, \bibinfo{person}{Stefano Ermon}, \bibinfo{person}{Christopher~D. Manning}, {and} \bibinfo{person}{Chelsea Finn}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Direct Preference Optimization: Your Language Model Is Secretly a Reward Model}. In \bibinfo{booktitle}{\emph{NeurIPS}}. \bibinfo{pages}{53728--53741}.
 \newblock
 
 
 \bibitem[Roth et~al\mbox{.}(2022)]%
         {roth2022patchcore}
-\bibfield{author}{\bibinfo{person}{Karsten Roth}, \bibinfo{person}{Latha
-  Pemula}, \bibinfo{person}{Joaquin Zepeda}, \bibinfo{person}{Bernhard
-  Sch{\"o}lkopf}, \bibinfo{person}{Thomas Brox}, {and} \bibinfo{person}{Peter
-  Gehler}.} \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{Towards Total Recall in Industrial Anomaly
-  Detection}. In \bibinfo{booktitle}{\emph{CVPR}}.
-  \bibinfo{pages}{14318--14328}.
+\bibfield{author}{\bibinfo{person}{Karsten Roth}, \bibinfo{person}{Latha Pemula}, \bibinfo{person}{Joaquin Zepeda}, \bibinfo{person}{Bernhard Sch{\"o}lkopf}, \bibinfo{person}{Thomas Brox}, {and} \bibinfo{person}{Peter Gehler}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Towards Total Recall in Industrial Anomaly Detection}. In \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{14318--14328}.
 \newblock
 
 
 \bibitem[Rusu et~al\mbox{.}(2016)]%
         {rusu2016policy}
-\bibfield{author}{\bibinfo{person}{Andrei~A. Rusu},
-  \bibinfo{person}{Sergio~G{\'o}mez Colmenarejo}, \bibinfo{person}{{\c{C}}aglar
-  G{\"u}l{\c{c}}ehre}, \bibinfo{person}{Guillaume Desjardins},
-  \bibinfo{person}{James Kirkpatrick}, \bibinfo{person}{Razvan Pascanu},
-  \bibinfo{person}{Volodymyr Mnih}, \bibinfo{person}{Koray Kavukcuoglu}, {and}
-  \bibinfo{person}{Raia Hadsell}.} \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{Policy Distillation}. In
-  \bibinfo{booktitle}{\emph{ICLR}}.
+\bibfield{author}{\bibinfo{person}{Andrei~A. Rusu}, \bibinfo{person}{Sergio~G{\'o}mez Colmenarejo}, \bibinfo{person}{{\c{C}}aglar G{\"u}l{\c{c}}ehre}, \bibinfo{person}{Guillaume Desjardins}, \bibinfo{person}{James Kirkpatrick}, \bibinfo{person}{Razvan Pascanu}, \bibinfo{person}{Volodymyr Mnih}, \bibinfo{person}{Koray Kavukcuoglu}, {and} \bibinfo{person}{Raia Hadsell}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Policy Distillation}. In \bibinfo{booktitle}{\emph{ICLR}}.
 \newblock
 
 
 \bibitem[Schulman et~al\mbox{.}(2017)]%
         {schulman2017ppo}
-\bibfield{author}{\bibinfo{person}{John Schulman}, \bibinfo{person}{Filip
-  Wolski}, \bibinfo{person}{Prafulla Dhariwal}, \bibinfo{person}{Alec Radford},
-  {and} \bibinfo{person}{Oleg Klimov}.} \bibinfo{year}{2017}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{John Schulman}, \bibinfo{person}{Filip Wolski}, \bibinfo{person}{Prafulla Dhariwal}, \bibinfo{person}{Alec Radford}, {and} \bibinfo{person}{Oleg Klimov}.} \bibinfo{year}{2017}\natexlab{}.
 \newblock \showarticletitle{Proximal Policy Optimization Algorithms}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1707.06347}}
-  (\bibinfo{year}{2017}).
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1707.06347}} (\bibinfo{year}{2017}).
 \newblock
 
 
 \bibitem[Singh et~al\mbox{.}(2019)]%
         {singh2019textvqa}
-\bibfield{author}{\bibinfo{person}{Amanpreet Singh}, \bibinfo{person}{Vivek
-  Natarajan}, \bibinfo{person}{Meet Shah}, \bibinfo{person}{Yu Jiang},
-  \bibinfo{person}{Xinlei Chen}, \bibinfo{person}{Dhruv Batra},
-  \bibinfo{person}{Devi Parikh}, {and} \bibinfo{person}{Marcus Rohrbach}.}
-  \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{Towards {VQA} Models That Can Read}. In
-  \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{8317--8326}.
+\bibfield{author}{\bibinfo{person}{Amanpreet Singh}, \bibinfo{person}{Vivek Natarajan}, \bibinfo{person}{Meet Shah}, \bibinfo{person}{Yu Jiang}, \bibinfo{person}{Xinlei Chen}, \bibinfo{person}{Dhruv Batra}, \bibinfo{person}{Devi Parikh}, {and} \bibinfo{person}{Marcus Rohrbach}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Towards {VQA} Models That Can Read}. In \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{8317--8326}.
 \newblock
 
 
 \bibitem[Sun et~al\mbox{.}(2026)]%
         {unipcb2026}
-\bibfield{author}{\bibinfo{person}{Fuxiang Sun}, \bibinfo{person}{Xi Jiang},
-  \bibinfo{person}{Jiansheng Wu}, \bibinfo{person}{Haigang Zhang},
-  \bibinfo{person}{Feng Zheng}, {and} \bibinfo{person}{Jinfeng Yang}.}
-  \bibinfo{year}{2026}\natexlab{}.
-\newblock \showarticletitle{{UniPCB}: A Unified Vision-Language Benchmark for
-  Open-Ended {PCB} Quality Inspection}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2601.19222}}
-  (\bibinfo{year}{2026}).
+\bibfield{author}{\bibinfo{person}{Fuxiang Sun}, \bibinfo{person}{Xi Jiang}, \bibinfo{person}{Jiansheng Wu}, \bibinfo{person}{Haigang Zhang}, \bibinfo{person}{Feng Zheng}, {and} \bibinfo{person}{Jinfeng Yang}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{UniPCB}: A Unified Vision-Language Benchmark for Open-Ended {PCB} Quality Inspection}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2601.19222}} (\bibinfo{year}{2026}).
 \newblock
 
 
 \bibitem[Wang et~al\mbox{.}(2024)]%
         {wang2024realiad}
-\bibfield{author}{\bibinfo{person}{Chengjie Wang}, \bibinfo{person}{Wenbing
-  Zhu}, \bibinfo{person}{Bin-Bin Gao}, \bibinfo{person}{Zhenye Gan},
-  \bibinfo{person}{Jianning Zhang}, \bibinfo{person}{Zhihao Gu},
-  \bibinfo{person}{Shuguang Qian}, \bibinfo{person}{Mingang Chen}, {and}
-  \bibinfo{person}{Lizhuang Ma}.} \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{{Real-IAD}: A Real-World Multi-View Dataset for
-  Benchmarking Versatile Industrial Anomaly Detection}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2403.12580}}
-  (\bibinfo{year}{2024}).
+\bibfield{author}{\bibinfo{person}{Chengjie Wang}, \bibinfo{person}{Wenbing Zhu}, \bibinfo{person}{Bin-Bin Gao}, \bibinfo{person}{Zhenye Gan}, \bibinfo{person}{Jianning Zhang}, \bibinfo{person}{Zhihao Gu}, \bibinfo{person}{Shuguang Qian}, \bibinfo{person}{Mingang Chen}, {and} \bibinfo{person}{Lizhuang Ma}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{Real-IAD}: A Real-World Multi-View Dataset for Benchmarking Versatile Industrial Anomaly Detection}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2403.12580}} (\bibinfo{year}{2024}).
 \newblock
 
 
 \bibitem[Wang et~al\mbox{.}(2025)]%
         {wang2025internvl35advancingopensourcemultimodal}
-\bibfield{author}{\bibinfo{person}{Weiyun Wang}, \bibinfo{person}{Zhangwei
-  Gao}, \bibinfo{person}{Lixin Gu}, \bibinfo{person}{Hengjun Pu},
-  \bibinfo{person}{Long Cui}, \bibinfo{person}{Xingguang Wei},
-  \bibinfo{person}{Zhaoyang Liu}, \bibinfo{person}{Linglin Jing},
-  \bibinfo{person}{Shenglong Ye}, \bibinfo{person}{Jie Shao},
-  \bibinfo{person}{Zhaokai Wang}, \bibinfo{person}{Zhe Chen},
-  \bibinfo{person}{Hongjie Zhang}, \bibinfo{person}{Ganlin Yang},
-  \bibinfo{person}{Haomin Wang}, \bibinfo{person}{Qi Wei},
-  \bibinfo{person}{Jinhui Yin}, \bibinfo{person}{Wenhao Li},
-  \bibinfo{person}{Erfei Cui}, \bibinfo{person}{Guanzhou Chen},
-  \bibinfo{person}{Zichen Ding}, \bibinfo{person}{Changyao Tian},
-  \bibinfo{person}{Zhenyu Wu}, \bibinfo{person}{Jingjing Xie},
-  \bibinfo{person}{Zehao Li}, \bibinfo{person}{Bowen Yang},
-  \bibinfo{person}{Yuchen Duan}, \bibinfo{person}{Xuehui Wang},
-  \bibinfo{person}{Zhi Hou}, \bibinfo{person}{Haoran Hao},
-  \bibinfo{person}{Tianyi Zhang}, \bibinfo{person}{Songze Li},
-  \bibinfo{person}{Xiangyu Zhao}, \bibinfo{person}{Haodong Duan},
-  \bibinfo{person}{Nianchen Deng}, \bibinfo{person}{Bin Fu},
-  \bibinfo{person}{Yinan He}, \bibinfo{person}{Yi Wang},
-  \bibinfo{person}{Conghui He}, \bibinfo{person}{Botian Shi},
-  \bibinfo{person}{Junjun He}, \bibinfo{person}{Yingtong Xiong},
-  \bibinfo{person}{Han Lv}, \bibinfo{person}{Lijun Wu}, \bibinfo{person}{Wenqi
-  Shao}, \bibinfo{person}{Kaipeng Zhang}, \bibinfo{person}{Huipeng Deng},
-  \bibinfo{person}{Biqing Qi}, \bibinfo{person}{Jiaye Ge},
-  \bibinfo{person}{Qipeng Guo}, \bibinfo{person}{Wenwei Zhang},
-  \bibinfo{person}{Songyang Zhang}, \bibinfo{person}{Maosong Cao},
-  \bibinfo{person}{Junyao Lin}, \bibinfo{person}{Kexian Tang},
-  \bibinfo{person}{Jianfei Gao}, \bibinfo{person}{Haian Huang},
-  \bibinfo{person}{Yuzhe Gu}, \bibinfo{person}{Chengqi Lyu},
-  \bibinfo{person}{Huanze Tang}, \bibinfo{person}{Rui Wang},
-  \bibinfo{person}{Haijun Lv}, \bibinfo{person}{Wanli Ouyang},
-  \bibinfo{person}{Limin Wang}, \bibinfo{person}{Min Dou},
-  \bibinfo{person}{Xizhou Zhu}, \bibinfo{person}{Tong Lu},
-  \bibinfo{person}{Dahua Lin}, \bibinfo{person}{Jifeng Dai},
-  \bibinfo{person}{Weijie Su}, \bibinfo{person}{Bowen Zhou},
-  \bibinfo{person}{Kai Chen}, \bibinfo{person}{Yu Qiao},
-  \bibinfo{person}{Wenhai Wang}, {and} \bibinfo{person}{Gen Luo}.}
-  \bibinfo{year}{2025}\natexlab{}.
-\newblock \bibinfo{title}{InternVL3.5: Advancing Open-Source Multimodal Models
-  in Versatility, Reasoning, and Efficiency}.
+\bibfield{author}{\bibinfo{person}{Weiyun Wang}, \bibinfo{person}{Zhangwei Gao}, \bibinfo{person}{Lixin Gu}, \bibinfo{person}{Hengjun Pu}, \bibinfo{person}{Long Cui}, \bibinfo{person}{Xingguang Wei}, \bibinfo{person}{Zhaoyang Liu}, \bibinfo{person}{Linglin Jing}, \bibinfo{person}{Shenglong Ye}, \bibinfo{person}{Jie Shao}, \bibinfo{person}{Zhaokai Wang}, \bibinfo{person}{Zhe Chen}, \bibinfo{person}{Hongjie Zhang}, \bibinfo{person}{Ganlin Yang}, \bibinfo{person}{Haomin Wang}, \bibinfo{person}{Qi Wei}, \bibinfo{person}{Jinhui Yin}, \bibinfo{person}{Wenhao Li}, \bibinfo{person}{Erfei Cui}, \bibinfo{person}{Guanzhou Chen}, \bibinfo{person}{Zichen Ding}, \bibinfo{person}{Changyao Tian}, \bibinfo{person}{Zhenyu Wu}, \bibinfo{person}{Jingjing Xie}, \bibinfo{person}{Zehao Li}, \bibinfo{person}{Bowen Yang}, \bibinfo{person}{Yuchen Duan}, \bibinfo{person}{Xuehui Wang}, \bibinfo{person}{Zhi Hou}, \bibinfo{person}{Haoran Hao}, \bibinfo{person}{Tianyi Zhang}, \bibinfo{person}{Songze Li}, \bibinfo{person}{Xiangyu Zhao}, \bibinfo{person}{Haodong Duan}, \bibinfo{person}{Nianchen Deng}, \bibinfo{person}{Bin Fu}, \bibinfo{person}{Yinan He}, \bibinfo{person}{Yi Wang}, \bibinfo{person}{Conghui He}, \bibinfo{person}{Botian Shi}, \bibinfo{person}{Junjun He}, \bibinfo{person}{Yingtong Xiong}, \bibinfo{person}{Han Lv}, \bibinfo{person}{Lijun Wu}, \bibinfo{person}{Wenqi Shao}, \bibinfo{person}{Kaipeng Zhang}, \bibinfo{person}{Huipeng Deng}, \bibinfo{person}{Biqing Qi}, \bibinfo{person}{Jiaye Ge}, \bibinfo{person}{Qipeng Guo}, \bibinfo{person}{Wenwei Zhang}, \bibinfo{person}{Songyang Zhang}, \bibinfo{person}{Maosong Cao}, \bibinfo{person}{Junyao Lin}, \bibinfo{person}{Kexian Tang}, \bibinfo{person}{Jianfei Gao}, \bibinfo{person}{Haian Huang}, \bibinfo{person}{Yuzhe Gu}, \bibinfo{person}{Chengqi Lyu}, \bibinfo{person}{Huanze Tang}, \bibinfo{person}{Rui Wang}, \bibinfo{person}{Haijun Lv}, \bibinfo{person}{Wanli Ouyang}, \bibinfo{person}{Limin Wang}, \bibinfo{person}{Min Dou}, \bibinfo{person}{Xizhou Zhu}, \bibinfo{person}{Tong Lu}, \bibinfo{person}{Dahua Lin}, \bibinfo{person}{Jifeng Dai}, \bibinfo{person}{Weijie Su}, \bibinfo{person}{Bowen Zhou}, \bibinfo{person}{Kai Chen}, \bibinfo{person}{Yu Qiao}, \bibinfo{person}{Wenhai Wang}, {and} \bibinfo{person}{Gen Luo}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{InternVL3.5: Advancing Open-Source Multimodal Models in Versatility, Reasoning, and Efficiency}.
 \newblock
 \showeprint[arxiv]{2508.18265}~[cs.CV]
 \urldef\tempurl%
@@ -705,53 +414,31 @@
 
 \bibitem[Xue et~al\mbox{.}(2024)]%
         {xue2024xgen}
-\bibfield{author}{\bibinfo{person}{Le Xue}, \bibinfo{person}{Manli Shu},
-  \bibinfo{person}{Anas Awadalla}, \bibinfo{person}{Jun Wang},
-  \bibinfo{person}{An Yan}, \bibinfo{person}{Senthil Purushwalkam},
-  \bibinfo{person}{Honglu Zhou}, \bibinfo{person}{Viraj Prabhu},
-  \bibinfo{person}{Yutong Dai}, \bibinfo{person}{Michael~S Ryoo},
-  {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{{xGen-MM} ({BLIP}-3): A Family of Open Large
-  Multimodal Models}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2408.08872}}
-  (\bibinfo{year}{2024}).
+\bibfield{author}{\bibinfo{person}{Le Xue}, \bibinfo{person}{Manli Shu}, \bibinfo{person}{Anas Awadalla}, \bibinfo{person}{Jun Wang}, \bibinfo{person}{An Yan}, \bibinfo{person}{Senthil Purushwalkam}, \bibinfo{person}{Honglu Zhou}, \bibinfo{person}{Viraj Prabhu}, \bibinfo{person}{Yutong Dai}, \bibinfo{person}{Michael~S Ryoo}, {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{xGen-MM} ({BLIP}-3): A Family of Open Large Multimodal Models}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2408.08872}} (\bibinfo{year}{2024}).
 \newblock
 
 
 \bibitem[Yue et~al\mbox{.}(2024)]%
         {yue2024mmmu}
-\bibfield{author}{\bibinfo{person}{Xiang Yue}, \bibinfo{person}{Yuansheng Ni},
-  \bibinfo{person}{Kai Zhang}, \bibinfo{person}{Tianyu Zheng},
-  \bibinfo{person}{Ruoqi Liu}, \bibinfo{person}{Ge Zhang},
-  \bibinfo{person}{Samuel Stevens}, \bibinfo{person}{Dongfu Jiang},
-  \bibinfo{person}{Weiming Ren}, \bibinfo{person}{Yuxuan Sun}, {et~al\mbox{.}}}
-  \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{{MMMU}: A Massive Multi-Discipline Multimodal
-  Understanding and Reasoning Benchmark for Expert {AGI}}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2311.16502}}
-  (\bibinfo{year}{2024}).
+\bibfield{author}{\bibinfo{person}{Xiang Yue}, \bibinfo{person}{Yuansheng Ni}, \bibinfo{person}{Kai Zhang}, \bibinfo{person}{Tianyu Zheng}, \bibinfo{person}{Ruoqi Liu}, \bibinfo{person}{Ge Zhang}, \bibinfo{person}{Samuel Stevens}, \bibinfo{person}{Dongfu Jiang}, \bibinfo{person}{Weiming Ren}, \bibinfo{person}{Yuxuan Sun}, {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{MMMU}: A Massive Multi-Discipline Multimodal Understanding and Reasoning Benchmark for Expert {AGI}}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2311.16502}} (\bibinfo{year}{2024}).
 \newblock
 
 
 \bibitem[Zavrtanik et~al\mbox{.}(2021)]%
         {zavrtanik2021draem}
-\bibfield{author}{\bibinfo{person}{Vitjan Zavrtanik}, \bibinfo{person}{Matej
-  Kristan}, {and} \bibinfo{person}{Danijel Sko{\v{c}}aj}.}
-  \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{{DRAEM}: A Discriminatively Trained Reconstruction
-  Embedding for Surface Anomaly Detection}. In
-  \bibinfo{booktitle}{\emph{ICCV}}. \bibinfo{pages}{8330--8339}.
+\bibfield{author}{\bibinfo{person}{Vitjan Zavrtanik}, \bibinfo{person}{Matej Kristan}, {and} \bibinfo{person}{Danijel Sko{\v{c}}aj}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{{DRAEM}: A Discriminatively Trained Reconstruction Embedding for Surface Anomaly Detection}. In \bibinfo{booktitle}{\emph{ICCV}}. \bibinfo{pages}{8330--8339}.
 \newblock
 
 
 \bibitem[Zou et~al\mbox{.}(2022)]%
         {zou2022visa}
-\bibfield{author}{\bibinfo{person}{Yang Zou}, \bibinfo{person}{Jongheon Jeong},
-  \bibinfo{person}{Latha Pemula}, \bibinfo{person}{Dongqing Zhang}, {and}
-  \bibinfo{person}{Onkar Dabeer}.} \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{Spot-the-Difference Self-Supervised Pre-training
-  for Anomaly Detection and Segmentation}. In \bibinfo{booktitle}{\emph{ECCV}}.
-  \bibinfo{pages}{392--408}.
+\bibfield{author}{\bibinfo{person}{Yang Zou}, \bibinfo{person}{Jongheon Jeong}, \bibinfo{person}{Latha Pemula}, \bibinfo{person}{Dongqing Zhang}, {and} \bibinfo{person}{Onkar Dabeer}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Spot-the-Difference Self-Supervised Pre-training for Anomaly Detection and Segmentation}. In \bibinfo{booktitle}{\emph{ECCV}}. \bibinfo{pages}{392--408}.
 \newblock
 
 
