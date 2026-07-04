@@ -18,7 +18,20 @@ if [[ ! -d "${PCBA_ROOT}" && -d "${REPO_ROOT}/PCBA_Standard-to-Real_Challenge" ]
   PCBA_ROOT="${REPO_ROOT}/PCBA_Standard-to-Real_Challenge"
 fi
 
-PCBA_ROOT="${PCBA_ROOT}" python3 PCBA/build_pcba_ablation_splits.py
+NEED_BUILD_DATASET=1
+MANIFEST="PCBA/ablation/manifest.json"
+if [[ -f "${DATASET}" && -f "${MANIFEST}" ]]; then
+  MANIFEST_PCBA_ROOT="$(python3 -c 'import json; print(json.load(open("PCBA/ablation/manifest.json", encoding="utf-8")).get("pcba_root", ""))' 2>/dev/null || true)"
+  if [[ "${MANIFEST_PCBA_ROOT}" == "${PCBA_ROOT}" ]]; then
+    NEED_BUILD_DATASET=0
+  fi
+fi
+
+if [[ "${NEED_BUILD_DATASET}" == "1" ]]; then
+  PCBA_ROOT="${PCBA_ROOT}" python3 PCBA/build_pcba_ablation_splits.py
+else
+  echo "[info] reuse existing ${DATASET}"
+fi
 mkdir -p "${OUTPUT_DIR}"
 
 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
