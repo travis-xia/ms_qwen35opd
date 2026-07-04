@@ -1,0 +1,99 @@
+{
+  "pcba_root": "/Users/xiasheng/Documents/创智学院/challenge/ms_qwen35opd/PCBA_Standard-to-Real_Challenge",
+  "task_type_dir": "/Users/xiasheng/Documents/创智学院/challenge/ms_qwen35opd/PCBA/task_type",
+  "val_ratio": 0.1,
+  "val_seed": 42,
+  "task_types": "all",
+  "files": {
+    "train_all": "/Users/xiasheng/Documents/创智学院/challenge/ms_qwen35opd/PCBA/ablation/train_all.jsonl",
+    "val_all": "/Users/xiasheng/Documents/创智学院/challenge/ms_qwen35opd/PCBA/ablation/val_all.jsonl",
+    "train_standard": "/Users/xiasheng/Documents/创智学院/challenge/ms_qwen35opd/PCBA/ablation/train_standard.jsonl",
+    "val_standard": "/Users/xiasheng/Documents/创智学院/challenge/ms_qwen35opd/PCBA/ablation/val_standard.jsonl",
+    "train_realworld": "/Users/xiasheng/Documents/创智学院/challenge/ms_qwen35opd/PCBA/ablation/train_realworld.jsonl",
+    "val_realworld": "/Users/xiasheng/Documents/创智学院/challenge/ms_qwen35opd/PCBA/ablation/val_realworld.jsonl"
+  },
+  "counts": {
+    "train_all": {
+      "total": 7380,
+      "by_domain": {
+        "realworld": 5940,
+        "standard": 1440
+      },
+      "by_task": {
+        "defect_type": 1789,
+        "standard_knowledge": 1440,
+        "count_pin_lead": 365,
+        "defect_existence": 1802,
+        "component_type": 913,
+        "count_component": 345,
+        "attribute_reasoning": 355,
+        "mount_side": 371
+      }
+    },
+    "val_all": {
+      "total": 820,
+      "by_domain": {
+        "realworld": 660,
+        "standard": 160
+      },
+      "by_task": {
+        "defect_type": 211,
+        "defect_existence": 198,
+        "mount_side": 29,
+        "standard_knowledge": 160,
+        "component_type": 87,
+        "count_component": 55,
+        "attribute_reasoning": 45,
+        "count_pin_lead": 35
+      }
+    },
+    "train_standard": {
+      "total": 1440,
+      "by_domain": {
+        "standard": 1440
+      },
+      "by_task": {
+        "standard_knowledge": 1440
+      }
+    },
+    "val_standard": {
+      "total": 160,
+      "by_domain": {
+        "standard": 160
+      },
+      "by_task": {
+        "standard_knowledge": 160
+      }
+    },
+    "train_realworld": {
+      "total": 5940,
+      "by_domain": {
+        "realworld": 5940
+      },
+      "by_task": {
+        "defect_existence": 1802,
+        "component_type": 913,
+        "count_component": 345,
+        "defect_type": 1789,
+        "mount_side": 371,
+        "count_pin_lead": 365,
+        "attribute_reasoning": 355
+      }
+    },
+    "val_realworld": {
+      "total": 660,
+      "by_domain": {
+        "realworld": 660
+      },
+      "by_task": {
+        "defect_existence": 198,
+        "attribute_reasoning": 45,
+        "defect_type": 211,
+        "mount_side": 29,
+        "count_component": 55,
+        "component_type": 87,
+        "count_pin_lead": 35
+      }
+    }
+  }
+}

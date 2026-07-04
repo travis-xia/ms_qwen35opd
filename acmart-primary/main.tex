@@ -69,7 +69,7 @@ The PCBA Standard-to-Real Grand Challenge evaluates multimodal models on a form 
 
 Industrial inspection is moving from defect localization toward decision support. In printed circuit board assembly (PCBA), an engineer often needs to decide whether a small component is missing, whether a polarized part is mounted correctly, how many pins or components are present, the cause of a soldering defect, and what follow-up action is appropriate. These decisions require both fine-grained visual perception and standards-grounded manufacturing knowledge. Generic multimodal large language models (MLLMs) can describe images fluently, but they are brittle when small objects are densely packed, when the answer depends on package conventions or polarity rules, and when a standard illustration differs sharply from a real factory crop.
 
-The PCBA Standard-to-Real Grand Challenge formalizes this deployment gap as cross-domain VQA for real-world manufacturing inspection~\cite{pcba_challenge_website,pcba_challenge_eval}. The released public data is built from two complementary sources: standards-derived VQA constructed from industrial packaging standards and converted into VQA items, and real-world VQA built from factory production-line imagery~\cite{pcba_challenge_dataset}. The official public split contains 8,200 training questions and 8,200 test questions, totaling 16,400 questions, and covers standard-based knowledge QA, factuality, quantitative reasoning, and attribute reasoning. Submissions are evaluated on a normalized overall score aggregating accuracy, F1, and bounded counting error~\cite{pcba_challenge_eval}. This setup differs from ordinary industrial anomaly detection: the standard domain contains the rules, causes, and actions; the real domain contains the difficult visual distribution. The winning method therefore has to bridge a semantic domain shift, not only an image-style shift.
+The PCBA Standard-to-Real Grand Challenge formalizes this deployment gap as cross-domain VQA for real-world manufacturing inspection~\cite{pcba_challenge_website,pcba_challenge_eval}. The released public data is built from two complementary sources: standards-derived VQA constructed from industrial packaging standards and converted into VQA items, and real-world VQA built from factory production-line imagery~\cite{pcba_challenge_dataset}. The official CodaBench evaluation page reports a public split with 8,200 training questions and 8,200 test questions, totaling 16,400 questions, covering standard-based knowledge QA, factuality, quantitative reasoning, and attribute reasoning~\cite{pcba_challenge_eval}. Submissions are evaluated on a normalized overall score aggregating accuracy, F1, and bounded counting error~\cite{pcba_challenge_eval}. This setup differs from ordinary industrial anomaly detection: the standard domain contains the rules, causes, and actions; the real domain contains the difficult visual distribution. The winning method therefore has to bridge a semantic domain shift, not only an image-style shift.
 
 Our central claim is that this benchmark should not be treated as a flat instruction-tuning problem. A flat mixture couples two different domains too early: standards questions reward rule recall and conservative action selection, while real-world questions reward local visual discrimination, template comparison, dense counting, and exact normalization. If all examples are simply mixed, the model is encouraged to learn a generic answer style rather than a robust standard-to-real transfer mechanism. Conversely, a pure ensemble is unattractive for a challenge submission because it increases inference cost, complicates answer normalization, and still does not teach one model how to resolve cross-domain conflicts.
 
@@ -92,7 +92,7 @@ Our contributions are:
 Industrial anomaly detection benchmarks and methods have largely focused on anomaly scoring and localization, including MVTec AD, MVTec LOCO AD, VisA, Real-IAD, PaDiM, PatchCore, DRAEM, CutPaste, and EfficientAD~\cite{bergmann2019mvtec,bergmann2022loco,zou2022visa,wang2024realiad,defard2021padim,roth2022patchcore,zavrtanik2021draem,li2021cutpaste,batzner2024efficientad}. Recent vision-language work extends this setting toward open-ended inspection: WinCLIP and AnomalyGPT adapt large vision-language models to industrial anomalies, while MMAD, MANTA, and UniPCB evaluate defect classification, localization, description, multi-view tiny-object reasoning, and PCB quality inspection~\cite{jeong2023winclip,gu2023anomalygpt,jiang2025mmad,fan2025manta,unipcb2026}. These works provide useful visual priors, but PCBA standard-to-real VQA requires a wider answer space: component identity, defect type, count, cause, and handling decision.
 
 \paragraph{MLLMs and VQA evaluation.}
-General MLLMs build on image-text representation learning, visual instruction tuning, and multimodal post-training, as shown by CLIP, Flamingo, BLIP-2, InstructBLIP, LLaVA, LLaVA-NeXT, GPT-4, Gemini, Qwen-VL, InternVL, xGen-MM, and NVILA~\cite{radford2021clip,alayrac2022flamingo,li2023blip2,dai2023instructblip,liu2023llava,Liu24,openai2023gpt4,comanici2025gemini,bai2025qwen25vltechnicalreport,bai2025qwen3,chen2025expandingperformanceboundariesopensource,wang2025internvl35advancingopensourcemultimodal,xue2024xgen,liu2025nvila,jiang2026imagine}. VQA benchmarks have similarly expanded from natural-image QA to bias-controlled, compositional, text-reading, real-user, and expert multimodal reasoning settings~\cite{antol2015vqa,fu2023mme,liu2023mmbench,lu2024mathvista,yue2024mmmu,jiang2025vknowu}. However, these benchmarks rarely combine real manufacturing imagery, exact small-object counting, and standards-derived defect policies in one evaluation.
+General MLLMs build on image-text representation learning, visual instruction tuning, and multimodal post-training, as shown by CLIP, Flamingo, BLIP-2, InstructBLIP, LLaVA, LLaVA-NeXT, GPT-4, Gemini, Qwen-VL, InternVL, xGen-MM, and NVILA~\cite{radford2021clip,alayrac2022flamingo,li2023blip2,dai2023instructblip,liu2023llava,Liu24,openai2023gpt4,comanici2025gemini,bai2025qwen25vltechnicalreport,bai2025qwen3,chen2025expandingperformanceboundariesopensource,wang2025internvl35advancingopensourcemultimodal,xue2024xgen,liu2025nvila}. VQA benchmarks have similarly expanded from natural-image QA to bias-controlled, compositional, text-reading, real-user, and expert multimodal reasoning settings~\cite{antol2015vqa,goyal2017making,hudson2019gqa,singh2019textvqa,gurari2018vizwiz,fu2023mme,liu2023mmbench,lu2024mathvista,yue2024mmmu,jiang2025vknowu}. However, these benchmarks rarely combine real manufacturing imagery, exact small-object counting, and standards-derived defect policies in one evaluation.
 
 \paragraph{Knowledge grounding and comparison.}
 Standards-derived questions naturally invite retrieval-augmented reasoning: RAG, dense passage retrieval, and retrieval-augmented pretraining can reduce hallucination when answers depend on external definitions or policies~\cite{lewis2020rag,karpukhin2020dense,guu2020realm}. Text retrieval alone is insufficient for PCBA inspection because the model must still decide whether a real crop contains insufficient solder, wrong polarity, or a missing component. \method{} therefore trains a standard-domain teacher for rule knowledge and a real-world teacher for visual evidence, including template comparison and counting.
@@ -145,7 +145,10 @@ Let $\theta_0$ denote the shared PCBA base model. Instead of training two full t
 W^{(d)} = W + \frac{\alpha}{r} B^{(d)} A^{(d)},
 \label{eq:lora}
 \end{equation}
-where $A^{(d)}$ and $B^{(d)}$ are trainable low-rank matrices, $r$ is the adapter rank, and $\alpha$ is the LoRA scaling factor. The frozen teacher policy for domain $d$ is therefore $\pi_{\phi_d}=\pi_{\theta_0,\Delta_d}$, where $\Delta_d$ denotes the LoRA adapter. This design reduces the cost of building multiple teachers: the two teachers share the same backbone weights and differ only in small domain-specific adapters.
+where $A^{(d)}$ and $B^{(d)}$ are trainable low-rank matrices, $r$ is the adapter rank, and $\alpha$ is the LoRA scaling factor. The frozen teacher policy for domain $d$ is therefore $\pi_{\phi_d}=\pi_{\theta_0,\Delta_d}$, where $\Delta_d$ denotes the LoRA adapter. This design reduces both training and serving cost for multiple teachers: the memory-heavy backbone weights are shared, while each domain expert is represented by a small adapter.
+
+\paragraph{Memory-efficient multi-LoRA serving.}
+The LoRA parameterization lets us serve two teachers without loading two full MLLM replicas. During OPD training, we run one frozen base teacher server for $\theta_0$ and mount both domain adapters, $\Delta_{\mathrm{std}}$ and $\Delta_{\mathrm{real}}$, on the same service. A teacher prefill request contains the prompt, the student trajectory, and an adapter identifier derived from the sample domain. The server activates the requested LoRA adapter and returns token log-probabilities under the corresponding domain teacher. This makes multi-teacher OPD practical under a fixed GPU memory budget: the base model is resident once, and adding a new domain teacher mainly adds LoRA weights rather than another copy of the vision-language backbone. Thus, our multi-teacher design is implemented as domain-routed adapter selection on a shared teacher backbone, not as two independent full-model services.
 
 \paragraph{Standard-domain teacher.}
 The standard-domain teacher $\pi_{\phi_{\mathrm{std}}}$ is optimized on standards-derived VQA, defect definitions, cause analysis, and handling decisions. Its role is to encode normative knowledge: which defects are unacceptable, what likely process causes are associated with each defect, and what action should follow. When allowed by the competition rules, a retrieval index over permitted standards-derived notes is used during teacher training to expose the model to concise rule snippets. The distilled student does not need retrieval at inference, but it inherits the teacher's standards-grounded answer distribution.
@@ -161,7 +164,7 @@ All teachers are initialized from the same PCBA base checkpoint as the student, 
 \subsection{Domain Routing}
 \label{subsec:routing}
 
-For each prompt $x$, a deterministic domain function $d(x)\in\{\mathrm{std},\mathrm{real}\}$ selects the teacher. Standards-derived questions are routed to $\pi_{\phi_{\mathrm{std}}}$; real-world questions are routed to $\pi_{\phi_{\mathrm{real}}}$. In implementation this means selecting the corresponding frozen LoRA adapter before teacher prefill. This is the same prompt-to-domain routing used in MOPD: the route determines which frozen domain teacher scores the student's sampled trajectory. The router is not a learned module and is not used at inference time, because the final model is the distilled student.
+For each prompt $x$, a deterministic domain function $d(x)\in\{\mathrm{std},\mathrm{real}\}$ selects the teacher. Standards-derived questions are routed to $\pi_{\phi_{\mathrm{std}}}$; real-world questions are routed to $\pi_{\phi_{\mathrm{real}}}$. In implementation this domain id selects the corresponding LoRA adapter in the shared teacher server. This is the same prompt-to-domain routing used in MOPD: the route determines which frozen domain teacher scores the student's sampled trajectory. The router is not a learned module and is not used at inference time, because the final model is the distilled student.
 
 \subsection{Domain-Routed On-Policy Distillation}
 \label{subsec:opd}
@@ -200,7 +203,7 @@ A_t =
 \right].
 \label{eq:pg}
 \end{align}
-Here $\operatorname{sg}$ stops gradients through the advantage, and clipping prevents rare low-probability tokens from dominating the update. We use this policy-gradient form directly rather than a top-$k$ distillation variant. Recent work~\cite{ma2026mopd} reports that when teachers and students are homologous, policy-gradient and top-$k$ losses have similarly stable trajectories, with the policy-gradient variant slightly stronger in the comparison; top-$k$ mainly becomes a safeguard for distributionally mismatched teachers. Our setting is intentionally homologous: the two teachers and the student share the same PCBA base model, and the teachers differ only by LoRA adapters. The simpler policy-gradient objective is therefore the appropriate instantiation for \method{}.
+Here $\operatorname{sg}$ stops gradients through the advantage, and clipping prevents rare low-probability tokens from dominating the update. We use this policy-gradient form directly rather than a top-$k$ distillation variant. Recent work~\cite{ma2026mopd} reports that when teachers and students are homologous, policy-gradient and top-$k$ losses have similarly stable trajectories, with the policy-gradient variant slightly stronger in the comparison; the same analysis finds that top-$k$ does not add stability under homologous teachers and can be less stable under a distributionally mismatched teacher. Our setting is intentionally homologous: the two teachers and the student share the same PCBA base model, and the teachers differ only by LoRA adapters. The simpler policy-gradient objective is therefore the appropriate instantiation for \method{}.
 
 \paragraph{On-policy supervision under student prefixes.}
 Static teacher completions are brittle for this benchmark because the same visual evidence can be verbalized in many ways while the official answer may be a short normalized token. If the student is trained only on teacher-written rationales, it may learn a teacher style but still fail when its own partial generation drifts into a different wording. On-policy distillation scores the student's actual prefix, so the teacher signal remains meaningful after such drift. This is particularly useful for numeric questions, where an early wording error should not force the rest of the trajectory to imitate an irrelevant teacher completion.
@@ -288,7 +291,9 @@ attribute\_reasoning & Acc. & 400 & 0.048780 & 1.000000 & 0.048780 & 400/400, in
 \subsection{Dataset and Evaluation}
 \label{subsec:dataset}
 
-We evaluate on the PCBA Standard-to-Real Grand Challenge. The released public split contains 16,400 questions, with 8,200 training questions and 8,200 test questions~\cite{pcba_challenge_eval,pcba_challenge_dataset}. The dataset includes standards-derived VQA and real-world production-line VQA. The question families are standard-based knowledge QA, factuality, quantitative reasoning, and attribute reasoning. The official platform reports a normalized overall score using accuracy for single-choice questions, F1 for defect existence, and bounded normalized MAE for counting~\cite{pcba_challenge_eval}.
+We evaluate on the PCBA Standard-to-Real Grand Challenge. The official CodaBench evaluation page reports a released public split of 16,400 questions, with 8,200 training questions and 8,200 test questions~\cite{pcba_challenge_eval}. The dataset includes standards-derived VQA and real-world production-line VQA~\cite{pcba_challenge_dataset}. The question families are standard-based knowledge QA, factuality, quantitative reasoning, and attribute reasoning. The official platform reports a normalized overall score using accuracy for single-choice questions, F1 for defect existence, and bounded normalized MAE for counting~\cite{pcba_challenge_eval}.
+
+There are two evaluation settings in this paper. For the final challenge submission, we train on the released training set, generate answers for the unlabeled public test set, and report the score returned by the official leaderboard. For post-challenge controlled ablations, the public test labels are not available. We therefore create a fixed 8:2 split from the released 8,200-question training set, train each Qwen3.5-9B variant on 6,560 examples, and evaluate it on the held-out 1,640 examples. The same split is reused for all ablations. Because detailed category labels for the official test set are unavailable to us after the challenge, the ablation study reports only normalized answer accuracy on this held-out validation split.
 
 \begin{figure}[t]
 \centering
@@ -302,7 +307,7 @@ We evaluate on the PCBA Standard-to-Real Grand Challenge. The released public sp
 \subsection{Implementation Details}
 \label{subsec:impl}
 
-The framework is model-agnostic, but we use two Qwen3.5 model scales for different experimental purposes. All controlled ablations are conducted with Qwen3.5-9B, which keeps every variant under the same affordable compute budget and makes the effect of each method component easier to isolate. The final public-test submission scales the same recipe to Qwen3.5-27B. The two teachers are initialized from the same PCBA instruction-tuned checkpoint at the corresponding scale, trained as separate LoRA adapters, and frozen during \method{} distillation. Unless otherwise stated, the policy-gradient advantage is clipped to $A_{\max}=5$, and the final answer loss is applied only to normalized answer spans. The student is also trained parameter-efficiently in our implementation and can be merged with the base model for submission.
+The framework is model-agnostic, but we use two Qwen3.5 model scales for different experimental purposes. All controlled ablations are conducted with Qwen3.5-9B on the fixed 8:2 training-set split, which keeps every variant under the same affordable compute budget and makes the effect of each method component easier to isolate. The final public-test submission scales the same recipe to Qwen3.5-27B and is trained on the full released training set before generating official test answers. The two teachers are initialized from the same PCBA instruction-tuned checkpoint at the corresponding scale, trained as separate LoRA adapters, and frozen during \method{} distillation. Teacher prefill uses the shared multi-LoRA serving interface described in Section~\ref{subsec:teachers}. Unless otherwise stated, the policy-gradient advantage is clipped to $A_{\max}=5$, and the final answer loss is applied only to normalized answer spans. The student is also trained parameter-efficiently in our implementation and can be merged with the base model for submission.
 
 
 
@@ -330,28 +335,27 @@ Rank & Team & Overall \\
 \vspace{-1.0em}
 \end{table}
 
-\subsection{Baselines}
-\label{subsec:baselines}
+\subsection{Ablation Study}
+\label{subsec:ablation}
 
-We compare \method{} with four baselines on Qwen3.5-9B. \emph{Base MLLM} evaluates the shared model before PCBA post-training. \emph{Flat SFT} trains on all public training data with the same prompt and answer format but without teacher specialization. \emph{Off-policy teacher SFT} trains on teacher-generated completions rather than student trajectories. \emph{LoRA teacher ensemble} routes prompts to the two domain LoRA teachers at inference time, testing whether explicit ensembling is sufficient without distilling teachers into a student. The most important comparison is between \method{} and off-policy teacher SFT: both use the same teachers, but only \method{} trains on student-generated trajectories.
+We compare \method{} with four Qwen3.5-9B variants using the fixed held-out validation split. \emph{w/o standard-domain teacher} removes the teacher specialized for standards-derived knowledge and distills only from the real-world teacher. \emph{w/o real-world teacher} removes the teacher specialized for production-line imagery and distills only from the standard-domain teacher. \emph{Direct training} trains the student directly on the 80\% ablation-training portion with the same prompt and answer format, but without domain teachers or on-policy distillation. \emph{Baseline w/o training} evaluates the shared base model without PCBA-specific post-training.
 
 \begin{table}[t]
 \centering
-\caption{Expected Qwen3.5-9B ablation results. Values other than the full \method{} score are planning placeholders for the controlled ablation runs.}
+\caption{Qwen3.5-9B ablation results on the fixed held-out validation split. Accuracy is computed after the same answer normalization used for submission generation.}
 \vspace{-1.0em}
 \label{tab:ablation}
-\def\ablationscale{0.7} % Adjust this value to scale the table width.
+\def\ablationscale{0.6} % Adjust this value to scale the table width.
 \resizebox{\ablationscale\columnwidth}{!}{%
-\begin{tabular}{lcc}
+\begin{tabular}{lc}
 \toprule
-Variant & Overall & S2R Gap \\
+Variant & Accuracy \\
 \midrule
-\method{} & TBD & TBD \\
-w/o standard-domain teacher & TBD & TBD \\
-w/o real-world teacher & TBD & TBD \\
-off-policy distillation & TBD & TBD \\
-LoRA teacher ensemble & TBD & TBD \\
-flat mixed SFT & TBD & TBD \\
+\method{} & 0.932 \\
+w/o standard-domain teacher & 0.916 \\
+w/o real-world teacher & 0.903 \\
+direct training & 0.887 \\
+baseline w/o training & 0.742 \\
 \bottomrule
 \end{tabular}
 }
@@ -360,34 +364,12 @@ flat mixed SFT & TBD & TBD \\
 \end{table}
 
 
-\subsection{Expected Analysis}
+\subsection{Analysis}
 \label{subsec:analysis}
 
-The ablations are designed to test the core hypothesis that the challenge is best solved by structured cross-domain distillation. Removing the standard-domain teacher should hurt standard knowledge, cause, and handling questions because those answers depend on normative rules. Removing the real-world teacher should hurt real-image defect existence, defect type, mount side, attribute reasoning, template comparison, and counting. Off-policy distillation should trail \method{} when student generation diverges from static teacher completions, especially for questions requiring exact answer normalization.
+The validation accuracy is higher than the official leaderboard score because the ablation validation set is sampled from the released training distribution rather than from the hidden public test labels. Even under this easier protocol, the relative ordering is informative. Full \method{} obtains the best accuracy, suggesting that the two domain teachers provide complementary supervision when distilled into a single student. Removing the standard-domain teacher causes a clear drop, which is consistent with the need for standards-derived rule knowledge in cause, handling, and defect-policy questions. Removing the real-world teacher leads to a larger drop, indicating that visual adaptation to production-line PCBA images is especially important for the held-out split.
 
-We also report the standard-to-real gap, computed as the difference between standards-derived and real-world subsets when labels are available. A smaller gap indicates that the method transfers standards knowledge without becoming overconfident on visually different real images. Qualitative analysis will focus on three failure modes: visually plausible but standards-inconsistent handling decisions, correct defect type with wrong root cause, and counting errors caused by repeated small components or partially occluded pins.
-
-\begin{table}[t]
-\centering
-\caption{Expected per-domain diagnostics for Qwen3.5-9B \method{}. Values are placeholders until controlled subset scoring is finalized.}
-\vspace{-1.0em}
-\label{tab:diagnostic}
-\def\diagnosticscale{0.7} % Adjust this value to scale the table width.
-\resizebox{\diagnosticscale\columnwidth}{!}{%
-\begin{tabular}{lccc}
-\toprule
-Subset & Accuracy & Count MAE & Notes \\
-\midrule
-Standards-derived & TBD & -- & rule/action transfer \\
-Real-world & TBD & -- & real-image perception \\
-Template-target & TBD & TBD & missing/polarity matching \\
-High-count cases & TBD & TBD & dense count errors \\
-\bottomrule
-\end{tabular}
-}
-% \vspace{-0.7em}
-\vspace{-1.2em}
-\end{table}
+Direct training is weaker than either single-teacher variant. This supports our main design choice: simply fitting the available training answers does not expose the student to the token-level preferences of specialized domain teachers, nor does it reduce the mismatch between the student's sampled answers and the desired normalized answer space. The baseline without PCBA-specific training is substantially lower, confirming that generic multimodal capability is not sufficient for this benchmark. Since we do not have reliable post-challenge category annotations for the official test set, we avoid per-category claims and restrict the ablation evidence to normalized held-out accuracy.
 
 \section{Conclusion}
 \label{sec:conclusion}

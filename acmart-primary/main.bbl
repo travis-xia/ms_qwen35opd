@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{48}
+\begin{thebibliography}{51}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -118,10 +118,12 @@
   Batzner}, \bibinfo{person}{Michael Fauser}, \bibinfo{person}{David
   Sattlegger}, {and} \bibinfo{person}{Carsten Steger}.}
   \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{The {MVTec LOCO AD} Dataset for Unsupervised
-  Anomaly Detection}. In \bibinfo{booktitle}{\emph{CVPR}}.
-  \bibinfo{pages}{18242--18253}.
+\newblock \showarticletitle{Beyond Dents and Scratches: Logical Constraints in
+  Unsupervised Anomaly Detection and Localization}.
+\newblock \bibinfo{journal}{\emph{International Journal of Computer Vision}}
+  \bibinfo{volume}{130} (\bibinfo{year}{2022}), \bibinfo{pages}{947--969}.
 \newblock
+\href{https://doi.org/10.1007/s11263-022-01578-9}{doi:\nolinkurl{10.1007/s11263-022-01578-9}}
 
 
 \bibitem[Bergmann et~al\mbox{.}(2019)]%
@@ -226,7 +228,7 @@
         {fu2023mme}
 \bibfield{author}{\bibinfo{person}{Chaoyou Fu}, \bibinfo{person}{Peixian Chen},
   \bibinfo{person}{Yunhang Shen}, \bibinfo{person}{Yulei Qin},
-  \bibinfo{person}{Mengdan Zhang}, \bibinfo{person}{Lin Xu},
+  \bibinfo{person}{Mengdan Zhang}, \bibinfo{person}{Xu Lin},
   \bibinfo{person}{Jinrui Yang}, \bibinfo{person}{Xiawu Zheng},
   \bibinfo{person}{Ke Li}, \bibinfo{person}{Xing Sun}, {et~al\mbox{.}}}
   \bibinfo{year}{2023}\natexlab{}.
@@ -234,6 +236,17 @@
   Multimodal Large Language Models}.
 \newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2306.13394}}
   (\bibinfo{year}{2023}).
+\newblock
+
+
+\bibitem[Goyal et~al\mbox{.}(2017)]%
+        {goyal2017making}
+\bibfield{author}{\bibinfo{person}{Yash Goyal}, \bibinfo{person}{Tejas Khot},
+  \bibinfo{person}{Douglas Summers-Stay}, \bibinfo{person}{Dhruv Batra}, {and}
+  \bibinfo{person}{Devi Parikh}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Making the {V} in {VQA} Matter: Elevating the Role
+  of Image Understanding in Visual Question Answering}. In
+  \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{6904--6913}.
 \newblock
 
 
@@ -247,6 +260,19 @@
   Large Vision-Language Models}.
 \newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2308.15366}}
   (\bibinfo{year}{2023}).
+\newblock
+
+
+\bibitem[Gurari et~al\mbox{.}(2018)]%
+        {gurari2018vizwiz}
+\bibfield{author}{\bibinfo{person}{Danna Gurari}, \bibinfo{person}{Qing Li},
+  \bibinfo{person}{Abigale~J. Stangl}, \bibinfo{person}{Anhong Guo},
+  \bibinfo{person}{Chi Lin}, \bibinfo{person}{Kristen Grauman},
+  \bibinfo{person}{Jiebo Luo}, {and} \bibinfo{person}{Jeffrey~P. Bigham}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{{VizWiz} Grand Challenge: Answering Visual
+  Questions From Blind People}. In \bibinfo{booktitle}{\emph{CVPR}}.
+  \bibinfo{pages}{3608--3617}.
 \newblock
 
 
@@ -284,6 +310,16 @@
 \newblock
 
 
+\bibitem[Hudson and Manning(2019)]%
+        {hudson2019gqa}
+\bibfield{author}{\bibinfo{person}{Drew~A. Hudson} {and}
+  \bibinfo{person}{Christopher~D. Manning}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{{GQA}: A New Dataset for Real-World Visual
+  Reasoning and Compositional Question Answering}. In
+  \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{6700--6709}.
+\newblock
+
+
 \bibitem[Jeong et~al\mbox{.}(2023)]%
         {jeong2023winclip}
 \bibfield{author}{\bibinfo{person}{Jongheon Jeong}, \bibinfo{person}{Yang Zou},
@@ -294,20 +330,6 @@
   and Segmentation}.
 \newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2303.14814}}
   (\bibinfo{year}{2023}).
-\newblock
-
-
-\bibitem[Jiang et~al\mbox{.}(2026)]%
-        {jiang2026imagine}
-\bibfield{author}{\bibinfo{person}{Tianxiang Jiang}, \bibinfo{person}{Linquan
-  Wu}, \bibinfo{person}{Sheng Xia}, \bibinfo{person}{Songze Li},
-  \bibinfo{person}{Ziang Yan}, \bibinfo{person}{Haoyu Yang},
-  \bibinfo{person}{Yu Qiao}, {and} \bibinfo{person}{Yi Wang}.}
-  \bibinfo{year}{2026}\natexlab{}.
-\newblock \showarticletitle{Imagine Before You Predict: Interleaved Latent
-  Visual Reasoning for Video Event Prediction}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2606.05769}}
-  (\bibinfo{year}{2026}).
 \newblock
 
 
@@ -476,8 +498,8 @@
   \bibinfo{person}{Yudong Wang}, \bibinfo{person}{Rang Li},
   \bibinfo{person}{Jinhao Dong}, \bibinfo{person}{Zhifang Sui}, {and}
   \bibinfo{person}{Fuli Luo}.} \bibinfo{year}{2026}\natexlab{}.
-\newblock \showarticletitle{Multi-Teacher On-Policy Distillation for
-  Post-Training Capability Integration of Large Language Models}.
+\newblock \showarticletitle{{MOPD}: Multi-Teacher On-Policy Distillation for
+  Capability Integration in {LLM} Post-Training}.
 \newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2606.30406}}
   (\bibinfo{year}{2026}).
 \newblock
@@ -592,6 +614,18 @@
 \newblock
 
 
+\bibitem[Singh et~al\mbox{.}(2019)]%
+        {singh2019textvqa}
+\bibfield{author}{\bibinfo{person}{Amanpreet Singh}, \bibinfo{person}{Vivek
+  Natarajan}, \bibinfo{person}{Meet Shah}, \bibinfo{person}{Yu Jiang},
+  \bibinfo{person}{Xinlei Chen}, \bibinfo{person}{Dhruv Batra},
+  \bibinfo{person}{Devi Parikh}, {and} \bibinfo{person}{Marcus Rohrbach}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Towards {VQA} Models That Can Read}. In
+  \bibinfo{booktitle}{\emph{CVPR}}. \bibinfo{pages}{8317--8326}.
+\newblock
+
+
 \bibitem[Sun et~al\mbox{.}(2026)]%
         {unipcb2026}
 \bibfield{author}{\bibinfo{person}{Fuxiang Sun}, \bibinfo{person}{Xi Jiang},
@@ -609,7 +643,7 @@
         {wang2024realiad}
 \bibfield{author}{\bibinfo{person}{Chengjie Wang}, \bibinfo{person}{Wenbing
   Zhu}, \bibinfo{person}{Bin-Bin Gao}, \bibinfo{person}{Zhenye Gan},
-  \bibinfo{person}{Jiangning Zhang}, \bibinfo{person}{Zhi Gu},
+  \bibinfo{person}{Jianning Zhang}, \bibinfo{person}{Zhihao Gu},
   \bibinfo{person}{Shuguang Qian}, \bibinfo{person}{Mingang Chen}, {and}
   \bibinfo{person}{Lizhuang Ma}.} \bibinfo{year}{2024}\natexlab{}.
 \newblock \showarticletitle{{Real-IAD}: A Real-World Multi-View Dataset for
@@ -713,7 +747,7 @@
 \bibitem[Zou et~al\mbox{.}(2022)]%
         {zou2022visa}
 \bibfield{author}{\bibinfo{person}{Yang Zou}, \bibinfo{person}{Jongheon Jeong},
-  \bibinfo{person}{Lakshmanan Pemula}, \bibinfo{person}{Dongqing Zhang}, {and}
+  \bibinfo{person}{Latha Pemula}, \bibinfo{person}{Dongqing Zhang}, {and}
   \bibinfo{person}{Onkar Dabeer}.} \bibinfo{year}{2022}\natexlab{}.
 \newblock \showarticletitle{Spot-the-Difference Self-Supervised Pre-training
   for Anomaly Detection and Segmentation}. In \bibinfo{booktitle}{\emph{ECCV}}.

@@ -20,8 +20,6 @@ Warning--no number and no volume in bai2025qwen3
 Warning--page numbers missing in both pages and numpages fields in bai2025qwen3
 Warning--empty publisher in batzner2024efficientad
 Warning--empty address in batzner2024efficientad
-Warning--empty publisher in bergmann2022loco
-Warning--empty address in bergmann2022loco
 Warning--empty publisher in bergmann2019mvtec
 Warning--empty address in bergmann2019mvtec
 Warning--no number and no volume in comanici2025gemini
@@ -34,8 +32,12 @@ Warning--empty publisher in fan2025manta
 Warning--empty address in fan2025manta
 Warning--no number and no volume in fu2023mme
 Warning--page numbers missing in both pages and numpages fields in fu2023mme
+Warning--empty publisher in goyal2017making
+Warning--empty address in goyal2017making
 Warning--no number and no volume in gu2023anomalygpt
 Warning--page numbers missing in both pages and numpages fields in gu2023anomalygpt
+Warning--empty publisher in gurari2018vizwiz
+Warning--empty address in gurari2018vizwiz
 Warning--empty publisher in guu2020realm
 Warning--empty address in guu2020realm
 Warning--no number and no volume in hinton2015distilling
@@ -43,10 +45,10 @@ Warning--page numbers missing in both pages and numpages fields in hinton2015dis
 Warning--empty publisher in hu2021lora
 Warning--empty address in hu2021lora
 Warning--page numbers missing in both pages and numpages fields in hu2021lora
+Warning--empty publisher in hudson2019gqa
+Warning--empty address in hudson2019gqa
 Warning--no number and no volume in jeong2023winclip
 Warning--page numbers missing in both pages and numpages fields in jeong2023winclip
-Warning--no number and no volume in jiang2026imagine
-Warning--page numbers missing in both pages and numpages fields in jiang2026imagine
 Warning--no number and no volume in jiang2025vknowu
 Warning--page numbers missing in both pages and numpages fields in jiang2025vknowu
 Warning--no number and no volume in jiang2025mmad
@@ -84,6 +86,8 @@ Warning--empty address in rusu2016policy
 Warning--page numbers missing in both pages and numpages fields in rusu2016policy
 Warning--no number and no volume in schulman2017ppo
 Warning--page numbers missing in both pages and numpages fields in schulman2017ppo
+Warning--empty publisher in singh2019textvqa
+Warning--empty address in singh2019textvqa
 Warning--no number and no volume in unipcb2026
 Warning--page numbers missing in both pages and numpages fields in unipcb2026
 Warning--no number and no volume in wang2024realiad
@@ -96,45 +100,45 @@ Warning--empty publisher in zavrtanik2021draem
 Warning--empty address in zavrtanik2021draem
 Warning--empty publisher in zou2022visa
 Warning--empty address in zou2022visa
-You've used 48 entries,
+You've used 51 entries,
             6056 wiz_defined-function locations,
-            1935 strings with 33702 characters,
-and the built_in function-call counts, 66606 in all, are:
-= -- 7578
-> -- 3969
+            1951 strings with 34340 characters,
+and the built_in function-call counts, 70922 in all, are:
+= -- 8053
+> -- 4118
 < -- 0
-+ -- 1418
-- -- 1381
-* -- 5947
-:= -- 7490
-add.period$ -- 237
-call.type$ -- 48
-change.case$ -- 639
-chr.to.int$ -- 43
-cite$ -- 132
-duplicate$ -- 4808
-empty$ -- 3400
-format.name$ -- 1554
-if$ -- 15485
++ -- 1468
+- -- 1434
+* -- 6254
+:= -- 7903
+add.period$ -- 252
+call.type$ -- 51
+change.case$ -- 666
+chr.to.int$ -- 46
+cite$ -- 139
+duplicate$ -- 5216
+empty$ -- 3679
+format.name$ -- 1619
+if$ -- 16511
 int.to.chr$ -- 7
 int.to.str$ -- 1
-missing$ -- 185
-newline$ -- 423
-num.names$ -- 331
-pop$ -- 2400
+missing$ -- 200
+newline$ -- 445
+num.names$ -- 352
+pop$ -- 2569
 preamble$ -- 1
-purify$ -- 1010
+purify$ -- 1061
 quote$ -- 0
-skip$ -- 1700
+skip$ -- 1864
 stack$ -- 0
-substring$ -- 3654
-swap$ -- 409
+substring$ -- 4022
+swap$ -- 460
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1136
-warning$ -- 84
-while$ -- 219
+type$ -- 1226
+warning$ -- 88
+while$ -- 244
 width$ -- 0
-write$ -- 917
-(There were 84 warnings)
+write$ -- 973
+(There were 88 warnings)
